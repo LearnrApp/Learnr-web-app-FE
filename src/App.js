@@ -7,6 +7,7 @@ import StudentSignin from './pages/student/StudentSignin'
 import ParentSignup from './pages/parent/ParentSignup'
 import ParentSignin from './pages/parent/ParentSignin'
 import AdminSignin from './pages/admin/AdminSignin'
+import StudentDashboard from './pages/student/StudentDashboard';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <Route path='/parents/signup' component={ParentSignup} />
       <Route path='/parents/signin' component={ParentSignin} />
       <Route path='/admin/signin' component={AdminSignin} />
+      <Route path='/students/dashboard' component={StudentDashboard} />
       {/*
       <Route path='/signin' component={Signin} />
       <Route path='/guest/mathematics' component={Mathematics} />
