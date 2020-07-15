@@ -1,11 +1,11 @@
 import React from 'react';
 // import {Link} from 'react-router-dom';
 import '../styles/Style.css'
-import NavBar from '../components/NavBar'
+import NavBar from '../components/navbar/NavBar'
 import Footer from '../components/Footer'
 import Background from '../components/Header/Background'
 import ClassSelect from '../components/ClassSelect'
-import Button from '../components/Header/Button'
+import ButtonV2 from '../components/Header/ButtonV2'
 
 
 const Welcome = () => {
@@ -23,7 +23,7 @@ const Welcome = () => {
               progress of your child and view the awards earned
               by the child. 
             </p>
-            <Button link={'/parents/signup'} linkText={'Get Started'} />
+            <ButtonV2 link={'/parents/signup'} linkText={'Get Started'} />
           </div>
           <div className="demo-image">
             <img className="img-fluid" src={require('../images/demo-image.png')} alt="" />

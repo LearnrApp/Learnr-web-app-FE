@@ -95,6 +95,13 @@ button.nav-collapse:focus {
   padding: 8px 32px;
   text-decoration: none !important;
 }
+.general-btn-2 {
+  background-color: #2342C0;
+  color: #fff;
+  border-radius: 20px;
+  padding: 8px 32px;
+  text-decoration: none !important;
+}
 .general-btn:hover {
   color: #fff;
   animation-name: fade-bg;
@@ -102,8 +109,19 @@ button.nav-collapse:focus {
   animation-fill-mode: forwards;
   border: 1px solid #fff;
 }
+.general-btn-2:hover {
+  color: #2342C0;
+  animation-name: fade-bgbtn;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  border: 1px solid #2342C0;
+}
 @keyframes fade-bg {
   from{background-color: #fff;}
+  to{background-color: transparent;}
+}
+@keyframes fade-bgbtn {
+  from{background-color: #2342C0;}
   to{background-color: transparent;}
 }
 
@@ -155,6 +173,7 @@ button.nav-collapse:focus {
 }
 .subject-img {
   border-radius: 4px;
+  cursor: pointer;
 }
 .demo--wrap {
   width: 90vw;
