@@ -173,7 +173,6 @@ button.nav-collapse:focus {
 }
 .subject-img {
   border-radius: 4px;
-  cursor: pointer;
 }
 .demo--wrap {
   width: 90vw;
@@ -219,6 +218,9 @@ button.nav-collapse:focus {
 .sub-button:hover {
   background-color: transparent !important;
   border: 1px solid #fff;
+}
+.dropdown-classes {
+  display: none;
 }
 @media (max-width: 991px) {
   .navlinks {
@@ -278,7 +280,17 @@ button.nav-collapse:focus {
   .explore-wrap {
     width: 90vw !important;
   }
+  .dropdown-classes {
+    display: flex;
+    justify-content: center;
+    transform: translateY(-40px);
+  }
+  .dropdown-classes:focus {
+    outline: none !important;
+  }
   .classes {
+    opacity: 0;
+    display: none !important;
     width: 80vw !important;
   }
   .subject-card--wrap {

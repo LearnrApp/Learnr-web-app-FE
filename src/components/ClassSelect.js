@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 // import {Link} from 'react-router-dom'
+import Dropdown from './Dropdown'
 import SubjectCard from './SubjectCard'
 import Mathematics from '../images/maths.png'
 import English from '../images/english.png'
@@ -29,6 +30,33 @@ const ClassSelect = () => {
   const toSubjectCivEdu = () => {
       window.open('/subjects/civic-education', '_self');
   }
+
+  const classes = [
+    {
+      id: "1",
+      name: "Jss 1"
+    },
+    {
+      id: "2",
+      name: "Jss 2"
+    },
+    {
+      id: "3",
+      name: "Jss 3"
+    },
+    {
+      id: "4",
+      name: "Sss 1"
+    },
+    {
+      id: "5",
+      name: "Sss 2"
+    },
+    {
+      id: "6",
+      name: "Sss 3"
+    }
+  ];
 
   const subjectList = [
     <SubjectCard
@@ -118,14 +146,7 @@ const ClassSelect = () => {
               nextSubject(subjectList2)
             }} className="class-item ">Js 1</span>
 
-            <span onClick={() => {
-              nextSubject(<SubjectCard
-                image={''}
-                goToSubject={''}
-                subject={'English'}
-                topicSize={'25 Topics'}
-              />)
-            }} className="class-link">Js 2</span>
+            <span onClick={() => { }} className="class-link">Js 2</span>
 
             <span className="class-link">Js 3</span>
             <span className="class-link">Ss 1</span>
@@ -133,6 +154,8 @@ const ClassSelect = () => {
             <span className="class-link">Ss 3</span>
             <span className="class-link">General</span>
           </div>
+          {/* <div className=""></div> */}
+          <Dropdown name={'class'} classes={classes} label={''} />
         </div>
           <div className="d-flex justify-content-center">
           <div className="subject-card--wrap">
