@@ -16,8 +16,8 @@ const Background = () => {
             learning resources to students in the high school division.
           </p>
           <div className="d-flex">
-            <div className="btn-wrap "><Button link={'/student/signup'} linkText={'Students'} /></div>
-            <div className="btn-wrap "><Button link={'/parent/signup'} linkText={'Parents'} /></div>
+            <div className="btn-wrap "><Button link={'/students/signup'} linkText={'Students'} /></div>
+            <div className="btn-wrap "><Button link={'/parents/signup'} linkText={'Parents'} /></div>
           </div>
         </div>
       </div>
