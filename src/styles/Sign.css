@@ -1,0 +1,60 @@
+* {
+  font-family: 'Inter', sans-serif;
+}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+.sign-bg {
+  background-image: url(../images/sign-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 70px;
+  height: 100vh;
+}
+.signup-form--wrap {
+  width: 40vw;
+  max-width: 576px;
+}
+.signup-form {
+  padding: 48px;
+}
+.general-btn-2 {
+  background-color: #2342C0 !important;
+  color: #fff;
+  border-radius: 4px !important;
+  /* padding: 8px 32px; */
+  width: 100%;
+  border: none !important;
+}
+.general-btn-2:hover {
+  color: #2342C0 !important;
+  background-color: #fff !important;
+  border: 1px solid #2342C0 !important;
+  font-weight: 500 !important;
+}
+::placeholder {
+  color: #000 !important;
+  opacity: 0.5 !important;
+}
+@media (max-width: 991px) {
+  .signup-form--wrap {
+    width: 50vw;
+  }
+}
+@media (max-width: 768px) {
+  .signup-form--wrap {
+    width: 65vw;
+  }
+}
+@media (max-width: 576px) {
+  .signup-form--wrap {
+    width: 80vw;
+  }
+}
+@media (max-width: 480px) {
+  .signup-form--wrap {
+    width: 90vw;
+  }
+  .signup-form {
+    padding: 20px !important;
+  }
+}
