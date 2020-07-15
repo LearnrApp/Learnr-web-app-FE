@@ -19,17 +19,17 @@ const StudentSignin = () => {
             <div className="bg-white signup-form">
               <span className="text-center mb-3 d-block">Sign in<br /><i>with one of these services</i></span>
               <div className="row">
-                <Link className="col mr-2 d-flex align-items-center bg-white border rounded text-dark pr-4 py-2 my-3 d-block">
+                <Link to="" className="col mr-2 d-flex align-items-center bg-white border rounded text-dark pr-4 py-2 my-3 d-block">
                   <img className="mx-2" src={require('../../images/facebook-col.svg')} alt="" />
                   Facebook
                 </Link>
-                <Link className="col ml-2 d-flex align-items-center bg-white border rounded text-dark pr-4 py-2 my-3 d-block">
+                <Link to="" className="col ml-2 d-flex align-items-center bg-white border rounded text-dark pr-4 py-2 my-3 d-block">
                   <img className="mx-2" src={require('../../images/google-col.svg')} alt="" />
                   Google
                 </Link>
               </div>
               <div className="my-2 text-center">
-                <img src={require('../../images/line.svg')} alt="" /><span className="mx-4">or</span><img src={require('../../images/line.svg')} alt="" />
+                {/* <img className="img-fluid" src={require('../../images/line.svg')} alt="" /><span className="mx-4">or</span><img className="img-fluid" src={require('../../images/line.svg')} alt="" /> */}
               </div>
               <Form>
                 <Form.Group controlId="formBasicUsername">

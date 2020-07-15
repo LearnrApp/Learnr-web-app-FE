@@ -8,6 +8,7 @@ import ParentSignup from './pages/parent/ParentSignup'
 import ParentSignin from './pages/parent/ParentSignin'
 import AdminSignin from './pages/admin/AdminSignin'
 import StudentDashboard from './pages/student/StudentDashboard';
+import ParentDashboard from './pages/parent/ParentDashboard';
 
 const App = () => {
   return (
@@ -15,10 +16,11 @@ const App = () => {
       <Route exact path='/' component={ Welcome } />
       <Route path='/students/signup' component={StudentSignup} />
       <Route path='/students/signin' component={StudentSignin} />
+      <Route path='/students/dashboard' component={StudentDashboard} />
       <Route path='/parents/signup' component={ParentSignup} />
       <Route path='/parents/signin' component={ParentSignin} />
+      <Route path='/parents/dashboard' component={ParentDashboard} />
       <Route path='/admin/signin' component={AdminSignin} />
-      <Route path='/students/dashboard' component={StudentDashboard} />
       {/*
       <Route path='/signin' component={Signin} />
       <Route path='/guest/mathematics' component={Mathematics} />

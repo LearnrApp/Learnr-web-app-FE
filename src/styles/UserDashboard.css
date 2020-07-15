@@ -48,9 +48,24 @@
   display: flex;
   justify-content: space-between;
 }
+.addchild-btn {
+  background-color: #2342C0;
+  color: #fff;
+  border-radius: 20px;
+  padding: 8px 32px;
+  text-decoration: none !important;
+
+}
+.addchild-btn:hover {
+  color: #2342C0;
+  animation-name: fade-bgbtn;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  border: 1px solid #2342C0;
+}
 @media (max-width: 768px) {
   .dash-wrap {
-    height: fit-content;
+    height: 100vh;
   }
   .sidebar--wrap {
     display: none;
