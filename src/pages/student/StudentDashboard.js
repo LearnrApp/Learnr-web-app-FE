@@ -24,7 +24,7 @@ const StudentDashboard = () => {
 
   const subjectList = [
     <SubjectCard
-      image={require('../../images/maths-2.png')}
+      image={require('../../images/maths-sm.png')}
       goToSubject={toSubjectMaths}
       subject={'Mathematics'}
       topicSize={'29 Topics'}
