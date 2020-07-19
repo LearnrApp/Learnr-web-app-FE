@@ -1,5 +1,4 @@
 import React from 'react';
-import './components/FontAwesome'
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Welcome from './pages/Welcome'
 import StudentSignup from './pages/student/StudentSignup'
