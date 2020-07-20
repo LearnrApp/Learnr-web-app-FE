@@ -1,18 +1,7 @@
-import React from 'react'
-// import {Link} from 'react-router-dom'
-// import Dropdown from 'react-bootstrap/Dropdown'
+import React, {useEffect, useRef} from 'react'
 import SubjectCard from '../SubjectCard'
-// import Mathematics from '../../images/maths.png'
-import English from '../../images/english.png'
-import BasicScience from '../../images/basic-sci.png'
-import BasicTech from '../../images/basic-tech.png'
-import SocialSci from '../../images/social-studies.png'
-import CivicEdu from '../../images/civic-edu.png'
 import '../../styles/Style.css'
-import {gsap} from 'gsap'
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import {gsap, TweenMax} from 'gsap'
 
 
 const Js2 = () => {
@@ -35,6 +24,12 @@ const Js2 = () => {
       window.open('/subjects/civic-education', '_self');
   }
 
+  let subCards = useRef(null)
+  useEffect(() => {
+    TweenMax.to(subCards, 0, {css: {visibility: 'visible'}})
+    gsap.from(subCards, 1, {scale: 0.2})
+  })
+
   const subjectListJS2 = [
     <SubjectCard
       image={require('../../images/maths-2.jpg')}
@@ -43,31 +38,31 @@ const Js2 = () => {
       topicSize={'35 Topics'}
     />,
     <SubjectCard
-      image={English}
+      image={require('../../images/english-2.jpg')}
       goToSubject={toSubjectEng}
       subject={'English'}
       topicSize={'250 Topics'}
     />,
     <SubjectCard
-      image={BasicScience}
+      image={require('../../images/basic-sci-2.jpg')}
       goToSubject={toSubjectBasSci}
       subject={'Basic Science'}
       topicSize={'300 Topics'}
     />,
     <SubjectCard
-      image={BasicTech}
+      image={require('../../images/basic-tech-2.jpg')}
       goToSubject={toSubjectBasTech}
       subject={'Basic Technology'}
       topicSize={'400 Topics'}
     />,
     <SubjectCard
-      image={SocialSci}
+      image={require('../../images/social-studies-2.jpg')}
       goToSubject={toSubjectSocStud}
       subject={'Social Science'}
       topicSize={'350 Topics'}
     />,
     <SubjectCard
-      image={CivicEdu}
+      image={require('../../images/civic-edu-2.jpg')}
       goToSubject={toSubjectCivEdu}
       subject={'Civic Education'}
       topicSize={'40 Topics'}
@@ -76,7 +71,7 @@ const Js2 = () => {
 
   return (
     <React.Fragment>
-      <div className="subject-card--wrap">
+      <div ref={cards => subCards = cards} className="subject-card--wrap">
           {subjectListJS2.map((subject, index) => (
             <div className="subject-card d-flex flex-column align-items-center" key={index}>{subject}</div>
           ))}

@@ -1,12 +1,7 @@
-import React from 'react'
-// import {Link} from 'react-router-dom'
-// import Dropdown from 'react-bootstrap/Dropdown'
+import React, {useEffect, useRef} from 'react'
 import SubjectCard from '../SubjectCard'
 import '../../styles/Style.css'
-import {gsap} from 'gsap'
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import {gsap, TweenMax} from 'gsap'
 
 
 const Ss1 = () => {
@@ -29,7 +24,25 @@ const Ss1 = () => {
       window.open('/subjects/civic-education', '_self');
   }
 
-  const subjectListSS1 = [
+  let subCards = useRef(null)
+  let subCards2 = useRef(null)
+  let subCards3 = useRef(null)
+  let category = useRef(null)
+  let category2 = useRef(null)
+
+
+  useEffect(() => {
+    TweenMax.to(subCards, 0, {css: {visibility: 'visible'}})
+    TweenMax.to(subCards2, 0, {css: {visibility: 'visible'}})
+    TweenMax.to(subCards3, 0, {css: {visibility: 'visible'}})
+    gsap.from(subCards, 1, {scale: 0.2})
+    gsap.from(subCards2, 1, {scale: 0.2})
+    gsap.from(subCards3, 1, {scale: 0.2})
+    gsap.fromTo(category, 0.3, {opacity: 0}, {opacity: 1, delay: 1})
+    gsap.fromTo(category2, 0.3, {opacity: 0}, {opacity: 1, delay: 1})
+  })
+
+  const subjectListSS1General = [
     <SubjectCard
       image={require('../../images/senior-maths.png')}
       goToSubject={toSubjectMaths}
@@ -48,6 +61,9 @@ const Ss1 = () => {
       subject={'Economics'}
       topicSize={'40 Topics'}
     />,
+  ]
+
+  const subjectListSS1Science = [
     <SubjectCard
       image={require('../../images/biology.png')}
       goToSubject={toSubjectBasTech}
@@ -66,6 +82,9 @@ const Ss1 = () => {
       subject={'Chemistry'}
       topicSize={'30 Topics'}
     />,
+  ]
+
+  const subjectListSS1Arts = [
     <SubjectCard
       image={require('../../images/literature.png')}
       goToSubject={toSubjectBasTech}
@@ -88,8 +107,20 @@ const Ss1 = () => {
 
   return (
     <React.Fragment>
-      <div className="subject-card--wrap">
-          {subjectListSS1.map((subject, index) => (
+      <div ref={cards => subCards = cards} className="subject-card--wrap">
+          {subjectListSS1General.map((subject, index) => (
+            <div className="subject-card d-flex flex-column align-items-center" key={index}>{subject}</div>
+          ))}
+      </div>
+      <span ref={cat => category = cat} className="class-category">Science</span>
+      <div ref={cards2 => subCards2 = cards2} className="subject-card--wrap">
+          {subjectListSS1Science.map((subject, index) => (
+            <div className="subject-card d-flex flex-column align-items-center" key={index}>{subject}</div>
+          ))}
+      </div>
+      <span ref={cat2 => category2 = cat2} className="class-category">Arts</span>
+      <div ref={cards3 => subCards3 = cards3} className="subject-card--wrap">
+          {subjectListSS1Arts.map((subject, index) => (
             <div className="subject-card d-flex flex-column align-items-center" key={index}>{subject}</div>
           ))}
       </div>

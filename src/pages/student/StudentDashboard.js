@@ -30,19 +30,19 @@ const StudentDashboard = () => {
       topicSize={'29 Topics'}
     />,
     <SubjectCard
-      image={require('../../images/civic-edu-2.png')}
+      image={require('../../images/civic-edu-sm.png')}
       goToSubject={toSubjectCivEdu}
       subject={'Civic Education'}
       topicSize={'40 Topics'}
     />,
     <SubjectCard
-      image={require('../../images/english-2.png')}
+      image={require('../../images/english-sm.png')}
       goToSubject={toSubjectEng}
       subject={'English'}
       topicSize={'25 Topics'}
     />,
     <SubjectCard
-      image={require('../../images/basic-tech-2.png')}
+      image={require('../../images/basic-tech-sm.png')}
       goToSubject={toSubjectBasTech}
       subject={'Basic Technology'}
       topicSize={'40 Topics'}
