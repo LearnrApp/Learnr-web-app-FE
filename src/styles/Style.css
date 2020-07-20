@@ -68,7 +68,7 @@ button.nav-collapse:focus {
   animation-fill-mode: forwards;
 }
 .header-bg {
-  background-image: url(../images/bg-image.webp);
+  background-image: url(../images/bg-image.png);
   background-repeat: no-repeat;
   background-size: cover;
   margin-top: 70px;
@@ -279,10 +279,13 @@ button.nav-collapse:focus {
     background-position: top 0 left 60%;
 
   }
+  .classes {
+    width: 80vw;
+  }
 }
 @media (max-width: 768px) {
   .explore-wrap {
-    width: 80vw !important;
+    width: 95vw !important;
   }
   .subject-card--wrap {
     grid-template-columns: 1fr 1fr;
