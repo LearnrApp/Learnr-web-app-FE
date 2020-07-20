@@ -5,7 +5,7 @@ import '../../styles/Style.css'
 
 const ButtonV2 = (props) => {
   return (
-    <Link className="general-btn-2" to={props.link}>{props.linkText}</Link>
+    <Link className="general-btnV2" to={props.link}>{props.linkText}</Link>
   )
 }
 

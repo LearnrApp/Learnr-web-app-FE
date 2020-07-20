@@ -1,6 +1,4 @@
-import React from 'react'
-// import {Link} from 'react-router-dom'
-// import Dropdown from 'react-bootstrap/Dropdown'
+import React, {useEffect, useRef} from 'react'
 import SubjectCard from '../SubjectCard'
 import Mathematics from '../../images/maths.png'
 import English from '../../images/english.png'
@@ -9,10 +7,7 @@ import BasicTech from '../../images/basic-tech.png'
 import SocialSci from '../../images/social-studies.png'
 import CivicEdu from '../../images/civic-edu.png'
 import '../../styles/Style.css'
-import {gsap} from 'gsap'
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import {gsap, TweenMax} from 'gsap'
 
 
 const Js1 = () => {
@@ -34,6 +29,12 @@ const Js1 = () => {
   const toSubjectCivEdu = () => {
       window.open('/subjects/civic-education', '_self');
   }
+
+  let subCards = useRef(null)
+  useEffect(() => {
+    TweenMax.to(subCards, 0, {css: {visibility: 'visible'}})
+    gsap.from(subCards, 1, {scale: 0.2})
+  })
 
   const subjectListJS1 = [
     <SubjectCard
@@ -76,7 +77,7 @@ const Js1 = () => {
 
   return (
     <React.Fragment>
-      <div className="subject-card--wrap">
+      <div ref={cards => subCards = cards} className="subject-card--wrap">
           {subjectListJS1.map((subject, index) => (
             <div className="subject-card d-flex flex-column align-items-center" key={index}>{subject}</div>
           ))}

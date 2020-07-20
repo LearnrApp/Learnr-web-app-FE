@@ -1,13 +1,7 @@
-import React from 'react'
-// import {Link} from 'react-router-dom'
-// import Dropdown from 'react-bootstrap/Dropdown'
+import React, {useEffect, useRef} from 'react'
 import SubjectCard from '../SubjectCard'
 import '../../styles/Style.css'
-import {gsap} from 'gsap'
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-
+import {gsap, TweenMax} from 'gsap'
 
 const Ss3 = () => {
   const toSubjectMaths = () => {
@@ -29,7 +23,25 @@ const Ss3 = () => {
       window.open('/subjects/civic-education', '_self');
   }
 
-  const subjectListSS3 = [
+  let subCards = useRef(null)
+  let subCards2 = useRef(null)
+  let subCards3 = useRef(null)
+  let category = useRef(null)
+  let category2 = useRef(null)
+
+  useEffect(() => {
+    TweenMax.to(subCards, 0, {css: {visibility: 'visible'}})
+    TweenMax.to(subCards2, 0, {css: {visibility: 'visible'}})
+    TweenMax.to(subCards3, 0, {css: {visibility: 'visible'}})
+    
+    gsap.from(subCards, 1, {scale: 0.2})
+    gsap.from(subCards2, 1, {scale: 0.2})
+    gsap.from(subCards3, 1, {scale: 0.2})
+    gsap.fromTo(category, 0.3, {opacity: 0}, {opacity: 1, delay: 1})
+    gsap.fromTo(category2, 0.3, {opacity: 0}, {opacity: 1, delay: 1})
+  })
+
+  const subjectListSS3General = [
     <SubjectCard
       image={require('../../images/senior-maths-3.jpg')}
       goToSubject={toSubjectMaths}
@@ -37,49 +49,55 @@ const Ss3 = () => {
       topicSize={'23 Topics'}
     />,
     <SubjectCard
-      image={require('../../images/senior-english.png')}
+      image={require('../../images/senior-english-3.png')}
       goToSubject={toSubjectEng}
       subject={'English'}
       topicSize={'25 Topics'}
     />,
     <SubjectCard
-      image={require('../../images/economics.png')}
+      image={require('../../images/economics-3.jpg')}
       goToSubject={toSubjectBasSci}
       subject={'Economics'}
       topicSize={'40 Topics'}
     />,
+  ]
+
+  const subjectListSS3Science = [
     <SubjectCard
-      image={require('../../images/biology.png')}
+      image={require('../../images/biology-3.jpg')}
       goToSubject={toSubjectBasTech}
       subject={'Biology'}
       topicSize={'40 Topics'}
     />,
     <SubjectCard
-      image={require('../../images/physics.png')}
+      image={require('../../images/physics-3.jpg')}
       goToSubject={toSubjectSocStud}
       subject={'Physcs'}
       topicSize={'35 Topics'}
     />,
     <SubjectCard
-      image={require('../../images/chemistry.png')}
+      image={require('../../images/chemistry-3.jpg')}
       goToSubject={toSubjectCivEdu}
       subject={'Chemistry'}
       topicSize={'30 Topics'}
     />,
+  ]
+
+  const subjectListSS3Arts = [
     <SubjectCard
-      image={require('../../images/literature.png')}
+      image={require('../../images/literature-3.jpg')}
       goToSubject={toSubjectBasTech}
       subject={'Literature'}
       topicSize={'40 Topics'}
     />,
     <SubjectCard
-      image={require('../../images/government.png')}
+      image={require('../../images/government-3.jpg')}
       goToSubject={toSubjectSocStud}
       subject={'Government'}
       topicSize={'35 Topics'}
     />,
     <SubjectCard
-      image={require('../../images/crs.png')}
+      image={require('../../images/crs-3.jpg')}
       goToSubject={toSubjectCivEdu}
       subject={'C.R.S'}
       topicSize={'30 Topics'}
@@ -88,8 +106,20 @@ const Ss3 = () => {
 
   return (
     <React.Fragment>
-      <div className="subject-card--wrap">
-          {subjectListSS3.map((subject, index) => (
+      <div ref={cards => subCards = cards} className="subject-card--wrap">
+          {subjectListSS3General.map((subject, index) => (
+            <div className="subject-card d-flex flex-column align-items-center" key={index}>{subject}</div>
+          ))}
+      </div>
+      <span ref={cat => category = cat} className="class-category">Science</span>
+      <div ref={cards2 => subCards2 = cards2} className="subject-card--wrap">
+          {subjectListSS3Science.map((subject, index) => (
+            <div className="subject-card d-flex flex-column align-items-center" key={index}>{subject}</div>
+          ))}
+      </div>
+      <span ref={cat2 => category2 = cat2} className="class-category">Arts</span>
+      <div ref={cards3 => subCards3 = cards3} className="subject-card--wrap">
+          {subjectListSS3Arts.map((subject, index) => (
             <div className="subject-card d-flex flex-column align-items-center" key={index}>{subject}</div>
           ))}
       </div>
