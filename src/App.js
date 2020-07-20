@@ -1,12 +1,12 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Welcome from './pages/Welcome'
+import AdminSignin from './pages/admin/AdminSignin'
 import StudentSignup from './pages/student/StudentSignup'
 import StudentSignin from './pages/student/StudentSignin'
+import StudentDashboard from './pages/student/StudentDashboard';
 import ParentSignup from './pages/parent/ParentSignup'
 import ParentSignin from './pages/parent/ParentSignin'
-import AdminSignin from './pages/admin/AdminSignin'
-import StudentDashboard from './pages/student/StudentDashboard';
 import ParentDashboard from './pages/parent/ParentDashboard';
 
 const App = () => {

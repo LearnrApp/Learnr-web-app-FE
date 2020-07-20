@@ -24,25 +24,25 @@ const StudentDashboard = () => {
 
   const subjectList = [
     <SubjectCard
-      image={require('../../images/maths-sm.png')}
+      image={require('../../images/senior-maths.png')}
       goToSubject={toSubjectMaths}
       subject={'Mathematics'}
       topicSize={'29 Topics'}
     />,
     <SubjectCard
-      image={require('../../images/civic-edu-sm.png')}
+      image={require('../../images/civic-edu.png')}
       goToSubject={toSubjectCivEdu}
       subject={'Civic Education'}
       topicSize={'40 Topics'}
     />,
     <SubjectCard
-      image={require('../../images/english-sm.png')}
+      image={require('../../images/english.png')}
       goToSubject={toSubjectEng}
       subject={'English'}
       topicSize={'25 Topics'}
     />,
     <SubjectCard
-      image={require('../../images/basic-tech-sm.png')}
+      image={require('../../images/basic-tech.png')}
       goToSubject={toSubjectBasTech}
       subject={'Basic Technology'}
       topicSize={'40 Topics'}
