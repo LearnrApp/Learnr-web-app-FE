@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import NavBar from '../../components/navbar/NavBarUser'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -6,6 +6,11 @@ import '../../styles/Sign.css'
 import { Link } from 'react-router-dom'
 
 const AdminSignin = () => {
+  const [passwordShown, setPasswordShown] = useState(false);
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(passwordShown ? false : true);
+  };
+
   return (
     <React.Fragment>
       <NavBar />
@@ -23,20 +28,20 @@ const AdminSignin = () => {
                   <Form.Control type="text" placeholder="Please enter a unique username" />
                 </Form.Group>
 
-                <Form.Group controlId="formBasicPassword">
+                <Form.Group className="m-0" controlId="formBasicPassword">
                   <Form.Label className="small">Password *</Form.Label>
-                  <Form.Control type="password" placeholder="Enter password" />
+                  <Form.Control type={passwordShown ? "text" : "password"} placeholder="********" />
+                  <img onClick={togglePasswordVisiblity} className="togglePassword" src={require('../../images/eye-hide.svg')} alt="" />
                   {/* <Form.Text className="text-muted">
                     Password must have at least 8 characters.
                   </Form.Text> */}
                 </Form.Group>
 
-                <Link className="small text-right" to="">Forgot Password?</Link>
-                <Button className="general-btn-2 my-3 py-2" variant="primary" type="submit">
-                  Submit
+                <Link className="float-right" to="">Forgot Password?</Link>
+                <Button style={{fontSize: '20px'}} className="general-btn-2 my-3 py-2" type="submit">
+                  Sign In
                 </Button>
               </Form>
-              <span className="d-block pb-5">Don't have an account? <Link to="/student/signup">Create an account</Link></span>
             </div>
           </div>
         </div>

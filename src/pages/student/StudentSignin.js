@@ -17,7 +17,7 @@ const StudentSignin = () => {
       <div className="sign-bg container-fluid px-0">
         <div className="container pt-5">
           <div className="mx-auto signup-form--wrap">
-          <p className="text-center demo-category" style={{fontSize: '24px'}}>
+          <p className="text-center demo-category">
             Welcome Back
           </p>
             <div className="bg-white signup-form">
@@ -28,7 +28,7 @@ const StudentSignin = () => {
                   <Form.Control type="text" placeholder="Enter username" />
                 </Form.Group>
 
-                <Form.Group controlId="formBasicPassword">
+                <Form.Group className="m-0" controlId="formBasicPassword">
                   <Form.Label className="small">Password *</Form.Label>
                   <Form.Control type={passwordShown ? "text" : "password"} placeholder="********" />
                   <img onClick={togglePasswordVisiblity} className="togglePassword" src={require('../../images/eye-hide.svg')} alt="" />
