@@ -1,16 +1,15 @@
-import React, {useEffect, useRef} from 'react'
+import React, {useState} from 'react'
 import NavBar from '../../components/navbar/NavBar'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import '../../styles/Sign.css'
 import { Link } from 'react-router-dom'
-import {gsap, Power3} from 'gsap'
 
 const StudentSignin = () => {
-  let signForm = useRef(null)
-  useEffect(() => {
-    gsap.from(signForm, 1.5, {y: -1200, ease: Power3.easeOut})
-  })
+  const [passwordShown, setPasswordShown] = useState(false);
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(passwordShown ? false : true);
+  };
 
 
   return (
@@ -22,7 +21,7 @@ const StudentSignin = () => {
           <p className="text-center demo-category" style={{fontSize: '24px'}}>
             Welcome Back
           </p>
-            <div ref={form => signForm = form} className="bg-white signup-form">
+            <div className="bg-white signup-form">
               <span className="text-center mb-3 d-block" style={{fontSize: '18px'}}>Sign in<br /><span style={{color: '#999999'}}>with one of these services</span></span>
               <div className="row">
                 <Link to="" className="col mr-2 d-flex align-items-center bg-white border rounded text-dark py-2 pr-4 my-3 d-block">
@@ -45,14 +44,15 @@ const StudentSignin = () => {
 
                 <Form.Group controlId="formBasicPassword">
                   <Form.Label className="small">Password *</Form.Label>
-                  <Form.Control type="password" placeholder="Enter password" />
+                  <Form.Control type={passwordShown ? "text" : "password"} placeholder="********" />
+                  <img onClick={togglePasswordVisiblity} className="togglePassword" src={require('../../images/eye-hide.svg')} alt="" />
                   {/* <Form.Text className="text-muted">
                     Password must have at least 8 characters.
                   </Form.Text> */}
                 </Form.Group>
 
                 <Link style={{color: '#2342C0'}} className="float-right" to="">Forgot Password?</Link>
-                <Button style={{fontSize: '20px'}} className="general-btn-2 my-3 py-3" variant="primary" type="submit">
+                <Button style={{fontSize: '20px'}} className="general-btn-2 my-3 py-3" type="submit">
                   Sign In
                 </Button>
               </Form>
