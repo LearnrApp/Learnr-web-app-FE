@@ -10,6 +10,13 @@
   margin-top: 70px;
   height: 140vh;
 }
+.sign-bg-2 {
+  background-image: url(../images/sign-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 70px;
+  height: 160vh;
+}
 .admin-bg {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/admin-bg.jpg);
   background-repeat: no-repeat;
@@ -23,6 +30,13 @@
 }
 .signup-form {
   padding: 48px;
+  animation-name: slide-down;
+  animation-duration: 1.5s;
+  transition-timing-function: ease-out;
+}
+@keyframes slide-down {
+  from{transform: translateY(-1200px);}
+  to{transform: translateY(0);}
 }
 .hLine {
   display: inline-block;
@@ -33,7 +47,13 @@
 }
 .track-text {
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 800 !important;
+  text-align: center;
+}
+.togglePassword {
+  position: relative;
+  left: 92%;
+  top: -33px;
 }
 .general-btn-2 {
   background-color: #2342C0 !important;
