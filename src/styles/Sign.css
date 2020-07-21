@@ -3,6 +3,11 @@
 }
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
+.demo-category {
+  font-weight: 700 !important;
+  color: #212429;
+  font-size: 24px;
+}
 .sign-bg {
   background-image: url(../images/sign-bg.png);
   background-repeat: no-repeat;

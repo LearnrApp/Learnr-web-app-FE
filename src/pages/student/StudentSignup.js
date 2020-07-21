@@ -39,7 +39,7 @@ const StudentSignup = () => {
                   <Form.Control type="email" placeholder="example@email.com" />
                 </Form.Group>
 
-                <Form.Group controlId="formBasicPassword">
+                <Form.Group className="m-0" controlId="formBasicPassword">
                   <Form.Label className="small">Password *</Form.Label>
                   <Form.Control type={passwordShown ? "text" : "password"} placeholder="********" />
                   <img onClick={togglePasswordVisiblity} className="togglePassword" src={require('../../images/eye-hide.svg')} alt="" />
