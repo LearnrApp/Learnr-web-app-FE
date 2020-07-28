@@ -140,30 +140,30 @@ button.nav-collapse:focus {
 .classes {
   width: 60vw;
 }
-.class-item {
-  border: 1px solid #2342C0;
-  border-radius: 20px;
-  padding: 8px 24px;
-  color: #2342C0;
-  font-weight: 800;
-}
-.class-item:hover {
-  background-color: #2342C0;
-  color: #fff;
-}
 .class-link {
   cursor: pointer;
   border-radius: 20px;
-  padding: 8px 20px;
+  padding: 7px 15px;
   /* color: #2342C0; */
   /* font-weight: 800; */
 }
 .class-link:hover {
   border: 1px solid #2342C0;
   border-radius: 20px;
-  padding: 8px 20px;
+  padding: 7px 15px;
   color: #2342C0;
   font-weight: 800;
+}
+.class-item {
+  border: 1px solid #2342C0;
+  border-radius: 20px;
+  padding: 7px 15px;
+  color: #2342C0;
+  font-weight: 800;
+}
+.class-item:hover {
+  background-color: #2342C0;
+  color: #fff;
 }
 #dropdown-basic {
   background-color: #fff;
