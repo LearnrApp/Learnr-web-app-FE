@@ -14,8 +14,8 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto navlinks">
             <Nav.Link className="navlink" href="/">Home</Nav.Link>
-            <Nav.Link className="navlink" href="/about">About</Nav.Link>
-            <Nav.Link className="navlink" href="/contact">Contact Us</Nav.Link>
+            <Nav.Link className="navlink" href="">Dashboard</Nav.Link>
+            {/* <Nav.Link className="navlink" href="/contact">Contact Us</Nav.Link> */}
             {/* <NavDropdown className="navlink navlink--button-1 mx-auto px-3" title="Sign In" id="navlink--button-1">
               <NavDropdown.Item className="navlink" href="/parents/signin">Parents</NavDropdown.Item>
               <NavDropdown.Item className="navlink" href="/students/signin">Students</NavDropdown.Item>
