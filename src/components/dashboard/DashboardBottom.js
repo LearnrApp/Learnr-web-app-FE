@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 // import {Link} from 'react-router-dom'
 import SidebarItems from '../Users/SidebarItems'
 import Courses from '../../components/dashboard/student/Courses'
+// import QuizRecords from '../../components/dashboard/student/QuizRecords'
 import '../../styles/UserDashboard.css';
 
-const DashboardBottom = () => {
+const DashboardBottom = (props) => {
   const [dashboardMenu, updateMenu] = useState(<Courses />)
+
 
 
   return (
@@ -16,7 +18,7 @@ const DashboardBottom = () => {
             <SidebarItems sidebaricon={require('../../images/readme.svg')} sidebartext={'Courses'} />
           </div>
           <div onClick={() => {
-            updateMenu()
+            updateMenu(props.quizRecords)
           }} className="sidebar--item small">
             <SidebarItems sidebaricon={require('../../images/loadbar-doc.svg')} sidebartext={'Quiz'} />
           </div>

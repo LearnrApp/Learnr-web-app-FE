@@ -3,6 +3,7 @@ import Helmet from 'react-helmet'
 import SidebarItems from '../../components/Users/SidebarItems'
 import NavBarUser from '../../components/navbar/NavBarUser'
 import Courses from '../../components/dashboard/student/Courses'
+import QuizRecords from '../../components/dashboard/student/QuizRecords'
 import DashboardBottom from '../../components/dashboard/DashboardBottom'
 import '../../styles/UserDashboard.css'
 import '../../styles/Style.css'
@@ -70,7 +71,6 @@ const StudentDashboard = () => {
           name="description"
           content="The dashboard panel for students to access all functions available to them on the application."
         />
-
       </Helmet>
       <NavBarUser />
       <div className="container-fluid px-0 dash-wrap">
@@ -91,7 +91,7 @@ const StudentDashboard = () => {
             <div
               ref={quizLink}
               onClick={() => {
-              updateMenu()
+              updateMenu(<QuizRecords />)
               updateBackgroundQuiz()
             }} className="sidebar--item">
               <SidebarItems sidebaricon={require('../../images/loadbar-doc.svg')} sidebartext={'Quiz'} />
@@ -129,7 +129,35 @@ const StudentDashboard = () => {
         </div>
         <React.Fragment>{dashboardMenu}</React.Fragment>
       </div>
-      <DashboardBottom />
+      <React.Fragment>
+      <div className="bg-white fixed-bottom bottom-navigate">
+        <div className="d-flex justify-content-between mx-2 mx-md-3 align-items-center">
+          <div onClick={() => dashboardMenu} className="sidebar--item small">
+            <SidebarItems sidebaricon={require('../../images/readme.svg')} sidebartext={'Courses'} />
+          </div>
+          <div onClick={() => {
+            updateMenu(<QuizRecords />)
+          }} className="sidebar--item small">
+            <SidebarItems sidebaricon={require('../../images/loadbar-doc.svg')} sidebartext={'Quiz'} />
+          </div>
+          <div onClick={() => {
+            updateMenu()
+          }} className="sidebar--item small">
+            <SidebarItems sidebaricon={require('../../images/trophy.svg')} sidebartext={'Achievements'} />
+          </div>
+          <div onClick={() => {
+            updateMenu()
+          }} className="sidebar--item small">
+            <SidebarItems sidebaricon={require('../../images/help-circle.svg')} sidebartext={'Help'} />
+          </div>
+          <div onClick={() => {
+            updateMenu()
+          }} className="sidebar--item small">
+            <SidebarItems sidebaricon={require('../../images/mdi_account_circle.svg')} sidebartext={'Profile'} />
+          </div>
+        </div>
+      </div>
+      </React.Fragment>
     </React.Fragment>
   )
 }
