@@ -18,6 +18,91 @@ const ClassSelect = () => {
   const [dropValue, updateDropValue] = useState('Js 1')
 
   let classBody = useRef(null)
+  const activeJs1 = useRef()
+  const activeJs2 = useRef()
+  const activeJs3 = useRef()
+  const activeSs1 = useRef()
+  const activeSs2 = useRef()
+  const activeSs3 = useRef()
+  const activeGeneral = useRef()
+
+  const activeBorderJs1 = () => {
+    if(activeJs1.current) {
+      activeJs1.current.classList.add('class-item')
+      activeJs2.current.classList.remove('class-item')
+      activeJs3.current.classList.remove('class-item')
+      activeSs1.current.classList.remove('class-item')
+      activeSs2.current.classList.remove('class-item')
+      activeSs3.current.classList.remove('class-item')
+      activeGeneral.current.classList.remove('class-item')
+    }
+  }
+  const activeBorderJs2 = () => {
+    if(activeJs1.current) {
+      activeJs1.current.classList.remove('class-item')
+      activeJs2.current.classList.add('class-item')
+      activeJs3.current.classList.remove('class-item')
+      activeSs1.current.classList.remove('class-item')
+      activeSs2.current.classList.remove('class-item')
+      activeSs3.current.classList.remove('class-item')
+      activeGeneral.current.classList.remove('class-item')
+    }
+  }
+  const activeBorderJs3 = () => {
+    if(activeJs1.current) {
+      activeJs2.current.classList.remove('class-item')
+      activeJs1.current.classList.remove('class-item')
+      activeJs3.current.classList.add('class-item')
+      activeSs1.current.classList.remove('class-item')
+      activeSs2.current.classList.remove('class-item')
+      activeSs3.current.classList.remove('class-item')
+      activeGeneral.current.classList.remove('class-item')
+    }
+  }
+  const activeBorderSs1 = () => {
+    if(activeJs1.current) {
+      activeJs2.current.classList.remove('class-item')
+      activeJs1.current.classList.remove('class-item')
+      activeJs3.current.classList.remove('class-item')
+      activeSs1.current.classList.add('class-item')
+      activeSs2.current.classList.remove('class-item')
+      activeSs3.current.classList.remove('class-item')
+      activeGeneral.current.classList.remove('class-item')
+    }
+  }
+  const activeBorderSs2 = () => {
+    if(activeJs1.current) {
+      activeJs2.current.classList.remove('class-item')
+      activeJs1.current.classList.remove('class-item')
+      activeJs3.current.classList.remove('class-item')
+      activeSs1.current.classList.remove('class-item')
+      activeSs2.current.classList.add('class-item')
+      activeSs3.current.classList.remove('class-item')
+      activeGeneral.current.classList.remove('class-item')
+    }
+  }
+  const activeBorderSs3 = () => {
+    if(activeJs1.current) {
+      activeJs2.current.classList.remove('class-item')
+      activeJs1.current.classList.remove('class-item')
+      activeJs3.current.classList.remove('class-item')
+      activeSs1.current.classList.remove('class-item')
+      activeSs2.current.classList.remove('class-item')
+      activeSs3.current.classList.add('class-item')
+      activeGeneral.current.classList.remove('class-item')
+    }
+  }
+  const activeBorderGeneral = () => {
+    if(activeJs1.current) {
+      activeJs2.current.classList.remove('class-item')
+      activeJs1.current.classList.remove('class-item')
+      activeJs3.current.classList.remove('class-item')
+      activeSs1.current.classList.remove('class-item')
+      activeSs2.current.classList.remove('class-item')
+      activeSs3.current.classList.remove('class-item')
+      activeGeneral.current.classList.add('class-item')
+    }
+  }
 
   useEffect(() => {
     TweenMax.to(classBody, 0, {css: {visibility: 'visible'}})
@@ -29,32 +114,53 @@ const ClassSelect = () => {
         <div className="container explore-wrap">
           <h3 className="text-center my-2 py-3 class-explore">Explore</h3>
           <div id="classes" className="classes d-flex justify-content-between align-items-center mx-auto">
-            <div onClick={() => {
+            <div
+              ref={activeJs1}
+              onClick={() => {
               nextSubject(<Js1 />)
-            }} className="class-link"><span>Js 1</span></div>
+              activeBorderJs1()
+            }} className="class-link class-item"><span>Js 1</span></div>
 
-            <div onClick={() => {
+            <div
+              ref={activeJs2}
+              onClick={() => {
               nextSubject(<Js2 />)
+              activeBorderJs2()
             }} className="class-link"><span>Js 2</span></div>
 
-            <div onClick={() => {
+            <div
+              ref={activeJs3}
+              onClick={() => {
               nextSubject(<Js3 />)
+              activeBorderJs3()
             }} className="class-link"><span>Js 3</span></div>
 
-            <div onClick={() => {
+            <div
+              ref={activeSs1}
+              onClick={() => {
               nextSubject(<Ss1 />)
+              activeBorderSs1()
             }} className="class-link"><span>Ss 1</span></div>
 
-            <div onClick={() => {
+            <div
+              ref={activeSs2}
+              onClick={() => {
               nextSubject(<Ss2 />)
+              activeBorderSs2()
             }} className="class-link"><span>Ss 2</span></div>
 
-            <div onClick={() => {
+            <div
+              ref={activeSs3}
+              onClick={() => {
               nextSubject(<Ss3 />)
+              activeBorderSs3()
             }} className="class-link"><span>Ss 3</span></div>
 
-            <div onClick={() => {
+            <div
+              ref={activeGeneral}
+              onClick={() => {
               nextSubject(<General />)
+              activeBorderGeneral()
             }} className="class-link"><span>General</span></div>
           </div>
           {/* <div className=""></div> */}

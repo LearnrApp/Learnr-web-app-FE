@@ -15,7 +15,7 @@
   background-size: cover;
   position: fixed;
   height: 100vh;
-  width: 20vw ;
+  width: 18vw ;
 }
 .sidebar--item {
   cursor: pointer
@@ -31,7 +31,7 @@
   border-bottom: 1px solid #fff;
 }
 .main--wrap {
-  margin-left: 20vw;
+  margin-left: 18vw;
 }
 .info-wrap {
   border-bottom: 1px solid #E5E5E5;
@@ -49,9 +49,10 @@
   
 }
 .bottom-nav {
-  padding: 12px;
+  padding: 8px 12px;
 }
 .bottom-text {
+  font-size: 0.9rem;
   color: #A4A6B3;
 }
 .bottom-icon{
