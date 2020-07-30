@@ -1,4 +1,5 @@
 import React, {useRef, useEffect} from 'react';
+import Helmet from 'react-helmet'
 // import {Link} from 'react-router-dom';
 import '../styles/Style.css'
 import NavBar from '../components/navbar/NavBar'
@@ -9,10 +10,17 @@ import ButtonV2 from '../components/Header/ButtonV2'
 
 const Welcome = () => {
   let welcome = useRef()
-
+  const documentTitle = 'Learnr | Welcome'
 
   return (
     <React.Fragment>
+      <Helmet>
+        <title>{documentTitle}</title>
+        <meta
+          name="description"
+          content="Welcome to Learnr. Explore available courses."
+        />
+      </Helmet>
       <div className="welcome-body" ref={welcome}>
         <NavBar />
         <Background />

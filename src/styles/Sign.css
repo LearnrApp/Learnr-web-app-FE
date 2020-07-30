@@ -20,7 +20,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   margin-top: 70px;
-  height: 160vh;
+  height: max-content;
 }
 .admin-bg {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/admin-bg.jpg);
@@ -59,6 +59,7 @@
   position: relative;
   left: 92%;
   top: -33px;
+  cursor: pointer;
 }
 .general-btn-2 {
   background-color: #2342C0 !important;

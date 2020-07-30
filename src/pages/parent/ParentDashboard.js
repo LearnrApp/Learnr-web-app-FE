@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import {Link} from  'react-router-dom'
 import SidebarItems from '../../components/Users/SidebarItems'
 import NavBarUser from '../../components/navbar/NavBarUser'
@@ -8,6 +9,8 @@ import '../../styles/UserDashboard.css'
 import '../../styles/Style.css'
 
 const StudentDashboard = () => {
+  const documentTitle = 'Learnr | Parent Dashboard'
+
   // const toSubjectMaths = () => {
   //   window.open('/subjects/mathematics', '_self');
   // }
@@ -52,6 +55,13 @@ const StudentDashboard = () => {
 
   return (
     <React.Fragment>
+      <Helmet>
+        <title>{documentTitle}</title>
+        <meta
+          name="description"
+          content="The dashboard panel for parents to access all functions available to them on the application."
+        />
+      </Helmet>
       <NavBarUser />
       <div className="container-fluid px-0 dash-wrap">
         <div className="sidebar--wrap">

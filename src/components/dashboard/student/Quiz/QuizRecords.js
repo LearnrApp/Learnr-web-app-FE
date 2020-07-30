@@ -23,7 +23,7 @@ const QuizRecords = () => {
   const myQuizCourseList = [
     <MyQuizCourse
       myCoursesImage={require('../../../../images/maths.png')}
-      myQuizSubject={'Basic Science'}
+      myQuizSubject={'Mathematics'}
       // goToSubject={toSubjectMaths}
       currentScore={'6'}
       totalScore={'10'}
