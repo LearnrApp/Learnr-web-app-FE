@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
 import {Link} from  'react-router-dom'
-import MyQuizCourse from './MyQuizCourse'
+import MyAchievementCard from './MyAchievementCard'
 
-import '../../../styles/UserDashboard.css'
+import '../../../../styles/UserDashboard.css'
 // import '../../styles/Style.css'
 
-const QuizRecords = () => {
+const AchievementStudent = () => {
   // const toSubjectMaths = () => {
   //   window.open('/subjects/mathematics', '_self');
   // }
@@ -20,30 +20,31 @@ const QuizRecords = () => {
   // }
 
 
-  const myQuizCourseList = [
-    <MyQuizCourse
-      myCoursesImage={require('../../../images/maths.png')}
-      myQuizSubject={'Basic Science'}
+  const myAchievementsList = [
+    <MyAchievementCard
+      myCoursesImage={require('../../../../images/maths.png')}
+      myAchievedSubject={'Mathematics'}
       // goToSubject={toSubjectMaths}
-      currentScore={'6'}
-      totalScore={'10'}
+      awardImage={require('../../../../images/silver-award.svg')}
+      awardMessage={`
+        You earned a silver batch
+        for completing 50% of this
+        course.
+      `}
     />,
-    <MyQuizCourse
-      myCoursesImage={require('../../../images/civic-edu.png')}
-      myQuizSubject={'Civic Education'}
+    <MyAchievementCard
+      myCoursesImage={require('../../../../images/civic-edu-2.jpg')}
+      myAchievedSubject={'Civic Education'}
       // goToSubject={toSubjectCivEdu}
-      currentScore={'8'}
-      totalScore={'10'}
-    />,
-    <MyQuizCourse
-      myCoursesImage={require('../../../images/english.png')}
-      myQuizSubject={'English'}
-      // goToSubject={toSubjectCivEdu}
-      currentScore={'2'}
-      totalScore={'10'}
+      awardImage={require('../../../../images/bronze-award.svg')}
+      awardMessage={`
+        You earned a bronze batch
+        for starting this
+        course.
+      `}
     />,
   ]
-  const [listMyQuizCourse, addedCourses] = useState(myQuizCourseList)
+  const [listMyAchievements, addedAchievements] = useState(myAchievementsList)
 
   return (
     <React.Fragment>
@@ -53,16 +54,16 @@ const QuizRecords = () => {
         }}>
         <div className="p-3 info-wrap">
           <div className="d-flex align-items-center justify-content-end">
-            <img className="mx-3" src={require('../../../images/bell.svg')} alt="" />
+            <img className="mx-3" src={require('../../../../images/bell.svg')} alt="" />
             <span className="mx-3" >Tony Sandy</span>
-            <img className="mx-3" src={require('../../../images/profile-pic.png')} alt="" />
+            <img className="mx-3" src={require('../../../../images/profile-pic.png')} alt="" />
           </div>
-          <Link to=""><img className="mx-3 logout-link" src={require('../../../images/log-in.svg')} alt="" /></Link>
+          <Link to=""><img className="mx-3 logout-link" src={require('../../../../images/log-in.svg')} alt="" /></Link>
         </div>
         <div className="p-md-4 p-3">
         <p className="">My Records</p>
         <div className="my-courses-wrap">
-            {listMyQuizCourse.map((subject, index) => (
+            {listMyAchievements.map((subject, index) => (
             <div style={{borderRadius: '4px'}} className="bg-white" key={index}>{subject}</div>
           ))}
         </div>
@@ -72,4 +73,4 @@ const QuizRecords = () => {
   )
 }
 
-export default QuizRecords
+export default AchievementStudent

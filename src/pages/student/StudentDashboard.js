@@ -4,6 +4,7 @@ import SidebarItems from '../../components/Users/SidebarItems'
 import NavBarUser from '../../components/navbar/NavBarUser'
 import Courses from '../../components/dashboard/student/Courses/Courses'
 import QuizRecords from '../../components/dashboard/student/Quiz/QuizRecords'
+import Achievements from '../../components/dashboard/student/Achievements/Achievements'
 import '../../styles/UserDashboard.css'
 import '../../styles/Style.css'
 
@@ -99,7 +100,7 @@ const StudentDashboard = () => {
             <div
               ref={achievementsLink}
               onClick={() => {
-              updateMenu()
+              updateMenu(<Achievements />)
               updateBackgroundAchievements()
             }} className="sidebar--item">
               <SidebarItems sidebaricon={require('../../images/trophy.svg')} sidebartext={'Achievements'} />
@@ -132,7 +133,9 @@ const StudentDashboard = () => {
       <React.Fragment>
       <div className="bg-white fixed-bottom bottom-navigate">
         <div className="d-flex justify-content-between mx-2 mx-md-3 align-items-center">
-          <div onClick={() => dashboardMenu} className="sidebar--item small">
+          <div onClick={() => {
+            updateMenu(<Courses />)
+          }} className="sidebar--item small">
             <SidebarItems sidebaricon={require('../../images/readme.svg')} sidebartext={'Courses'} />
           </div>
           <div onClick={() => {
@@ -141,7 +144,7 @@ const StudentDashboard = () => {
             <SidebarItems sidebaricon={require('../../images/loadbar-doc.svg')} sidebartext={'Quiz'} />
           </div>
           <div onClick={() => {
-            updateMenu()
+            updateMenu(<Achievements />)
           }} className="sidebar--item small">
             <SidebarItems sidebaricon={require('../../images/trophy.svg')} sidebartext={'Achievements'} />
           </div>

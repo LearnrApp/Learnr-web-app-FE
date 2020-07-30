@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import Helmet from 'react-helmet'
 import NavBar from '../../components/navbar/NavBarUser'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -10,10 +11,19 @@ const AdminSignin = () => {
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   };
+  const documentTitle = 'Learnr | Admin Sign In'
+
 
   return (
     <React.Fragment>
-      <NavBar />
+      <Helmet>
+        <title>{documentTitle}</title>
+        <meta
+          name="description"
+          content="Admin Sign in Page."
+        />
+      </Helmet>
+      {/* <NavBar /> */}
       <div className="admin-bg container-fluid px-0">
         <div className="container py-5">
           <div className="mx-auto signup-form--wrap">

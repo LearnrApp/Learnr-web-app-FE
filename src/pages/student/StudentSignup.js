@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import Helmet from 'react-helmet'
 import NavBar from '../../components/navbar/NavBar'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -11,9 +12,17 @@ const StudentSignup = () => {
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   };
+  const documentTitle = 'Learnr | Student Sign Up'
 
   return (
     <React.Fragment>
+      <Helmet>
+        <title>{documentTitle}</title>
+        <meta
+          name="description"
+          content="Student Sign up Page."
+        />
+      </Helmet>
       <NavBar />
       <div className="sign-bg-2 container-fluid px-0">
         <div className="container py-5">
