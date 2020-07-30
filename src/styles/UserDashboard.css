@@ -77,6 +77,33 @@
   animation-fill-mode: forwards;
   border: 1px solid #2342C0;
 }
+.admin-message-bubble {
+  background-color: #2342C0;
+  width: fit-content;
+  padding: 25px 20px;
+  margin: 20px 0;
+  border-radius: 10px 10px 10px 0;
+  margin-right: auto;
+}
+.user-message-bubble {
+  background-color: #403D58;
+  width: fit-content;
+  padding: 25px 20px;
+  margin: 20px 0;
+  border-radius: 10px 10px 0px 10px;
+  margin-left: auto;
+}
+.messaging-area {
+  margin-left: 18vw !important;
+}
+.message-input {
+  border: none;
+  border-radius: 4px;
+}
+input.message-input:focus {
+  box-shadow: transparent !important;
+  border: transparent !important;
+}
 @media (max-width: 991px) {
   .all-courses {
     padding-bottom: 70px;
@@ -90,6 +117,9 @@
   }
   .main--wrap {
     margin-left: 24vw;
+  }
+  .messaging-area {
+    margin-left: 24vw !important;
   }
 }
 @media (max-width: 768px) {
@@ -132,6 +162,10 @@
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
     justify-items: center;
+  }
+  .messaging-area {
+    margin: 0 0 55px 0 !important;
+
   }
 }
 @media (max-width: 576px) {
