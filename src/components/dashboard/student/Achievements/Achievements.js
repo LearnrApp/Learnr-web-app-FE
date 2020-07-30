@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import Helmet from 'react-helmet'
 import {Link} from  'react-router-dom'
 import MyAchievementCard from './MyAchievementCard'
 
@@ -6,6 +7,8 @@ import '../../../../styles/UserDashboard.css'
 // import '../../styles/Style.css'
 
 const AchievementStudent = () => {
+  const documentTitle = 'Learnr | Student Dashboard-Achievements'
+
   // const toSubjectMaths = () => {
   //   window.open('/subjects/mathematics', '_self');
   // }
@@ -48,6 +51,13 @@ const AchievementStudent = () => {
 
   return (
     <React.Fragment>
+      <Helmet>
+        <title>{documentTitle}</title>
+        <meta
+          name="description"
+          content="The Achievements section of the student dashboard."
+        />
+      </Helmet>
       <div className="main--wrap" style={{
         backgroundColor: '#F6F6F6',
         height: '100vh'

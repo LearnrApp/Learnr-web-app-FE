@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import Helmet from 'react-helmet'
 import {Link} from  'react-router-dom'
 import MyCourses from './MyCourses'
 import SubjectCard from '../../../../components/SubjectCard'
@@ -7,6 +8,8 @@ import '../../../../styles/UserDashboard.css'
 // import '../../styles/Style.css'
 
 const Courses = () => {
+  const documentTitle = 'Learnr | Student Dashboard-Courses'
+
   const toSubjectMaths = () => {
     window.open('/subjects/mathematics', '_self');
   }
@@ -66,6 +69,9 @@ const Courses = () => {
 
   return (
     <React.Fragment>
+      <Helmet>
+        <title>{documentTitle}</title>
+      </Helmet>
       <div className="main--wrap">
         <div className="p-3 info-wrap">
           <div className="d-flex align-items-center justify-content-end">
