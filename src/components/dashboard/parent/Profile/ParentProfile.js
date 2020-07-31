@@ -7,8 +7,8 @@ import {Modal} from 'react-bootstrap'
 import '../../../../styles/UserDashboard.css'
 
 
-const Profile = () => {
-  const documentTitle = 'Learnr | Student Dashboard-Profile'
+const ParentProfile = () => {
+  const documentTitle = 'Learnr | Parent Dashboard-Profile'
 
   const [photoModal, showPhotoModal] = useState(false)
   // const [infoModal, showInfoModal] = useState(false)
@@ -19,7 +19,7 @@ const Profile = () => {
         <title>{documentTitle}</title>
         <meta
           name="description"
-          content="The Profile section of the student dashboard."
+          content="The Profile section of the parent dashboard."
         />
       </Helmet>
 
@@ -27,7 +27,7 @@ const Profile = () => {
         <div className="p-3 info-wrap">
           <div className="d-flex align-items-center justify-content-end">
             <img className="mx-3" src={require('../../../../images/bell.svg')} alt="" />
-            <span className="mx-3" >Tony Sandy</span>
+            <span className="mx-3" >James Ferdinand</span>
             <img className="mx-3" src={require('../../../../images/profile-pic.png')} alt="" />
           </div>
           <Link to=""><img className="mx-3 logout-link" src={require('../../../../images/log-in.svg')} alt="" /></Link>
@@ -37,7 +37,7 @@ const Profile = () => {
             <img className="mx-auto" src={require('../../../../images/profile-pic.png')} alt="" />
             <span onClick={() => showPhotoModal(true)} className="upload-photo mx-auto">Edit Photo</span>
           </div>
-          <span className="mt-4 text-center">Tonyrex20</span>
+          <span className="mt-4 text-center">JamesFerdy</span>
           <span className="mt-2 text-center">Manage your information and security</span>
         </div>
         <div className="mx-auto container pb-5">
@@ -45,18 +45,13 @@ const Profile = () => {
             <h5 className="font-weight-bolder profile-items--title">Personal Information</h5>
             <ProfileItem
               keys={'Full Name'}
-              value={'Anthony Sandy'}
+              value={'James Ferdinand'}
               edit={'Edit'}
               // editSection={showPhotoModal(true)}
             />
             <ProfileItemV2
               keys={'Username'}
-              value={'Tonyrex20'}
-              edit={'Edit'}
-            />
-            <ProfileItemV2
-              keys={'Class'}
-              value={'Js1'}
+              value={'JamesFerdy'}
               edit={'Edit'}
             />
             <ProfileItemV2
@@ -81,13 +76,13 @@ const Profile = () => {
             />
             <ProfileItem
               keys={'Phone Number'}
-              value={'Nil'}
+              value={'08045231698'}
               edit={'Edit'}
               editSection={'e'}
             />
           </div>
           <div className="mt-4">
-          <h5 className="font-weight-bolder profile-items--title">Connections</h5>
+          <h5 className="font-weight-bolder container profile-items--title">Connections</h5>
             <div className="profile-items row border-bottom bg-white">
               <div className="">
                 <img className="" src={require('../../../../images/facebook-blue.svg')} alt="" />
@@ -97,9 +92,41 @@ const Profile = () => {
                 style={{color: '#2342C0'}}
               >Connect</Link>
             </div>
+            <div className="profile-items row border-bottom bg-white">
+              <div className="">
+                <img className="" src={require('../../../../images/google-icon.svg')} alt="" />
+                <span className="font-weight-bold ml-2" style={{color: '#212429'}}>Connect to Google</span>
+              </div>
+              <Link to="" className="col text-right"
+                style={{color: '#2342C0'}}
+              >Connect</Link>
+            </div>
+          </div>
+        <div className="profile-items--wrap mt-4">
+            <h5 className="font-weight-bolder profile-items--title">Child Information</h5>
+            <ProfileItem
+              keys={'Full Name'}
+              value={'Anthony Sandy'}
+              edit={'Edit'}
+              // editSection={showPhotoModal(true)}
+            />
+            <ProfileItemV2
+              keys={'Username'}
+              value={'Tonyrex20'}
+              edit={'Edit'}
+            />
+            <ProfileItemV2
+              keys={'Class'}
+              value={'Js1'}
+              edit={'Edit'}
+            />
+            <ProfileItemV2
+              keys={'Gender'}
+              value={'Male'}
+              edit={'Edit'}
+            />
           </div>
         </div>
-
         <>
           <Modal
           show={photoModal}
@@ -145,4 +172,4 @@ const Profile = () => {
   )
 }
 
-export default Profile
+export default ParentProfile

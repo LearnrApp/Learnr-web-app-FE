@@ -6,6 +6,7 @@ import NavBarUser from '../../components/navbar/NavBarUser'
 import YourKids from '../../components/dashboard/parent/Courses/YourKids'
 import AchievementParent from '../../components/dashboard/parent/Achievements/Achievements'
 import HelpSupport from '../../components/dashboard/parent/Help/ParentHelp'
+import ParentProfile from '../../components/dashboard/parent/Profile/ParentProfile'
 import '../../styles/UserDashboard.css'
 import '../../styles/Style.css'
 
@@ -130,7 +131,7 @@ const StudentDashboard = () => {
             <div
               ref={profileLink}
               onClick={() => {
-              // updateMenu(<Profile />)
+              updateMenu(<ParentProfile />)
               updateBackgroundProfile()
             }} className="sidebar--item">
               <SidebarItems sidebaricon={require('../../images/mdi_account_circle.svg')} sidebartext={'Profile'} />
@@ -171,7 +172,7 @@ const StudentDashboard = () => {
             <SidebarItems sidebaricon={require('../../images/trophy.svg')} sidebartext={'Achieved'} />
           </div>
           <div onClick={() => {
-            // updateMenu(<Profile />)
+            updateMenu(<ParentProfile />)
           }} className="sidebar--item small">
             <SidebarItems sidebaricon={require('../../images/mdi_account_circle.svg')} sidebartext={'Profile'} />
           </div>

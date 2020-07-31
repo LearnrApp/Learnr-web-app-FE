@@ -25,7 +25,7 @@ const HelpSupport = () => {
         <div className="p-3 info-wrap">
           <div className="d-flex align-items-center justify-content-end">
             <img className="mx-3" src={require('../../../../images/bell.svg')} alt="" />
-            <span className="mx-3" >Tony Sandy</span>
+            <span className="mx-3" >James Ferdinand</span>
             <img className="mx-3" src={require('../../../../images/profile-pic.png')} alt="" />
           </div>
           <Link to=""><img className="mx-3 logout-link" src={require('../../../../images/log-in.svg')} alt="" /></Link>
