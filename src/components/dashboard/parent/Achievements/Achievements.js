@@ -7,7 +7,7 @@ import '../../../../styles/UserDashboard.css'
 // import '../../styles/Style.css'
 
 const AchievementParent = () => {
-  const documentTitle = 'Learnr | Student Dashboard-Achievements'
+  const documentTitle = 'Learnr | Pa Dashboard-Achievements'
 
   // const toSubjectMaths = () => {
   //   window.open('/subjects/mathematics', '_self');
@@ -55,7 +55,7 @@ const AchievementParent = () => {
         <title>{documentTitle}</title>
         <meta
           name="description"
-          content="The Achievements section of the student dashboard."
+          content="The Achievements section of the parent dashboard."
         />
       </Helmet>
       <div className="main--wrap" style={{

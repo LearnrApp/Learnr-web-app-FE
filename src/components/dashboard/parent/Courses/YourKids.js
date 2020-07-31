@@ -6,7 +6,7 @@ import '../../../../styles/UserDashboard.css'
 // import '../../styles/Style.css'
 
 const YourKids = () => {
-  const documentTitle = 'Learnr | Parent Dashboard-Courses'
+  const documentTitle = 'Learnr | Parent Dashboard-Your Kids'
 
   // const toSubjectMaths = () => {
   //   window.open('/subjects/mathematics', '_self');
