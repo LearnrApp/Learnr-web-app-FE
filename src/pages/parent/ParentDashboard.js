@@ -141,7 +141,7 @@ const StudentDashboard = () => {
               // updateMenu(<Subscription />)
               updateBackgroundSubscription()
             }} className="sidebar--item">
-              <SidebarItems sidebaricon={require('../../images/loadbar-doc.svg')} sidebartext={'Subscription'} />
+              <SidebarItems sidebaricon={require('../../images/rss.svg')} sidebartext={'Subscription'} />
             </div>
             <div onClick={() => {
               
@@ -158,17 +158,17 @@ const StudentDashboard = () => {
           <div onClick={() => {
             updateMenu(<YourKids />)
           }} className="sidebar--item small">
-            <SidebarItems sidebaricon={require('../../images/readme.svg')} sidebartext={'Courses'} />
-          </div>
-          <div onClick={() => {
-            updateMenu(<AchievementParent />)
-          }} className="sidebar--item small">
-            <SidebarItems sidebaricon={require('../../images/trophy.svg')} sidebartext={'Achievements'} />
+            <SidebarItems sidebaricon={require('../../images/user.svg')} sidebartext={'Your Kids'} />
           </div>
           <div onClick={() => {
             updateMenu(<HelpSupport />)
           }} className="sidebar--item small">
             <SidebarItems sidebaricon={require('../../images/help-circle.svg')} sidebartext={'Help'} />
+          </div>
+          <div onClick={() => {
+            updateMenu(<AchievementParent />)
+          }} className="sidebar--item small">
+            <SidebarItems sidebaricon={require('../../images/trophy.svg')} sidebartext={'Achieved'} />
           </div>
           <div onClick={() => {
             // updateMenu(<Profile />)
@@ -178,7 +178,7 @@ const StudentDashboard = () => {
           <div onClick={() => {
             // updateMenu(<QuizRecords />)
           }} className="sidebar--item small">
-            <SidebarItems sidebaricon={require('../../images/loadbar-doc.svg')} sidebartext={'Quiz'} />
+            <SidebarItems sidebaricon={require('../../images/rss.svg')} sidebartext={'Sub'} />
           </div>
         </div>
       </div>
