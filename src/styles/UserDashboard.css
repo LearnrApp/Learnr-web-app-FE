@@ -80,7 +80,7 @@
 .admin-message-bubble {
   background-color: #2342C0;
   width: fit-content;
-  padding: 25px 20px;
+  padding: 15px 20px;
   margin: 20px 0;
   border-radius: 10px 10px 10px 0;
   margin-right: auto;
@@ -88,7 +88,7 @@
 .user-message-bubble {
   background-color: #403D58;
   width: fit-content;
-  padding: 25px 20px;
+  padding: 15px 20px;
   margin: 20px 0;
   border-radius: 10px 10px 0px 10px;
   margin-left: auto;
@@ -103,6 +103,36 @@
 input.message-input:focus {
   box-shadow: transparent !important;
   border: transparent !important;
+}
+.profile-items {
+  padding: 10px 24px;
+  font-size: 15px;
+}
+.upload-photo {
+  color: #2342C0 !important;
+  border: 1px solid #2342C0;
+  cursor: pointer;
+  margin-top: 7px;
+  border-radius: 20px;
+  padding-right: 10px !important;
+  padding-left: 10px !important;
+}
+.upload-input {
+  color: #2342C0;
+  background-color: #fff;
+  border: 1px solid #2342C0;
+  border-radius: 20px !important;
+  padding: 7px;
+  margin: 10px auto;
+}
+.upload-btn {
+  background-color: #2342C0;
+  color: #fff;
+  border: none;
+  border-radius: 20px !important;
+  padding: 8px 15px;
+  text-decoration: none !important;
+  margin: 10px auto;
 }
 @media (max-width: 991px) {
   .all-courses {
@@ -171,6 +201,16 @@ input.message-input:focus {
 @media (max-width: 576px) {
   .my-courses-wrap {
     grid-template-columns: 90vw;
+  }
+  .profile-items--title {
+    font-size: 0.9rem;
+  }
+  .profile-items {
+    padding: 12px 0;
+    font-size: 14px;
+  }
+  .profile-items--wrap {
+    margin: 0 16px !important;
   }
 }
 @media (max-width: 425px) {
