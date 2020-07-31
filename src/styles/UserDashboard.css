@@ -117,6 +117,30 @@ input.message-input:focus {
   padding-right: 10px !important;
   padding-left: 10px !important;
 }
+.upload-photo--modal {
+  width: 50vw;
+  background-color: #fff !important;
+  padding: 20px 0;
+  border: none !important;
+  margin: 20vw auto;
+}
+.inputfile-4 + label {
+  color: #363740;
+}
+
+.inputfile-4 + label figure {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: block;
+  padding: 20px;
+  margin: 0 auto 10px;
+}
+.inputfile-4 + label svg {
+  width: 100%;
+  height: 100%;
+  fill: #fff;
+}
 .upload-input {
   color: #2342C0;
   background-color: #fff;

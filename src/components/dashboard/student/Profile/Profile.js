@@ -4,6 +4,7 @@ import {Link} from  'react-router-dom'
 import ProfileItem from  './ProfileItem'
 import ProfileItemV2 from  './ProfileItemV2'
 import {Modal} from 'react-bootstrap'
+import ReactModal from 'react-modal'
 import '../../../../styles/UserDashboard.css'
 
 
@@ -104,41 +105,24 @@ const Profile = () => {
           <Modal
           show={photoModal}
           onHide={() => showPhotoModal(false)}
-          dialogClassName="modal-40w"
           centered
           >
-            <Modal.Body className="d-flex flex-column justify-content-center">
-              <img className="" src={require('../../../../images/Upload.svg')} alt="" />
-              <h5 className="text-center">Upload Photo</h5>
-              <span className="text-center">Drag & Drop to upload or</span>
-              <form action="" className="mx-auto my-3 d-flex flex-column">
-                <input type="file" id="myFile" name="filename" className="upload-input w-100" />
-                <input type="submit" value="Upload" className="upload-btn" />
-              </form>
-            </Modal.Body>
+            {/* <Modal.Body className="d-flex flex-column justify-content-center"> */}
+            <form action="" className="mx-auto my-3 d-flex flex-column">
+            <div class="modal-box d-flex fex-column align-items-center justify-content-center">
+              <input type="file" name="file-photo[]" id="file-photo" class="d-none inputfile inputfile-4" data-multiple-caption="{count} files selected" multiple />
+              <label for="file-photo">
+                <figure><img className="" src={require('../../../../images/Upload.svg')} alt="" /></figure>
+                <h5 className="text-center">Upload Photo&hellip;</h5>
+              </label>
+            </div>
+            <span className="text-center">Drag & Drop to upload or click icon to select file</span>
+            <input type="submit" value="Upload" className="upload-btn" />
+          </form>
+            {/* </Modal.Body> */}
           </Modal>
         </>
-        {/* <!-- Modal --> */}
-        <div className="modal" id="exampleModalCentered" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenteredLabel" aria-hidden="true">
-          <div className="modal-dialog modal-dialog-centered" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalCenteredLabel">Modal title</h5>
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-body">
-                ...
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
+      
         {/* <>
           <Modal
           show={infoModal}
