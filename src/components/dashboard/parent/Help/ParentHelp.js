@@ -6,7 +6,7 @@ import '../../../../styles/UserDashboard.css'
 // import '../../styles/Style.css'
 
 const HelpSupport = () => {
-  const documentTitle = 'Learnr | Student Dashboard-Help'
+  const documentTitle = 'Learnr | Parent Dashboard-Help'
 
 
   return (
@@ -15,7 +15,7 @@ const HelpSupport = () => {
         <title>{documentTitle}</title>
         <meta
           name="description"
-          content="The Help section of the student dashboard."
+          content="The Help section of the parent dashboard."
         />
       </Helmet>
       <div className="main--wrap" style={{

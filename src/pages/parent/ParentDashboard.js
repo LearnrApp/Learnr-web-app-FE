@@ -141,7 +141,7 @@ const StudentDashboard = () => {
               // updateMenu(<Subscription />)
               updateBackgroundSubscription()
             }} className="sidebar--item">
-              <SidebarItems sidebaricon={require('../../images/loadbar-doc.svg')} sidebartext={'Quiz'} />
+              <SidebarItems sidebaricon={require('../../images/loadbar-doc.svg')} sidebartext={'Subscription'} />
             </div>
             <div onClick={() => {
               
