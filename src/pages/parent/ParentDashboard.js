@@ -4,6 +4,7 @@ import {Link} from  'react-router-dom'
 import SidebarItems from '../../components/Users/SidebarItems'
 import NavBarUser from '../../components/navbar/NavBarUser'
 import YourKids from '../../components/dashboard/parent/Courses/YourKids'
+import AchievementParent from '../../components/dashboard/parent/Achievements/Achievements'
 import '../../styles/UserDashboard.css'
 import '../../styles/Style.css'
 
@@ -112,7 +113,7 @@ const StudentDashboard = () => {
             <div
               ref={achievementsLink}
               onClick={() => {
-              // updateMenu(<Achievements />)
+              updateMenu(<AchievementParent />)
               updateBackgroundAchievements()
             }} className="sidebar--item">
               <SidebarItems sidebaricon={require('../../images/trophy.svg')} sidebartext={'Achievements'} />
@@ -159,12 +160,7 @@ const StudentDashboard = () => {
             <SidebarItems sidebaricon={require('../../images/readme.svg')} sidebartext={'Courses'} />
           </div>
           <div onClick={() => {
-            // updateMenu(<QuizRecords />)
-          }} className="sidebar--item small">
-            <SidebarItems sidebaricon={require('../../images/loadbar-doc.svg')} sidebartext={'Quiz'} />
-          </div>
-          <div onClick={() => {
-            // updateMenu(<Achievements />)
+            updateMenu(<AchievementParent />)
           }} className="sidebar--item small">
             <SidebarItems sidebaricon={require('../../images/trophy.svg')} sidebartext={'Achievements'} />
           </div>
@@ -177,6 +173,11 @@ const StudentDashboard = () => {
             // updateMenu(<Profile />)
           }} className="sidebar--item small">
             <SidebarItems sidebaricon={require('../../images/mdi_account_circle.svg')} sidebartext={'Profile'} />
+          </div>
+          <div onClick={() => {
+            // updateMenu(<QuizRecords />)
+          }} className="sidebar--item small">
+            <SidebarItems sidebaricon={require('../../images/loadbar-doc.svg')} sidebartext={'Quiz'} />
           </div>
         </div>
       </div>

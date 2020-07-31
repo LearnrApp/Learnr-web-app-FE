@@ -117,6 +117,24 @@ input.message-input:focus {
   padding-right: 10px !important;
   padding-left: 10px !important;
 }
+.child-select {
+  color: #fff !important;
+  background-color: #2342C0;
+  cursor: pointer;
+  margin-top: 7px;
+  border-radius: 20px;
+  padding-right: 20px !important;
+  padding-left: 20px !important;
+}
+.child-select-disabled {
+  color: #212429 !important;
+  background-color: #D3D4D8;
+  cursor: pointer;
+  margin-top: 7px;
+  border-radius: 20px;
+  padding-right: 20px !important;
+  padding-left: 20px !important;
+}
 .upload-photo--modal {
   width: 50vw;
   background-color: #fff !important;
