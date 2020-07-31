@@ -39,7 +39,7 @@ const StudentDashboard = () => {
     }
   }
   const updateBackgroundAchievements = () => {
-    if(quizLink.current) {
+    if(achievementsLink.current) {
       achievementsLink.current.classList.add('sidebar--item--active')
       quizLink.current.classList.remove('sidebar--item--active')
       coursesLink.current.classList.remove('sidebar--item--active')
@@ -48,7 +48,7 @@ const StudentDashboard = () => {
     }
   }
   const updateBackgroundHelp = () => {
-    if(quizLink.current) {
+    if(helpLink.current) {
       helpLink.current.classList.add('sidebar--item--active')
       quizLink.current.classList.remove('sidebar--item--active')
       coursesLink.current.classList.remove('sidebar--item--active')
@@ -57,7 +57,7 @@ const StudentDashboard = () => {
     }
   }
   const updateBackgroundProfile = () => {
-    if(quizLink.current) {
+    if(profileLink.current) {
       profileLink.current.classList.add('sidebar--item--active')
       quizLink.current.classList.remove('sidebar--item--active')
       coursesLink.current.classList.remove('sidebar--item--active')
