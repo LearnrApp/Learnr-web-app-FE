@@ -6,6 +6,7 @@ import Courses from '../../components/dashboard/student/Courses/Courses'
 import QuizRecords from '../../components/dashboard/student/Quiz/QuizRecords'
 import Achievements from '../../components/dashboard/student/Achievements/Achievements'
 import HelpSupport from '../../components/dashboard/student/Help/Help'
+import Profile from '../../components/dashboard/student/Profile/Profile'
 import '../../styles/UserDashboard.css'
 import '../../styles/Style.css'
 
@@ -117,13 +118,13 @@ const StudentDashboard = () => {
             <div
               ref={profileLink}
               onClick={() => {
-              updateMenu()
+              updateMenu(<Profile />)
               updateBackgroundProfile()
             }} className="sidebar--item">
               <SidebarItems sidebaricon={require('../../images/mdi_account_circle.svg')} sidebartext={'Profile'} />
             </div>
             <div onClick={() => {
-              updateMenu()
+              
             }} className="sidebar--item">
               <SidebarItems sidebaricon={require('../../images/log-in.svg')} sidebartext={'Log Out'} />
             </div>
@@ -155,7 +156,7 @@ const StudentDashboard = () => {
             <SidebarItems sidebaricon={require('../../images/help-circle.svg')} sidebartext={'Help'} />
           </div>
           <div onClick={() => {
-            updateMenu()
+            updateMenu(<Profile />)
           }} className="sidebar--item small">
             <SidebarItems sidebaricon={require('../../images/mdi_account_circle.svg')} sidebartext={'Profile'} />
           </div>
