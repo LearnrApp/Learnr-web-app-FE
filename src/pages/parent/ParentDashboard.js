@@ -5,6 +5,7 @@ import SidebarItems from '../../components/Users/SidebarItems'
 import NavBarUser from '../../components/navbar/NavBarUser'
 import YourKids from '../../components/dashboard/parent/Courses/YourKids'
 import AchievementParent from '../../components/dashboard/parent/Achievements/Achievements'
+import HelpSupport from '../../components/dashboard/parent/Help/ParentHelp'
 import '../../styles/UserDashboard.css'
 import '../../styles/Style.css'
 
@@ -121,7 +122,7 @@ const StudentDashboard = () => {
             <div
               ref={helpLink}
               onClick={() => {
-              // updateMenu(<HelpSupport />)
+              updateMenu(<HelpSupport />)
               updateBackgroundHelp()
             }} className="sidebar--item">
               <SidebarItems sidebaricon={require('../../images/help-circle.svg')} sidebartext={'Help'} />
@@ -165,7 +166,7 @@ const StudentDashboard = () => {
             <SidebarItems sidebaricon={require('../../images/trophy.svg')} sidebartext={'Achievements'} />
           </div>
           <div onClick={() => {
-            // updateMenu(<HelpSupport />)
+            updateMenu(<HelpSupport />)
           }} className="sidebar--item small">
             <SidebarItems sidebaricon={require('../../images/help-circle.svg')} sidebartext={'Help'} />
           </div>
