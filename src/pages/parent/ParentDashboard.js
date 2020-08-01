@@ -7,6 +7,7 @@ import YourKids from '../../components/dashboard/parent/Courses/YourKids'
 import AchievementParent from '../../components/dashboard/parent/Achievements/Achievements'
 import HelpSupport from '../../components/dashboard/parent/Help/ParentHelp'
 import ParentProfile from '../../components/dashboard/parent/Profile/ParentProfile'
+import Subscription from '../../components/dashboard/parent/Subscription/Subscription'
 import '../../styles/UserDashboard.css'
 import '../../styles/Style.css'
 
@@ -139,7 +140,7 @@ const StudentDashboard = () => {
             <div
               ref={subscriptionLink}
               onClick={() => {
-              // updateMenu(<Subscription />)
+              updateMenu(<Subscription />)
               updateBackgroundSubscription()
             }} className="sidebar--item">
               <SidebarItems sidebaricon={require('../../images/rss.svg')} sidebartext={'Subscription'} />
@@ -177,7 +178,7 @@ const StudentDashboard = () => {
             <SidebarItems sidebaricon={require('../../images/mdi_account_circle.svg')} sidebartext={'Profile'} />
           </div>
           <div onClick={() => {
-            // updateMenu(<QuizRecords />)
+            updateMenu(<Subscription />)
           }} className="sidebar--item small">
             <SidebarItems sidebaricon={require('../../images/rss.svg')} sidebartext={'Sub'} />
           </div>
