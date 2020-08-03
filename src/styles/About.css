@@ -1,0 +1,74 @@
+.about-wrap {
+  margin-top: 70px;
+  padding: 50px 0;
+}
+.about--vision {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: center;
+}
+.about-image {
+  width: 100%;
+  padding-left: 55px;
+}
+.about--details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-column-gap: 40px;
+  grid-row-gap: 40px;
+  place-items: center;
+  max-width: 1440px;
+}
+.abt-card-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #2342C0;
+  border-radius: 4px;
+  height: 190px;
+  width: 26vw;
+  padding: 20px;
+}
+.abt-card--text {
+  font-size: 14px;
+  text-align: center;
+}
+.testimony-wrap {
+  background-color: #F6F6F6;
+  margin: 50px 0;
+  padding: 50px 0;
+}
+.carousel-control-next {
+  content: url(../images/chevron-right-o.svg);
+  width: 20px !important;
+  margin: auto 0;
+}
+.carousel-control-prev {
+  content: url(../images/chevron-left-o.svg);
+  width: 20px !important;
+  margin: auto 0;
+}
+@media (min-width: 1440px) {
+  .abt-card-wrap {
+    max-width: 320px;
+  }
+}
+@media (max-width: 991px) {
+  .abt-card-wrap {
+    width: 32vw;
+  }
+}
+@media (max-width: 768px) {
+  .about-image {
+    padding: 0;
+  }
+  .abt-card-wrap {
+    width: 70vw !important;
+  }
+}
+@media (max-width: 576px) {
+  .carousel-control-next, .carousel-control-prev {
+    margin: auto 10px;
+  }
+}
