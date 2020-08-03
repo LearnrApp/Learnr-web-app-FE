@@ -3,6 +3,8 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Welcome from './pages/externalPages/Welcome'
 import About from './pages/externalPages/About/About'
 import Contact from './pages/externalPages/Contact'
+import FourZeroFour from './pages/externalPages/FourZeroFour'
+import ResetPassword from './pages/ResetPassword/ResetPassword'
 import AdminSignin from './pages/admin/AdminSignin'
 import StudentSignup from './pages/student/StudentSignup'
 import StudentSignin from './pages/student/StudentSignin'
@@ -17,6 +19,8 @@ const App = () => {
       <Route exact path='/' component={ Welcome } />
       <Route path='/about' component={ About } />
       <Route path='/contact' component={ Contact } />
+      <Route path='/404' component={ FourZeroFour } />
+      <Route path='/reset-password' component={ ResetPassword } />
       <Route path='/students/signup' component={StudentSignup} />
       <Route path='/students/signin' component={StudentSignin} />
       <Route path='/students/dashboard' component={StudentDashboard} />

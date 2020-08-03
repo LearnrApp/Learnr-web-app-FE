@@ -5,8 +5,84 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import '../../styles/Sign.css'
 import { Link } from 'react-router-dom'
+import { ParentLogin } from '../../components/Utils/RegisterUtils'
 
 const StudentSignin = () => {
+  const parentLogin = async (e) => {
+    e.preventDefault()
+    const username = document.getElementById('username').value
+    const password = document.getElementById('password').value
+    const statusMessage = document.getElementById('status-message')
+      
+    // const form = document.getElementById('registerStudent')
+    if(username === '' && password === '') {
+      statusMessage.innerHTML = 'Please fill all required fields'
+      statusMessage.classList.remove('msg-show')
+      statusMessage.classList.add('error-message')
+      setTimeout(() => {
+        statusMessage.classList.add('msg-show')
+        statusMessage.classList.remove('error-message')
+      }, 4000)
+    } else if(username === '' || password === '') {
+      statusMessage.innerHTML = 'Please fill all required fields'
+      statusMessage.classList.remove('msg-show')
+      statusMessage.classList.add('error-message')
+      setTimeout(() => {
+        statusMessage.classList.add('msg-show')
+        statusMessage.classList.remove('error-message')
+      }, 4000)
+    } else {
+      const parentData = {
+        'username': username,
+        'password': password
+      }
+  
+      // let addValidation = true
+      // if(form.checkValidity() === false) {
+      //   e.preventDefault()
+      //   e.stopPropagation()
+      // } else if(form.checkValidity()) {
+      //   e.preventDefault()
+      // }
+  
+      try {
+        const { data } = await ParentLogin(parentData)
+        console.log(data)
+        if (data.status === 'error: wrong-username') {
+          statusMessage.innerHTML = data.msg
+          statusMessage.classList.remove('msg-show')
+          statusMessage.classList.add('error-message')
+          setTimeout(() => {
+            statusMessage.classList.add('msg-show')
+            statusMessage.classList.remove('error-message')
+          }, 4000)
+        } else if(data.status === 'error: wrong-details') {
+          statusMessage.innerHTML = data.msg
+          statusMessage.classList.remove('msg-show')
+          statusMessage.classList.add('error-message')
+          setTimeout(() => {
+            statusMessage.classList.add('msg-show')
+            statusMessage.classList.remove('error-message')
+          }, 4000)
+        } else if (data.status === 'success') {
+            statusMessage.innerHTML = data.msg
+            statusMessage.classList.remove('msg-show')
+            statusMessage.classList.add('success-message')
+          // redirect to login page
+          setTimeout(() => {
+            statusMessage.classList.add('msg-show')
+            window.location.replace('/parents/dashboard')
+          }, 3000)
+        }
+      } catch(err) {
+          throw err
+      }
+      // if (addValidation) {
+      //   form.classList.add('was-validated');
+      // }
+    }
+  }
+
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
@@ -46,13 +122,14 @@ const StudentSignin = () => {
               </div>
               <Form>
                 <Form.Group controlId="formBasicUsername">
+                  <div id="status-message" className="msg-show"></div>
                   <Form.Label className="small">Username *</Form.Label>
-                  <Form.Control type="text" placeholder="Enter username" />
+                  <Form.Control id="username" type="text" placeholder="Enter username" />
                 </Form.Group>
 
                 <Form.Group className="m-0" controlId="formBasicPassword">
                   <Form.Label className="small">Password *</Form.Label>
-                  <Form.Control type={passwordShown ? "text" : "password"} placeholder="********" />
+                  <Form.Control id="password" type={passwordShown ? "text" : "password"} placeholder="********" />
                   <img onClick={togglePasswordVisiblity} className="togglePassword" src={require('../../images/eye-hide.svg')} alt="" />
                   {/* <Form.Text className="text-muted">
                     Password must have at least 8 characters.
@@ -60,7 +137,7 @@ const StudentSignin = () => {
                 </Form.Group>
 
                 <Link style={{color: '#2342C0'}} className="float-right" to="">Forgot Password?</Link>
-                <Button style={{fontSize: '20px'}} className="general-btn-2 my-3 py-3" type="submit">
+                <Button onClick={(e) => {parentLogin(e)}} style={{fontSize: '20px'}} className="general-btn-2 my-3 py-3" type="submit">
                   Sign In
                 </Button>
               </Form>
