@@ -1,0 +1,38 @@
+.contact-wrap {
+  margin-top: 70px;
+}
+.contact--inner-wrap {
+  margin: 100px 0;
+  padding: 0 50px;
+}
+.contact--form-wrap {
+  display: grid;
+  grid-template-columns: 30vw 1fr;
+  grid-gap: 50px;
+  margin: 30px 0;
+}
+.details--item {
+  margin-bottom: 30px;
+}
+.contact--details, .contact--form {
+  padding: 40px;
+  background-color: #FFF;
+  border: 1px solid #2342C0;
+  border-radius: 4px;
+}
+@media (max-width: 991px) {
+  .contact--inner-wrap {
+    padding: 0;
+  }
+}
+@media (max-width: 768px) {
+  .contact--form-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media (max-width: 375px) {
+  .contact--details, .contact--form {
+    padding: 40px 20px;
+  }
+}
