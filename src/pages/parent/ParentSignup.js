@@ -5,9 +5,95 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import '../../styles/Sign.css'
 import { Link } from 'react-router-dom'
+import { ParentRegister } from '../../components/Utils/RegisterUtils'
 
 
 const ParentSignup = () => {
+  const register = async (e) => {
+    e.preventDefault()
+    const username = document.getElementById('username').value
+    const password = document.getElementById('password').value
+    const email = document.getElementById('email').value
+    const statusMessage = document.getElementById('status-message')
+      
+    // const form = document.getElementById('registerStudent')
+    if(username === '' && password === '' && email === '') {
+      statusMessage.innerHTML = 'Please fill all required fields'
+      statusMessage.classList.remove('msg-show')
+      statusMessage.classList.add('error-message')
+      setTimeout(() => {
+        statusMessage.classList.add('msg-show')
+        statusMessage.classList.remove('error-message')
+      }, 4000)
+    } else if(username === '' || password === '') {
+      statusMessage.innerHTML = 'Please fill all required fields'
+      statusMessage.classList.remove('msg-show')
+      statusMessage.classList.add('error-message')
+      setTimeout(() => {
+        statusMessage.classList.add('msg-show')
+        statusMessage.classList.remove('error-message')
+      }, 4000)
+    } else if(username === '' || email === '') {
+      statusMessage.innerHTML = 'Please fill all required fields'
+      statusMessage.classList.remove('msg-show')
+      statusMessage.classList.add('error-message')
+      setTimeout(() => {
+        statusMessage.classList.add('msg-show')
+        statusMessage.classList.remove('error-message')
+      }, 4000)
+    } else if(email === '' || password === '') {
+      statusMessage.innerHTML = 'Please fill all required fields'
+      statusMessage.classList.remove('msg-show')
+      statusMessage.classList.add('error-message')
+      setTimeout(() => {
+        statusMessage.classList.add('msg-show')
+        statusMessage.classList.remove('error-message')
+      }, 4000)
+    } else {
+      const parentData = {
+        'username': username,
+        'email': email,
+        'password': password
+      }
+  
+      // let addValidation = true
+      // if(form.checkValidity() === false) {
+      //   e.preventDefault()
+      //   e.stopPropagation()
+      // } else if(form.checkValidity()) {
+      //   e.preventDefault()
+      // }
+  
+      try {
+        const { data } = await ParentRegister(parentData)
+        console.log(data)
+        if (data.status === 'error: user-exists') {
+          statusMessage.innerHTML = data.msg
+          statusMessage.classList.remove('msg-show')
+          statusMessage.classList.add('error-message')
+          setTimeout(() => {
+            statusMessage.classList.add('msg-show')
+            statusMessage.classList.remove('error-message')
+          }, 4000)
+        } else if(data.status === 'success') {
+            statusMessage.innerHTML = data.msg
+            statusMessage.classList.remove('msg-show')
+            statusMessage.classList.add('success-message')
+          // redirect to login page
+          setTimeout(() => {
+            statusMessage.classList.add('msg-show')
+            window.location.replace('/parents/signin')
+          }, 3000)
+        }
+      } catch(err) {
+          throw err
+      }
+      // if (addValidation) {
+      //   form.classList.add('was-validated');
+      // }
+    }
+  }
+
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
@@ -37,24 +123,25 @@ const ParentSignup = () => {
             <div /*ref={form => signForm = form}*/ className="bg-white signup-form">
               <span className="text-danger small mb-4 d-block">Fields with * are required</span>
               <Form>
-                <Form.Group controlId="formBasicFullName">
+                {/* <Form.Group controlId="formBasicFullName">
                   <Form.Label className="small">Full Name *</Form.Label>
                   <Form.Control type="text" placeholder="Audrey Sam" />
-                </Form.Group>
+                </Form.Group> */}
 
                 <Form.Group controlId="formBasicUsername">
+                  <div id="status-message" className="msg-show"></div>
                   <Form.Label className="small">Username *</Form.Label>
-                  <Form.Control type="text" placeholder="Audrey20" />
+                  <Form.Control id="username" type="text" placeholder="Audrey20" />
                 </Form.Group>
 
                 <Form.Group controlId="formBasicEmail">
                   <Form.Label className="small">Email Address *</Form.Label>
-                  <Form.Control type="email" placeholder="example@email.com" />
+                  <Form.Control id="email" type="email" placeholder="example@email.com" />
                 </Form.Group>
 
                 <Form.Group className="m-0" controlId="formBasicPassword">
                   <Form.Label className="small">Password *</Form.Label>
-                  <Form.Control type={passwordShown ? "text" : "password"} placeholder="********" />
+                  <Form.Control id="password" type={passwordShown ? "text" : "password"} placeholder="********" />
                   <img onClick={togglePasswordVisiblity} className="togglePassword" src={require('../../images/eye-hide.svg')} alt="" />
                   <Form.Text className="text-muted">
                     * Password must have at least 8 characters.
@@ -64,7 +151,7 @@ const ParentSignup = () => {
                   <Form.Check className="small" type="checkbox" label="Show password" />
                 </Form.Group> */}
 
-                <Button style={{fontSize: '20px'}} className="general-btn-2 my-3 py-3" type="submit">
+                <Button onClick={(e) => {register(e)}} style={{fontSize: '20px'}} className="general-btn-2 my-3 py-3" type="submit">
                   Sign Up
                 </Button>
               </Form>
