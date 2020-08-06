@@ -12,14 +12,15 @@
   background-image: url(../images/sign-bg.png);
   background-repeat: no-repeat;
   background-size: cover;
-  margin-top: 70px;
-  height: 140vh;
+  padding-top: 70px;
+  padding-bottom: 30px;
+  height: max-content;
 }
 .sign-bg-2 {
   background-image: url(../images/sign-bg.png);
   background-repeat: no-repeat;
   background-size: cover;
-  margin-top: 70px;
+  padding-top: 70px;
   height: max-content;
 }
 .admin-bg {
@@ -34,7 +35,7 @@
   max-width: 576px;
 }
 .signup-form {
-  padding: 48px;
+  padding: 42px;
   animation-name: slide-down;
   animation-duration: 1.5s;
   transition-timing-function: ease-out;
@@ -62,10 +63,10 @@
   cursor: pointer;
 }
 .general-btn-2 {
+  box-sizing: border-box !important;
   background-color: #2342C0 !important;
   color: #fff;
   border-radius: 4px !important;
-  /* padding: 8px 32px; */
   width: 100%;
   border: none !important;
 }

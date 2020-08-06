@@ -8,9 +8,6 @@
 }
 .success-message {
   display: block;
-  border: 1.5px solid #126927;
-  background-color: #5deb5d;
-  color: #fff;
   border-radius: 3px;
   padding: 5px;
   width: 100%;
@@ -18,9 +15,6 @@
 }
 .error-message {
   display: block;
-  border: 1.5px solid #dc3545;
-  background-color: #f16573;
-  color: #fff;
   border-radius: 3px;
   padding: 5px;
   width: 100%;
