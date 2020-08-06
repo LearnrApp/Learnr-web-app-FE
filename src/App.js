@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Welcome from './pages/externalPages/Welcome'
 import About from './pages/externalPages/About/About'
 import Contact from './pages/externalPages/Contact'
@@ -16,6 +16,7 @@ import ParentDashboard from './pages/parent/ParentDashboard';
 const App = () => {
   return (
     <Router>
+    <Switch>
       <Route exact path='/' component={ Welcome } />
       <Route path='/about' component={ About } />
       <Route path='/contact' component={ Contact } />
@@ -29,6 +30,7 @@ const App = () => {
       <Route path='/parents/dashboard' component={ParentDashboard} />
       <Route path='/admin/signin' component={AdminSignin} />
       
+    </Switch>
     </Router>
   );
 }

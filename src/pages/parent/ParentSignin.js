@@ -6,30 +6,32 @@ import Button from 'react-bootstrap/Button'
 import '../../styles/Sign.css'
 import { Link } from 'react-router-dom'
 import { ParentLogin } from '../../components/Utils/RegisterUtils'
+import {Alert} from "reactstrap";
 
 const StudentSignin = () => {
   const parentLogin = async (e) => {
     e.preventDefault()
     const username = document.getElementById('username').value
     const password = document.getElementById('password').value
-    const statusMessage = document.getElementById('status-message')
+    const statusMessageError = document.getElementById('status-message-error')
+    const statusMessageSuccess = document.getElementById('status-message-success')
       
     // const form = document.getElementById('registerStudent')
     if(username === '' && password === '') {
-      statusMessage.innerHTML = 'Please fill all required fields'
-      statusMessage.classList.remove('msg-show')
-      statusMessage.classList.add('error-message')
+      statusMessageError.innerHTML = 'Please fill all required fields'
+      statusMessageError.classList.remove('msg-show')
+      statusMessageError.classList.add('error-message')
       setTimeout(() => {
-        statusMessage.classList.add('msg-show')
-        statusMessage.classList.remove('error-message')
+        statusMessageError.classList.add('msg-show')
+        statusMessageError.classList.remove('error-message')
       }, 4000)
     } else if(username === '' || password === '') {
-      statusMessage.innerHTML = 'Please fill all required fields'
-      statusMessage.classList.remove('msg-show')
-      statusMessage.classList.add('error-message')
+      statusMessageError.innerHTML = 'Please fill all required fields'
+      statusMessageError.classList.remove('msg-show')
+      statusMessageError.classList.add('error-message')
       setTimeout(() => {
-        statusMessage.classList.add('msg-show')
-        statusMessage.classList.remove('error-message')
+        statusMessageError.classList.add('msg-show')
+        statusMessageError.classList.remove('error-message')
       }, 4000)
     } else {
       const parentData = {
@@ -49,29 +51,29 @@ const StudentSignin = () => {
         const { data } = await ParentLogin(parentData)
         console.log(data)
         if (data.status === 'error: wrong-username') {
-          statusMessage.innerHTML = data.msg
-          statusMessage.classList.remove('msg-show')
-          statusMessage.classList.add('error-message')
+          statusMessageError.innerHTML = data.msg
+          statusMessageError.classList.remove('msg-show')
+          statusMessageError.classList.add('error-message')
           setTimeout(() => {
-            statusMessage.classList.add('msg-show')
-            statusMessage.classList.remove('error-message')
+            statusMessageError.classList.add('msg-show')
+            statusMessageError.classList.remove('error-message')
           }, 4000)
         } else if(data.status === 'error: wrong-details') {
-          statusMessage.innerHTML = data.msg
-          statusMessage.classList.remove('msg-show')
-          statusMessage.classList.add('error-message')
+          statusMessageError.innerHTML = data.msg
+          statusMessageError.classList.remove('msg-show')
+          statusMessageError.classList.add('error-message')
           setTimeout(() => {
-            statusMessage.classList.add('msg-show')
-            statusMessage.classList.remove('error-message')
+            statusMessageError.classList.add('msg-show')
+            statusMessageError.classList.remove('error-message')
           }, 4000)
         } else if (data.status === 'success') {
-            statusMessage.innerHTML = data.msg
-            statusMessage.classList.remove('msg-show')
-            statusMessage.classList.add('success-message')
+            statusMessageSuccess.innerHTML = data.msg
+            statusMessageSuccess.classList.remove('msg-show')
+            statusMessageSuccess.classList.add('success-message')
           // redirect to login page
           setTimeout(() => {
-            statusMessage.classList.add('msg-show')
-            window.location.replace('/parents/dashboard')
+            statusMessageSuccess.classList.add('msg-show')
+            window.open = '/parents/dashboard'
           }, 3000)
         }
       } catch(err) {
@@ -122,7 +124,8 @@ const StudentSignin = () => {
               </div>
               <Form>
                 <Form.Group controlId="formBasicUsername">
-                  <div id="status-message" className="msg-show"></div>
+                  <Alert color="danger" id="status-message-error" className="msg-show"></Alert>
+                  <Alert color="success" id="status-message-success" className="msg-show"></Alert>
                   <Form.Label className="small">Username *</Form.Label>
                   <Form.Control id="username" type="text" placeholder="Enter username" />
                 </Form.Group>
@@ -137,11 +140,11 @@ const StudentSignin = () => {
                 </Form.Group>
 
                 <Link style={{color: '#2342C0'}} className="float-right" to="">Forgot Password?</Link>
-                <Button onClick={(e) => {parentLogin(e)}} style={{fontSize: '20px'}} className="general-btn-2 my-3 py-3" type="submit">
+                <button onClick={(e) => {parentLogin(e)}} style={{fontSize: '20px'}} className="general-btn-2 my-3 py-2" type="submit">
                   Sign In
-                </Button>
+                </button>
               </Form>
-              <span className="text-center d-block pb-5">Don't have an account? <Link style={{color: '#2342C0'}} to="/parents/signup">Create an account</Link></span>
+              <span className="text-center d-block">Don't have an account? <Link style={{color: '#2342C0'}} to="/parents/signup">Create an account</Link></span>
             </div>
           </div>
         </div>
