@@ -49,7 +49,6 @@ const StudentSignin = () => {
   
       try {
         const { data } = await ParentLogin(parentData)
-        console.log(data)
         if (data.status === 'error: wrong-username') {
           statusMessageError.innerHTML = data.msg
           statusMessageError.classList.remove('msg-show')
