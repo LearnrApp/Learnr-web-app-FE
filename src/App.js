@@ -13,6 +13,8 @@ import ParentSignup from './pages/parent/ParentSignup'
 import ParentSignin from './pages/parent/ParentSignin'
 import ParentDashboard from './pages/parent/ParentDashboard';
 import MathematicsJs1 from "./pages/topics/Js1Topics/MathematicsJs1";
+import MathematicsJs1Article from "./pages/articles/MathematicsJs1Article";
+
 
 const App = () => {
   return (
@@ -31,6 +33,7 @@ const App = () => {
       <Route exact path='/parents/dashboard' component={ParentDashboard} />
       <Route exact path='/admin/signin' component={AdminSignin} />
       <Route exact path='/topics/mathematics/js1' component={MathematicsJs1} />
+      <Route exact path='/articles/mathematics/js1' component={MathematicsJs1Article} />
     </Switch>
     </BrowserRouter>
   );

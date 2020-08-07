@@ -12,7 +12,7 @@ import BasicTech from "../../../images/basic-tech.png";
 
 const MathematicsJs1 = () => {
 
-  const documentTitle = 'Learnr | Matheatics for Js1'
+  const documentTitle = 'Learnr | Mathematics for Js1'
 
   const subjectListJS1 = [
     <SubjectCard
@@ -55,7 +55,7 @@ const MathematicsJs1 = () => {
             <span className="topics-term">First Term</span>
             <div className="topics-list">
               <div className="topics-item">
-                <Link className="topic-link" to="">1 &nbsp; Development of number systems; counting, symbols for numbers and the place-value system</Link>
+                <Link className="topic-link" to="/articles/mathematics/js1">1 &nbsp; Development of number systems; counting, symbols for numbers and the place-value system</Link>
                 <input type="checkbox" className=""/>
               </div>
               <div className="topics-item">
