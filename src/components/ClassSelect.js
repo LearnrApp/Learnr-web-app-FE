@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useRef} from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
 import '../styles/Style.css'
 import Js1 from './classSelect/WelcomeJs1'

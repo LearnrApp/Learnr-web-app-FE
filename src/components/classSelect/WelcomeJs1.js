@@ -11,7 +11,7 @@ import '../../styles/Style.css'
 
 const Js1 = () => {
   const toSubjectMaths = () => {
-    window.open('/subjects/mathematics', '_self');
+    window.open('/topics/mathematics/js1', '_self');
   }
   const toSubjectEng = () => {
       window.open('/subjects/english', '_self');

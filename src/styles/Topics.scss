@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+.topics-wrap {
+  padding-top: 70px;
+  .topic-subject {
+    color: #212429;
+    font-size: 24px;
+    font-weight: 600;
+    padding: 20px 0;
+  }
+  .topics-list-wrap {
+    margin-bottom: 40px;
+    .topics-term {
+      display: block;
+      padding: 15px 0;
+      font-weight: 600;
+    }
+    .topics-list {
+      .topics-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-top: 1px solid #F0F1F3;
+        border-bottom: 1px solid #F0F1F3;
+        .topic-link {
+          color: #212429;
+          margin-right: 20px;
+          @media (max-width: 480px) {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+h4.topic-subject {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.recommended-wrap {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-gap: 30px;
+  place-items: center;
+}
