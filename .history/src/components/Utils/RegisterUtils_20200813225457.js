@@ -1,5 +1,7 @@
 import axios from 'axios'
-// import dotenv from 'dotenv'
+import dotenv from 'dotenv'
+
+dotenv.config()
 const LEARNR_API_BASE_UR = 'https://learnr-be.herokuapp.com'
 const LEARNR_API_BASE_URL = 'http://localhost:7000'
 

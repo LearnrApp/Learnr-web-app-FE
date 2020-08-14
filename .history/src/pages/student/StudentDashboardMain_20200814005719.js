@@ -111,27 +111,27 @@ const StudentDashboard = () => {
               <span className="text-white">Hello, Tony Sandy</span>
             </div>
             <div className="pt-4">
-              <div ref={coursesLink} onClick={() => updateBackgroundCourses()} className="sidebar--item--active sidebar--item">
+              <div className="sidebar--item--active sidebar--item">
                 <Link to="/students/dashboard/courses">
                   <SidebarItems sidebaricon={require('../../images/readme.svg')} sidebartext={'Courses'} />
                 </Link>
               </div>
-              <div ref={quizLink} onClick={() => updateBackgroundQuiz()} className="sidebar--item">
+              <div className="sidebar--item">
                 <Link to="/students/dashboard/quiz">
                   <SidebarItems sidebaricon={require('../../images/loadbar-doc.svg')} sidebartext={'Quiz'} />
                 </Link>
               </div>
-              <div ref={achievementsLink} onClick={() => updateBackgroundAchievements()} className="sidebar--item">
+              <div className="sidebar--item">
                 <Link to="/students/dashboard/achievements">
                   <SidebarItems sidebaricon={require('../../images/trophy.svg')} sidebartext={'Achievements'} />
                 </Link>
               </div>
-              <div ref={helpLink} onClick={() => updateBackgroundHelp()} className="sidebar--item">
+              <div className="sidebar--item">
                 <Link to="/students/dashboard/help">
                   <SidebarItems sidebaricon={require('../../images/help-circle.svg')} sidebartext={'Help'} />
                 </Link>
               </div>
-              <div ref={profileLink} onClick={() => updateBackgroundProfile()} className="sidebar--item">
+              <div className="sidebar--item">
                 <Link to="/students/dashboard/profile">
                   <SidebarItems sidebaricon={require('../../images/mdi_account_circle.svg')} sidebartext={'Profile'} />
                 </Link>

@@ -1,12 +1,14 @@
 import axios from 'axios'
-// import dotenv from 'dotenv'
-const LEARNR_API_BASE_UR = 'https://learnr-be.herokuapp.com'
-const LEARNR_API_BASE_URL = 'http://localhost:7000'
+import dotenv from 'dotenv'
+
+dotenv.config()
+// const LEARNR_API_BASE_UR = 'https://learnr-be.herokuapp.com'
+// const LEARNR_API_BASE_URL = 'http://localhost:7000'
 
 export const StudentRegister = async (studentData, id) => {
   const response = await axios ({
     method: 'POST',
-    url: `${LEARNR_API_BASE_URL}/students/register/${id}`,
+    url: `${process.env.LEARNR_API_BASE_URL}/students/register/${id}`,
     data: studentData
   })
 

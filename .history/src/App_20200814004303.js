@@ -8,7 +8,8 @@ import ResetPassword from './pages/ResetPassword/ResetPassword'
 import AdminSignin from './pages/admin/AdminSignin'
 import StudentSignup from './pages/student/StudentSignup'
 import StudentSignin from './pages/student/StudentSignin'
-import StudentDashboard from './pages/student/StudentDashboard';
+// import StudentDashboard from './pages/student/StudentDashboard';
+import StudentDashboard from './pages/student/StudentDashboardMain';
 import ParentSignup from './pages/parent/ParentSignup'
 import ParentSignin from './pages/parent/ParentSignin'
 import ParentDashboard from './pages/parent/ParentDashboard';

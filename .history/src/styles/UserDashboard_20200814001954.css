@@ -20,9 +20,6 @@
 .sidebar--item {
   cursor: pointer
 }
-.sidebar--item a:hover {
-  text-decoration: none;
-}
 .sidebar--item--active {
   cursor: pointer;
   background-color: #F6F6F6;

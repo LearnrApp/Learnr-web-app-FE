@@ -20,7 +20,7 @@
 .sidebar--item {
   cursor: pointer
 }
-.sidebar--item a:hover {
+.sidebar--item>a {
   text-decoration: none;
 }
 .sidebar--item--active {

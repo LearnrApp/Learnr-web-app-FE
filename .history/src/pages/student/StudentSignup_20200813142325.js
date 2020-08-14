@@ -18,7 +18,6 @@ const StudentSignup = () => {
     const pEmail = document.getElementById('parentEmail').value
     const statusMessageError = document.getElementById('status-message-error')
     const statusMessageSuccess = document.getElementById('status-message-success')
-    const studentClass = document.getElementById('classes').value
     const id = document.getElementById('classes').selectedIndex
     const idText = document.getElementsByTagName('option')[id].innerText
     console.log(idText)
@@ -58,7 +57,7 @@ const StudentSignup = () => {
       // }
   
       try {
-        const { data } = await StudentRegister(studentData, studentClass)
+        const { data } = await StudentRegister(studentData, id)
         if (data.status === 'error: user-exists') {
           statusMessageError.innerHTML = data.msg
           statusMessageError.classList.remove('msg-show')

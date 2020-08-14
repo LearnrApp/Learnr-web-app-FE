@@ -16,37 +16,34 @@ const StudentSignup = () => {
     const username = document.getElementById('username').value
     const password = document.getElementById('password').value
     const pEmail = document.getElementById('parentEmail').value
-    const statusMessageError = document.getElementById('status-message-error')
-    const statusMessageSuccess = document.getElementById('status-message-success')
-    const studentClass = document.getElementById('classes').value
-    const id = document.getElementById('classes').selectedIndex
-    const idText = document.getElementsByTagName('option')[id].innerText
-    console.log(idText)
-    
+    const statusMessage = document.getElementById('status-message')
+    const id = document.getElementById('classes').value
+    const idValue = document.getElementById('classes').option
+    console.log(idValue)
       
     // const form = document.getElementById('registerStudent')
     if(username === '' && password === '') {
-      statusMessageError.innerHTML = 'Please fill all required fields'
-      statusMessageError.classList.remove('msg-show')
-      statusMessageError.classList.add('error-message')
+      statusMessage.innerHTML = 'Please fill all required fields'
+      statusMessage.classList.remove('msg-show')
+      statusMessage.classList.add('error-message')
       setTimeout(() => {
-        statusMessageError.classList.add('msg-show')
-        statusMessageError.classList.remove('error-message')
+        statusMessage.classList.add('msg-show')
+        statusMessage.classList.remove('error-message')
       }, 4000)
     } else if(username === '' || password === '') {
-      statusMessageError.innerHTML = 'Please fill all required fields'
-      statusMessageError.classList.remove('msg-show')
-      statusMessageError.classList.add('error-message')
+      statusMessage.innerHTML = 'Please fill all required fields'
+      statusMessage.classList.remove('msg-show')
+      statusMessage.classList.add('error-message')
       setTimeout(() => {
-        statusMessageError.classList.add('msg-show')
-        statusMessageError.classList.remove('error-message')
+        statusMessage.classList.add('msg-show')
+        statusMessage.classList.remove('error-message')
       }, 4000)
     } else {
       const studentData = {
         'username': username,
         'parentEmail': pEmail,
         'password': password,
-        'classSelect': idText
+        'classSelect': idValue
       }
   
       // let addValidation = true
@@ -58,23 +55,23 @@ const StudentSignup = () => {
       // }
   
       try {
-        const { data } = await StudentRegister(studentData, studentClass)
+        const { data } = await StudentRegister(studentData, id)
         if (data.status === 'error: user-exists') {
-          statusMessageError.innerHTML = data.msg
-          statusMessageError.classList.remove('msg-show')
-          statusMessageError.classList.add('error-message')
+          statusMessage.innerHTML = data.msg
+          statusMessage.classList.remove('msg-show')
+          statusMessage.classList.add('error-message')
           setTimeout(() => {
-            statusMessageError.classList.add('msg-show')
-            statusMessageError.classList.remove('error-message')
+            statusMessage.classList.add('msg-show')
+            statusMessage.classList.remove('error-message')
           }, 4000)
         } else if(data.status === 'success') {
             console.log(data)
-            statusMessageSuccess.innerHTML = data.msg
-            statusMessageSuccess.classList.remove('msg-show')
-            statusMessageSuccess.classList.add('success-message')
+            statusMessage.innerHTML = data.msg
+            statusMessage.classList.remove('msg-show')
+            statusMessage.classList.add('success-message')
           // redirect to login page
           setTimeout(() => {
-            statusMessageSuccess.classList.add('msg-show')
+            statusMessage.classList.add('msg-show')
             window.location.replace('/students/signin')
           }, 3000)
         }
@@ -151,9 +148,9 @@ const StudentSignup = () => {
                     </Form.Control>
                   </Form.Group> */}
                   <form>
-                    <label for="classes" className="small text-right">Class *</label>
+                    <label className="small text-right">Class *</label>
                     <select id="classes" className="form-control">
-                      <option value="5f352a023be4b886d0f6094a">Js 1</option>
+                      <option value="5f3380f4a21afc4bbccf84a0">Js1</option>
                       <option>Js 2</option>
                       <option>Js 3</option>
                       <option>Ss 1</option>
