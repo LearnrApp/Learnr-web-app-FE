@@ -25,15 +25,15 @@ const App = () => {
       <Route exact path='/contact' component={ Contact } />
       <Route exact path='/404' component={ FourZeroFour } />
       <Route exact path='/reset-password' component={ ResetPassword } />
-      <Route exact path='/students/signup' component={StudentSignup} />
-      <Route exact path='/students/signin' component={StudentSignin} />
-      <Route exact path='/students/dashboard' component={StudentDashboard} />
-      <Route exact path='/parents/signup' component={ParentSignup} />
-      <Route exact path='/parents/signin' component={ParentSignin} />
-      <Route exact path='/parents/dashboard' component={ParentDashboard} />
-      <Route exact path='/admin/signin' component={AdminSignin} />
-      <Route exact path='/topics/mathematics/js1' component={MathematicsJs1} />
-      <Route exact path='/articles/mathematics/js1' component={MathematicsJs1Article} />
+      <Route exact path='/students/signup' component={ StudentSignup } />
+      <Route exact path='/students/signin' component={ StudentSignin } />
+      <Route exact path='/students/dashboard/courses' component={ StudentDashboard } />
+      <Route exact path='/parents/signup' component={ ParentSignup } />
+      <Route exact path='/parents/signin' component={ ParentSignin } />
+      <Route exact path='/parents/dashboard' component={ ParentDashboard } />
+      <Route exact path='/admin/signin' component={ AdminSignin } />
+      <Route exact path='/topics/mathematics/js1' component={ MathematicsJs1 } />
+      <Route exact path='/articles/mathematics/js1' component={ MathematicsJs1Article } />
     </Switch>
     </BrowserRouter>
   );

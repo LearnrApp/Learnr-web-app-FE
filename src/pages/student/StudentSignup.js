@@ -6,6 +6,8 @@ import Button from 'react-bootstrap/Button'
 import '../../styles/Sign.css'
 import { Link } from 'react-router-dom'
 import { StudentRegister } from '../../components/Utils/RegisterUtils'
+import {Alert} from "reactstrap";
+
 
 
 const StudentSignup = () => {
@@ -14,30 +16,37 @@ const StudentSignup = () => {
     const username = document.getElementById('username').value
     const password = document.getElementById('password').value
     const pEmail = document.getElementById('parentEmail').value
-    const statusMessage = document.getElementById('status-message')
+    const statusMessageError = document.getElementById('status-message-error')
+    const statusMessageSuccess = document.getElementById('status-message-success')
+    const studentClass = document.getElementById('classes').value
+    const id = document.getElementById('classes').selectedIndex
+    const idText = document.getElementsByTagName('option')[id].innerText
+    console.log(idText)
+    
       
     // const form = document.getElementById('registerStudent')
     if(username === '' && password === '') {
-      statusMessage.innerHTML = 'Please fill all required fields'
-      statusMessage.classList.remove('msg-show')
-      statusMessage.classList.add('error-message')
+      statusMessageError.innerHTML = 'Please fill all required fields'
+      statusMessageError.classList.remove('msg-show')
+      statusMessageError.classList.add('error-message')
       setTimeout(() => {
-        statusMessage.classList.add('msg-show')
-        statusMessage.classList.remove('error-message')
+        statusMessageError.classList.add('msg-show')
+        statusMessageError.classList.remove('error-message')
       }, 4000)
     } else if(username === '' || password === '') {
-      statusMessage.innerHTML = 'Please fill all required fields'
-      statusMessage.classList.remove('msg-show')
-      statusMessage.classList.add('error-message')
+      statusMessageError.innerHTML = 'Please fill all required fields'
+      statusMessageError.classList.remove('msg-show')
+      statusMessageError.classList.add('error-message')
       setTimeout(() => {
-        statusMessage.classList.add('msg-show')
-        statusMessage.classList.remove('error-message')
+        statusMessageError.classList.add('msg-show')
+        statusMessageError.classList.remove('error-message')
       }, 4000)
     } else {
       const studentData = {
         'username': username,
         'parentEmail': pEmail,
-        'password': password
+        'password': password,
+        'classSelect': idText
       }
   
       // let addValidation = true
@@ -49,23 +58,23 @@ const StudentSignup = () => {
       // }
   
       try {
-        const { data } = await StudentRegister(studentData)
-        console.log(data)
+        const { data } = await StudentRegister(studentData, studentClass)
         if (data.status === 'error: user-exists') {
-          statusMessage.innerHTML = data.msg
-          statusMessage.classList.remove('msg-show')
-          statusMessage.classList.add('error-message')
+          statusMessageError.innerHTML = data.msg
+          statusMessageError.classList.remove('msg-show')
+          statusMessageError.classList.add('error-message')
           setTimeout(() => {
-            statusMessage.classList.add('msg-show')
-            statusMessage.classList.remove('error-message')
+            statusMessageError.classList.add('msg-show')
+            statusMessageError.classList.remove('error-message')
           }, 4000)
         } else if(data.status === 'success') {
-            statusMessage.innerHTML = data.msg
-            statusMessage.classList.remove('msg-show')
-            statusMessage.classList.add('success-message')
+            console.log(data)
+            statusMessageSuccess.innerHTML = data.msg
+            statusMessageSuccess.classList.remove('msg-show')
+            statusMessageSuccess.classList.add('success-message')
           // redirect to login page
           setTimeout(() => {
-            statusMessage.classList.add('msg-show')
+            statusMessageSuccess.classList.add('msg-show')
             window.location.replace('/students/signin')
           }, 3000)
         }
@@ -109,7 +118,8 @@ const StudentSignup = () => {
                 </Form.Group> */}
 
                 <Form.Group controlId="">
-                  <div id="status-message" className="msg-show"></div>
+                  <Alert color="danger" id="status-message-error" className="msg-show"></Alert>
+                  <Alert color="success" id="status-message-success" className="msg-show"></Alert>
                   <Form.Label style={{color: '#979797'}} className="small">Username *</Form.Label>
                   <Form.Control id="username" type="text" placeholder="Audrey20" />
                 </Form.Group>
@@ -140,17 +150,17 @@ const StudentSignup = () => {
                       <option>Prefer not to say</option>
                     </Form.Control>
                   </Form.Group> */}
-                  {/* <Form.Group controlId="class.ControlSelect">
-                    <Form.Label className="small text-right">Class *</Form.Label>
-                    <Form.Control id="classes" as="select">
-                      <option>Js 1</option>
+                  <form>
+                    <label for="classes" className="small text-right">Class *</label>
+                    <select id="classes" className="form-control">
+                      <option value="5f352a023be4b886d0f6094a">Js 1</option>
                       <option>Js 2</option>
                       <option>Js 3</option>
                       <option>Ss 1</option>
                       <option>Ss 2</option>
                       <option>Ss 3</option>
-                    </Form.Control>
-                  </Form.Group> */}
+                    </select>
+                  </form>
                 </div>
                 <Button onClick={(e) => register(e)} style={{fontSize: '20px'}} className="general-btn-2 my-3 py-3" type="submit">
                   Sign Up

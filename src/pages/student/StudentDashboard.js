@@ -1,5 +1,10 @@
-import React, { useState, useRef } from 'react'
-import Helmet from 'react-helmet'
+import React, { useRef } from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import SidebarItems from '../../components/Users/SidebarItems'
 import NavBarUser from '../../components/navbar/NavBarUser'
 import Courses from '../../components/dashboard/student/Courses/Courses'
@@ -10,10 +15,8 @@ import Profile from '../../components/dashboard/student/Profile/Profile'
 import '../../styles/UserDashboard.css'
 import '../../styles/Style.css'
 
-const StudentDashboard = () => {
-  const documentTitle = 'Learnr | Student Dashboard'
-  const [dashboardMenu, updateMenu] = useState(<Courses />)
 
+const StudentDashboard = () => {
   const coursesLink = useRef()
   const quizLink = useRef()
   const achievementsLink = useRef()
@@ -66,103 +69,123 @@ const StudentDashboard = () => {
     }
   }
 
+  const dashboardRoutes = [
+    {
+      path: "/students/dashboard/courses",
+      main: () => <React.Fragment>
+        <Courses />
+      </React.Fragment>
+    },
+    {
+      path: "/students/dashboard/quiz",
+      main: () => <React.Fragment>
+        <QuizRecords />
+      </React.Fragment>
+    },
+    {
+      path: "/students/dashboard/achievements",
+      main: () => <React.Fragment>
+        <Achievements />
+      </React.Fragment>
+    },
+    {
+      path: "/students/dashboard/help",
+      main: () => <React.Fragment>
+        <HelpSupport />
+      </React.Fragment>
+    },
+    {
+      path: "/students/dashboard/profile",
+      main: () => <React.Fragment>
+        <Profile />
+      </React.Fragment>
+    },
+  ];
   return (
     <React.Fragment>
-      <Helmet>
-        <title>{documentTitle}</title>
-        <meta
-          name="description"
-          content="The dashboard panel for students to access all functions available to them on the application."
-        />
-      </Helmet>
       <NavBarUser />
-      <div className="container-fluid px-0 dash-wrap">
-        <div className="sidebar--wrap">
-          <div className="sidebar--greet px-3 py-4">
-            <span className="text-white">Hello, Tony Sandy</span>
-          </div>
-          <div className="pt-4">
-            <div
-              ref={coursesLink}
-              onClick={() => {
-              updateMenu(<Courses />)
-              updateBackgroundCourses()
-            }}
-            className="sidebar--item--active sidebar--item">
-              <SidebarItems sidebaricon={require('../../images/readme.svg')} sidebartext={'Courses'} />
+      <Router>
+        <div className="container-fluid px-0 dash-wrap">
+          <div className="sidebar--wrap">
+            <div className="sidebar--greet px-3 py-4">
+              <span className="text-white">Hello, Tony Sandy</span>
             </div>
-            <div
-              ref={quizLink}
-              onClick={() => {
-              updateMenu(<QuizRecords />)
-              updateBackgroundQuiz()
-            }} className="sidebar--item">
-              <SidebarItems sidebaricon={require('../../images/loadbar-doc.svg')} sidebartext={'Quiz'} />
-            </div>
-            <div
-              ref={achievementsLink}
-              onClick={() => {
-              updateMenu(<Achievements />)
-              updateBackgroundAchievements()
-            }} className="sidebar--item">
-              <SidebarItems sidebaricon={require('../../images/trophy.svg')} sidebartext={'Achievements'} />
-            </div>
-            <div
-              ref={helpLink}
-              onClick={() => {
-              updateMenu(<HelpSupport />)
-              updateBackgroundHelp()
-            }} className="sidebar--item">
-              <SidebarItems sidebaricon={require('../../images/help-circle.svg')} sidebartext={'Help'} />
-            </div>
-            <div
-              ref={profileLink}
-              onClick={() => {
-              updateMenu(<Profile />)
-              updateBackgroundProfile()
-            }} className="sidebar--item">
-              <SidebarItems sidebaricon={require('../../images/mdi_account_circle.svg')} sidebartext={'Profile'} />
-            </div>
-            <div onClick={() => {
-              
-            }} className="sidebar--item">
-              <SidebarItems sidebaricon={require('../../images/log-in.svg')} sidebartext={'Log Out'} />
+            <div className="pt-4">
+              <div ref={coursesLink} onClick={() => updateBackgroundCourses()} className="sidebar--item--active sidebar--item">
+                <Link to="/students/dashboard/courses">
+                  <SidebarItems sidebaricon={require('../../images/readme.svg')} sidebartext={'Courses'} />
+                </Link>
+              </div>
+              <div ref={quizLink} onClick={() => updateBackgroundQuiz()} className="sidebar--item">
+                <Link to="/students/dashboard/quiz">
+                  <SidebarItems sidebaricon={require('../../images/loadbar-doc.svg')} sidebartext={'Quiz'} />
+                </Link>
+              </div>
+              <div ref={achievementsLink} onClick={() => updateBackgroundAchievements()} className="sidebar--item">
+                <Link to="/students/dashboard/achievements">
+                  <SidebarItems sidebaricon={require('../../images/trophy.svg')} sidebartext={'Achievements'} />
+                </Link>
+              </div>
+              <div ref={helpLink} onClick={() => updateBackgroundHelp()} className="sidebar--item">
+                <Link to="/students/dashboard/help">
+                  <SidebarItems sidebaricon={require('../../images/help-circle.svg')} sidebartext={'Help'} />
+                </Link>
+              </div>
+              <div ref={profileLink} onClick={() => updateBackgroundProfile()} className="sidebar--item">
+                <Link to="/students/dashboard/profile">
+                  <SidebarItems sidebaricon={require('../../images/mdi_account_circle.svg')} sidebartext={'Profile'} />
+                </Link>
+              </div>
+              <div onClick={() => {
+                
+              }} className="sidebar--item">
+                <SidebarItems sidebaricon={require('../../images/log-in.svg')} sidebartext={'Log Out'} />
+              </div>
             </div>
           </div>
         </div>
-        <React.Fragment>{dashboardMenu}</React.Fragment>
-      </div>
-      <React.Fragment>
-      <div className="bg-white fixed-bottom bottom-navigate">
-        <div className="d-flex justify-content-between mx-2 mx-md-3 align-items-center">
-          <div onClick={() => {
-            updateMenu(<Courses />)
-          }} className="sidebar--item small">
-            <SidebarItems sidebaricon={require('../../images/readme.svg')} sidebartext={'Courses'} />
-          </div>
-          <div onClick={() => {
-            updateMenu(<QuizRecords />)
-          }} className="sidebar--item small">
-            <SidebarItems sidebaricon={require('../../images/loadbar-doc.svg')} sidebartext={'Quiz'} />
-          </div>
-          <div onClick={() => {
-            updateMenu(<Achievements />)
-          }} className="sidebar--item small">
-            <SidebarItems sidebaricon={require('../../images/trophy.svg')} sidebartext={'Achievements'} />
-          </div>
-          <div onClick={() => {
-            updateMenu(<HelpSupport />)
-          }} className="sidebar--item small">
-            <SidebarItems sidebaricon={require('../../images/help-circle.svg')} sidebartext={'Help'} />
-          </div>
-          <div onClick={() => {
-            updateMenu(<Profile />)
-          }} className="sidebar--item small">
-            <SidebarItems sidebaricon={require('../../images/mdi_account_circle.svg')} sidebartext={'Profile'} />
+        <div>
+          <Switch>
+            {dashboardRoutes.map((sidebarContent, index) => (
+              <Route
+                key={index}
+                path={sidebarContent.path}
+                exact={sidebarContent.exact}
+                children={<sidebarContent.main />}
+              />
+            ))}
+          </Switch>
+        </div>
+        <div className="bg-white fixed-bottom bottom-navigate">
+          <div className="d-flex justify-content-between mx-2 mx-md-3 align-items-center">
+            <div className="sidebar--item small">
+              <Link to="/students/dashboard/courses">
+                <SidebarItems sidebaricon={require('../../images/readme.svg')} sidebartext={'Courses'} />
+              </Link>
+            </div>
+            <div className="sidebar--item small">
+              <Link to="/students/dashboard/quiz">
+                <SidebarItems sidebaricon={require('../../images/loadbar-doc.svg')} sidebartext={'Quiz'} />
+              </Link>
+            </div>
+            <div className="sidebar--item small">
+              <Link to="/students/dashboard/achievements">
+                <SidebarItems sidebaricon={require('../../images/trophy.svg')} sidebartext={'Achievements'} />
+              </Link>
+            </div>
+            <div className="sidebar--item small">
+              <Link to="/students/dashboard/help">
+                <SidebarItems sidebaricon={require('../../images/help-circle.svg')} sidebartext={'Help'} />
+              </Link>
+            </div>
+            <div className="sidebar--item small">
+              <Link to="/students/dashboard/profile">
+                <SidebarItems sidebaricon={require('../../images/mdi_account_circle.svg')} sidebartext={'Profile'} />
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
-      </React.Fragment>
+      </Router>
     </React.Fragment>
   )
 }

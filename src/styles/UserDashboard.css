@@ -5,10 +5,10 @@
 
 .dash-wrap {
   margin-top: 70px;
-  /* background-color: #F6F6F6; */
-  background-image: linear-gradient(#F6F6F6, #F6F6F6);
+  background-color: #F6F6F6;
+  /* background-image: linear-gradient(#F6F6F6, #F6F6F6);
   background-size: cover;
-  height: max-content;
+  height: max-content; */
 }
 .sidebar--wrap {
   background-color: #363740;
@@ -19,6 +19,9 @@
 }
 .sidebar--item {
   cursor: pointer
+}
+.sidebar--item a:hover {
+  text-decoration: none;
 }
 .sidebar--item--active {
   cursor: pointer;
