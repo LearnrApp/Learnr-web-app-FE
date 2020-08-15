@@ -21,7 +21,7 @@ const Background = () => {
           </p>
           <div className="d-flex">
             <div ref={headerBtnStud} className="btn-wrap "><Button link={'/students/signup'} linkText={'Students'} /></div>
-            <div ref={headerBtnPar} className="btn-wrap "><Button link={'/parents/signup'} linkText={'Parents'} /></div>
+            {/*<div ref={headerBtnPar} className="btn-wrap "><Button link={'/parents/signup'} linkText={'Parents'} /></div>*/}
           </div>
         </div>
       </div>

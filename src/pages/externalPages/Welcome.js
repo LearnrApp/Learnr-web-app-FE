@@ -35,7 +35,7 @@ const Welcome = () => {
                 progress of your child and view the awards earned
                 by the child. 
               </p>
-              <ButtonV2 link={'/parents/signup'} linkText={'Get Started'} />
+              <ButtonV2 link={''} linkText={'Coming Soon'} />
             </div>
             <div className="demo-image">
               <img className="img-fluid" src={require('../../images/demo-image.png')} alt="" />

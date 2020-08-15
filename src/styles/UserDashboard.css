@@ -5,7 +5,6 @@
 
 .dash-wrap {
   margin-top: 70px;
-  background-color: #F6F6F6;
   /* background-image: linear-gradient(#F6F6F6, #F6F6F6);
   background-size: cover;
   height: max-content; */
@@ -35,6 +34,9 @@
 }
 .main--wrap {
   margin-left: 18vw;
+  background-color: #F6F6F6;
+  height: 100vh;
+  min-height: max-content;
 }
 .info-wrap {
   border-bottom: 1px solid #E5E5E5;
@@ -61,9 +63,14 @@
 .bottom-icon{
   margin-right: 16px;
 }
+.where-the-courses {
+  background-color: #F6F6F6;
+  height: max-content;
+}
 .all-courses {
   display: flex;
   justify-content: space-between;
+
 }
 .addchild-btn {
   background-color: #2342C0;

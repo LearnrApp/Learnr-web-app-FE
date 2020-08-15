@@ -1,8 +1,9 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import Helmet from 'react-helmet'
 import {Link} from  'react-router-dom'
 import MyCourses from './MyCourses'
 import SubjectCard from '../../../../components/SubjectCard'
+import { getCoursesInAClass } from '../../../Utils/studentUtils'
 
 import '../../../../styles/UserDashboard.css'
 // import '../../styles/Style.css'
@@ -11,7 +12,7 @@ const Courses = () => {
   const documentTitle = 'Learnr | Student Dashboard-Courses'
 
   const toSubjectMaths = () => {
-    window.open('/subjects/mathematics', '_self');
+    window.open('/topics/mathematics/js1', '_self');
   }
   const toSubjectEng = () => {
       window.open('/subjects/english', '_self');
@@ -23,11 +24,64 @@ const Courses = () => {
       window.open('/subjects/civic-education', '_self');
   }
 
+  const [loading, setLoading] = useState(false)
+
+  const myCoursesList = [
+    <MyCourses
+      myCoursesImage={require('../../../../images/basic-sci.png')}
+      myCoursesSubject={'Basic Science'}
+      // goToSubject={toSubjectMaths}
+      myCoursesSubjectTopic={'29 Topics'}
+    />,
+    <MyCourses
+      myCoursesImage={require('../../../../images/dm-img.png')}
+      myCoursesSubject={'Digital Marketing'}
+      // goToSubject={toSubjectCivEdu}
+      myCoursesSubjectTopic={'40 Topics'}
+    />,
+  ]
+  const [listMyCourses, addedCourses] = useState(myCoursesList)
+
+  const [courseData, updateCourseData] = useState([])
+
+  const currentClass = '5f365280ecc3590024c93342'
+  useEffect(() => {
+    // if(subjects) return;
+    // getCoursesInAClass(currentClass)
+    //   .then((data) => {
+    //     updateCourseData(data.data.data)
+    //
+    //     const dataArray = Object.values(data.data)
+    //     const dataArrayPayload = Object.values(dataArray[1][0])[2]
+    //
+    //   })
+    getCourses(currentClass)
+  }, [])
+
+  const getCourses = async (currentClass) => {
+    setLoading(true)
+    const response = await getCoursesInAClass(currentClass)
+
+    updateCourseData(Object.values(response.data.data))
+    setLoading(false)
+  }
+  // console.log(courseData[0])
+  console.log(courseData.length)
+
+
   const subjectList = [
     <SubjectCard
       image={require('../../../../images/senior-maths.png')}
       goToSubject={toSubjectMaths}
-      subject={'Mathematics'}
+      subject={
+        useEffect(() => {
+          getCoursesInAClass(currentClass)
+            .then((data) => {
+              const dataArray = Object.values(data.data)
+              return Object.values(dataArray[1][0])[2]
+            })
+        })
+      }
       topicSize={'29 Topics'}
     />,
     <SubjectCard
@@ -51,22 +105,6 @@ const Courses = () => {
   ]
   const [subjects, nextSubject] = useState(subjectList)
 
-  const myCoursesList = [
-    <MyCourses
-      myCoursesImage={require('../../../../images/basic-sci.png')}
-      myCoursesSubject={'Basic Science'}
-      // goToSubject={toSubjectMaths}
-      myCoursesSubjectTopic={'29 Topics'}
-    />,
-    <MyCourses
-      myCoursesImage={require('../../../../images/dm-img.png')}
-      myCoursesSubject={'Digital Marketing'}
-      // goToSubject={toSubjectCivEdu}
-      myCoursesSubjectTopic={'40 Topics'}
-    />,
-  ]
-  const [listMyCourses, addedCourses] = useState(myCoursesList)
-
   return (
     <React.Fragment>
       <Helmet>
@@ -81,24 +119,34 @@ const Courses = () => {
           </div>
           <Link to=""><img className="mx-3 logout-link" src={require('../../../../images/log-in.svg')} alt="" /></Link>
         </div>
-        <div className="p-md-4 p-3">
+        <div className="p-md-4 p-3 ">
         <p className="">My Courses</p>
         <div className="my-courses-wrap">
-            {listMyCourses.map((subject, index) => (
-            <div style={{borderRadius: '4px'}} className="bg-white" key={index}>{subject}</div>
-          ))}
+          {/*  {listMyCourses.map((subject, index) => (*/}
+          {/*  <div style={{borderRadius: '4px'}} className="bg-white" key={index}>{subject}</div>*/}
+          {/*))}*/}
         </div>
         </div>
-        <div className="p-3">
+        <div className="p-3 where-the-courses">
           <div className="d-flex justify-content-between">
-            <p className="">Newest Courses</p>
-            <Link to="" className="">See All</Link>
+            <p className="">All Your Courses</p>
+            {/*<Link to="" className="">See All</Link>*/}
           </div>
-          <div className="all-courses">
-              {subjects.map((subject, index) => (
-                <div className="mx-2 subject-card bg-white d-flex flex-column align-items-center" key={index}>{subject}</div>
-              ))}
-          </div>
+          {courseData.length > 0 ?
+            <div className="all-courses">
+              {courseData.map((course, index) => {
+                return (
+                  <div className="mx-2 subject-card bg-white d-flex flex-column align-items-center" key={index}>
+                    <SubjectCard
+                      image={course.courseImage}
+                      goToSubject={toSubjectMaths}
+                      subject={course.courseTitle}
+                      topicSize={course.courseSize}
+                    />
+                  </div>
+                )
+              })}
+            </div>: ''}
         </div>
       </div>
     </React.Fragment>
