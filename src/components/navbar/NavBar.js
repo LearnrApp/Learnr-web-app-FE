@@ -16,15 +16,17 @@ const NavBar = () => {
             <Nav.Link className="navlink" href="/">Home</Nav.Link>
             <Nav.Link className="navlink" href="/about">About</Nav.Link>
             <Nav.Link className="navlink" href="/contact">Contact Us</Nav.Link>
-            <Nav.Link className="navlink" href="/pricing">Pricing</Nav.Link>
-            <NavDropdown className="navlink navlink--button-1 mx-auto px-3" title="Sign In" id="navlink--button-1">
-              <NavDropdown.Item className="navlink" href="/parents/signin">Parents</NavDropdown.Item>
-              <NavDropdown.Item className="navlink" href="/students/signin">Students</NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown className="navlink navlink--button-2 mx-auto mx-0 px-3" title="Sign Up" id="navlink--button-2">
-              <NavDropdown.Item className="navlink" href="/parents/signup">Parents</NavDropdown.Item>
-              <NavDropdown.Item className="navlink" href="/students/signup">Students</NavDropdown.Item>
-            </NavDropdown>
+            {/*<Nav.Link className="navlink" href="/pricing">Pricing</Nav.Link>*/}
+            <Nav.Link className="navlink navlink--button-1" id="navlink--button-1" href="/students/signin">Login</Nav.Link>
+            <Nav.Link className="navlink navlink--button-2" id="navlink--button-2" href="/students/signup">Sign Up</Nav.Link>
+            {/*<NavDropdown className="navlink navlink--button-1 mx-auto px-3" title="Sign In" id="navlink--button-1">*/}
+            {/*  <NavDropdown.Item className="navlink" href="/parents/signin">Parents</NavDropdown.Item>*/}
+            {/*  <NavDropdown.Item className="navlink" href="/students/signin">Students</NavDropdown.Item>*/}
+            {/*</NavDropdown>*/}
+            {/*<NavDropdown className="navlink navlink--button-2 mx-auto mx-0 px-3" title="Sign Up" id="navlink--button-2">*/}
+            {/*  <NavDropdown.Item className="navlink" href="/parents/signup">Parents</NavDropdown.Item>*/}
+            {/*  <NavDropdown.Item className="navlink" href="/students/signup">Students</NavDropdown.Item>*/}
+            {/*</NavDropdown>*/}
             {/* <Nav.Link className="navlink navlink--button-1 px-3" href="/signin">Sign In</Nav.Link>
             <Nav.Link className="navlink--button-2 text-white px-3" href="/signup">Sign Up</Nav.Link> */}
           </Nav>
