@@ -1,9 +1,10 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Helmet from 'react-helmet'
 import {Link} from  'react-router-dom'
 import ProfileItem from  './ProfileItem'
 import ProfileItemV2 from  './ProfileItemV2'
 import {Modal} from 'react-bootstrap'
+// import { getStudentProfile } from "../../../Utils/studentUtils";
 import '../../../../styles/UserDashboard.css'
 
 
@@ -11,8 +12,22 @@ const Profile = () => {
   const documentTitle = 'Learnr | Student Dashboard-Profile'
 
   const [photoModal, showPhotoModal] = useState(false)
-  // const [infoModal, showInfoModal] = useState(false)
-  
+  const [infoModal, showInfoModal] = useState(false)
+
+  // useEffect(() => {
+  //   studentProfile()
+  // }, [])
+  // const studentToken = localStorage.getItem('learnrStudentToken')
+  //
+  // const studentProfile = () => {
+  //   getStudentProfile(studentToken)
+  //     .then(response => {
+  //       localStorage.setItem('studentProfile', JSON.stringify(response.data.student))
+  //     }
+  //   )
+  // }
+  const studentData = JSON.parse(localStorage.getItem('studentProfile'))
+
   return (
     <React.Fragment>
       <Helmet>
@@ -27,7 +42,7 @@ const Profile = () => {
         <div className="p-3 info-wrap">
           <div className="d-flex align-items-center justify-content-end">
             <img className="mx-3" src={require('../../../../images/bell.svg')} alt="" />
-            <span className="mx-3" >Tony Sandy</span>
+            <span className="mx-3" >{studentData.fullName}</span>
             <img className="mx-3" src={require('../../../../images/profile-pic.png')} alt="" />
           </div>
           <Link to=""><img className="mx-3 logout-link" src={require('../../../../images/log-in.svg')} alt="" /></Link>
@@ -37,7 +52,9 @@ const Profile = () => {
             <img className="mx-auto" src={require('../../../../images/profile-pic.png')} alt="" />
             <span onClick={() => showPhotoModal(true)} className="upload-photo mx-auto">Edit Photo</span>
           </div>
-          <span className="mt-4 text-center">Tonyrex20</span>
+          <span className="mt-4 text-center">
+            {studentData.username}
+          </span>
           <span className="mt-2 text-center">Manage your information and security</span>
         </div>
         <div className="mx-auto container pb-5">
@@ -45,18 +62,18 @@ const Profile = () => {
             <h5 className="font-weight-bolder profile-items--title">Personal Information</h5>
             <ProfileItem
               keys={'Full Name'}
-              value={'Anthony Sandy'}
+              value={studentData.fullName}
               edit={'Edit'}
               // editSection={showPhotoModal(true)}
             />
             <ProfileItemV2
               keys={'Username'}
-              value={'Tonyrex20'}
+              value={studentData.username}
               edit={'Edit'}
             />
             <ProfileItemV2
               keys={'Class'}
-              value={'Js1'}
+              value={studentData.classSelect}
               edit={'Edit'}
             />
             <ProfileItemV2
@@ -75,7 +92,7 @@ const Profile = () => {
             <h5 className="font-weight-bolder profile-items--title">Contact Information</h5>
             <ProfileItem
               keys={'Parent or Guardian’s Email Address'}
-              value={'Quinnise@gmail.com'}
+              value={studentData.parentEmail}
               edit={'Edit'}
               editSection={'e'}
             />
@@ -122,7 +139,7 @@ const Profile = () => {
           </Modal>
         </>
       
-        {/* <>
+         <>
           <Modal
           show={infoModal}
           onHide={() => showInfoModal(false)}
@@ -139,7 +156,7 @@ const Profile = () => {
               </form>
             </Modal.Body>
           </Modal>
-        </> */}
+        </>
       </div>
     </React.Fragment>
   )

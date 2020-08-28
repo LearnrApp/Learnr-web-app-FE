@@ -36,7 +36,7 @@
   margin-left: 18vw;
   background-color: #F6F6F6;
   height: 100vh;
-  min-height: max-content;
+  /*min-height: max-content;*/
 }
 .info-wrap {
   border-bottom: 1px solid #E5E5E5;
@@ -65,11 +65,16 @@
 }
 .where-the-courses {
   background-color: #F6F6F6;
-  height: max-content;
+  height: 600px;
+  overflow-y: auto;
+}
+.where-the-courses::-webkit-scrollbar {
+  width: 0;
 }
 .all-courses {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
 
 }
 .addchild-btn {
@@ -277,7 +282,7 @@ input.message-input:focus {
 @media (max-width: 425px) {
   .main--wrap {
     height: max-content !important;
-    padding-bottom: 70px;
+    /*padding-bottom: 70px;*/
   }
   .all-courses {
     grid-template-columns: 1fr;

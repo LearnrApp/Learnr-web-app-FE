@@ -118,17 +118,17 @@ const StudentDashboard = () => {
               </div>
               <div ref={quizLink} onClick={() => updateBackgroundQuiz()} className="sidebar--item">
                 <Link to="/students/dashboard/quiz">
-                  <SidebarItems sidebaricon={require('../../images/loadbar-doc.svg')} sidebartext={'Quiz'} />
+                  {/*<SidebarItems sidebaricon={require('../../images/loadbar-doc.svg')} sidebartext={'Quiz'} />*/}
                 </Link>
               </div>
               <div ref={achievementsLink} onClick={() => updateBackgroundAchievements()} className="sidebar--item">
                 <Link to="/students/dashboard/achievements">
-                  <SidebarItems sidebaricon={require('../../images/trophy.svg')} sidebartext={'Achievements'} />
+                  {/*<SidebarItems sidebaricon={require('../../images/trophy.svg')} sidebartext={'Achievements'} />*/}
                 </Link>
               </div>
               <div ref={helpLink} onClick={() => updateBackgroundHelp()} className="sidebar--item">
                 <Link to="/students/dashboard/help">
-                  <SidebarItems sidebaricon={require('../../images/help-circle.svg')} sidebartext={'Help'} />
+                  {/*<SidebarItems sidebaricon={require('../../images/help-circle.svg')} sidebartext={'Help'} />*/}
                 </Link>
               </div>
               <div ref={profileLink} onClick={() => updateBackgroundProfile()} className="sidebar--item">
