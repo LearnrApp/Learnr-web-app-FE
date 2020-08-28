@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 import {Link} from  'react-router-dom'
 import MyCourses from './MyCourses'
 import SubjectCard from '../../../../components/SubjectCard'
-import { getCoursesInAClass } from '../../../Utils/studentUtils'
+import {getCoursesInAClass, getStudentProfile} from '../../../Utils/studentUtils'
 
 import '../../../../styles/UserDashboard.css'
 // import '../../styles/Style.css'
@@ -45,17 +45,10 @@ const Courses = () => {
   const [courseData, updateCourseData] = useState([])
 
   const currentClass = '5f365280ecc3590024c93342'
+
   useEffect(() => {
-    // if(subjects) return;
-    // getCoursesInAClass(currentClass)
-    //   .then((data) => {
-    //     updateCourseData(data.data.data)
-    //
-    //     const dataArray = Object.values(data.data)
-    //     const dataArrayPayload = Object.values(dataArray[1][0])[2]
-    //
-    //   })
     getCourses(currentClass)
+    studentProfile()
   }, [])
 
   const getCourses = async (currentClass) => {
@@ -65,45 +58,20 @@ const Courses = () => {
     updateCourseData(Object.values(response.data.data))
     setLoading(false)
   }
-  // console.log(courseData[0])
   console.log(courseData.length)
 
+  const studentToken = localStorage.getItem('learnrStudentToken')
 
-  const subjectList = [
-    <SubjectCard
-      image={require('../../../../images/senior-maths.png')}
-      goToSubject={toSubjectMaths}
-      subject={
-        useEffect(() => {
-          getCoursesInAClass(currentClass)
-            .then((data) => {
-              const dataArray = Object.values(data.data)
-              return Object.values(dataArray[1][0])[2]
-            })
-        })
-      }
-      topicSize={'29 Topics'}
-    />,
-    <SubjectCard
-      image={require('../../../../images/civic-edu.png')}
-      goToSubject={toSubjectCivEdu}
-      subject={'Civic Education'}
-      topicSize={'40 Topics'}
-    />,
-    <SubjectCard
-      image={require('../../../../images/english.png')}
-      goToSubject={toSubjectEng}
-      subject={'English'}
-      topicSize={'25 Topics'}
-    />,
-    <SubjectCard
-      image={require('../../../../images/basic-tech.png')}
-      goToSubject={toSubjectBasTech}
-      subject={'Basic Technology'}
-      topicSize={'40 Topics'}
-    />
-  ]
-  const [subjects, nextSubject] = useState(subjectList)
+  const studentProfile = () => {
+    getStudentProfile(studentToken)
+      .then(response => {
+          localStorage.setItem('studentProfile', JSON.stringify(response.data.student))
+        console.log(response.data.student)
+        }
+      )
+  }
+
+  const studentData = JSON.parse(localStorage.getItem('studentProfile'))
 
   return (
     <React.Fragment>
@@ -114,7 +82,7 @@ const Courses = () => {
         <div className="p-3 info-wrap">
           <div className="d-flex align-items-center justify-content-end">
             <img className="mx-3" src={require('../../../../images/bell.svg')} alt="" />
-            <span className="mx-3" >Tony Sandy</span>
+            <span className="mx-3" >{studentData.fullName}</span>
             <img className="mx-3" src={require('../../../../images/profile-pic.png')} alt="" />
           </div>
           <Link to=""><img className="mx-3 logout-link" src={require('../../../../images/log-in.svg')} alt="" /></Link>
@@ -129,7 +97,7 @@ const Courses = () => {
         </div>
         <div className="p-3 where-the-courses">
           <div className="d-flex justify-content-between">
-            <p className="">All Your Courses</p>
+            {/*<p className="">All Your Courses</p>*/}
             {/*<Link to="" className="">See All</Link>*/}
           </div>
           {courseData.length > 0 ?

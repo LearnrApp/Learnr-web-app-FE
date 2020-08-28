@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import Helmet from 'react-helmet'
 import NavBar from '../../components/navbar/NavBar'
 import Form from 'react-bootstrap/Form'
@@ -9,83 +9,97 @@ import { StudentRegister } from '../../components/Utils/RegisterUtils'
 import {Alert} from "reactstrap";
 
 
-
 const StudentSignup = () => {
-  const register = async (e) => {
-    e.preventDefault()
-    const username = document.getElementById('username').value
-    const password = document.getElementById('password').value
-    const pEmail = document.getElementById('parentEmail').value
-    const statusMessageError = document.getElementById('status-message-error')
-    const statusMessageSuccess = document.getElementById('status-message-success')
-    const studentClass = document.getElementById('classes').value
-    const id = document.getElementById('classes').selectedIndex
-    const idText = document.getElementsByTagName('option')[id].innerText
-    console.log(idText)
-    
-      
-    // const form = document.getElementById('registerStudent')
-    if(username === '' && password === '') {
-      statusMessageError.innerHTML = 'Please fill all required fields'
-      statusMessageError.classList.remove('msg-show')
-      statusMessageError.classList.add('error-message')
-      setTimeout(() => {
-        statusMessageError.classList.add('msg-show')
-        statusMessageError.classList.remove('error-message')
-      }, 4000)
-    } else if(username === '' || password === '') {
-      statusMessageError.innerHTML = 'Please fill all required fields'
-      statusMessageError.classList.remove('msg-show')
-      statusMessageError.classList.add('error-message')
-      setTimeout(() => {
-        statusMessageError.classList.add('msg-show')
-        statusMessageError.classList.remove('error-message')
-      }, 4000)
-    } else {
-      const studentData = {
-        'username': username,
-        'parentEmail': pEmail,
-        'password': password,
-        'classSelect': idText
-      }
-  
-      // let addValidation = true
-      // if(form.checkValidity() === false) {
-      //   e.preventDefault()
-      //   e.stopPropagation()
-      // } else if(form.checkValidity()) {
-      //   e.preventDefault()
-      // }
-  
-      try {
-        const { data } = await StudentRegister(studentData, studentClass)
-        if (data.status === 'error: user-exists') {
-          statusMessageError.innerHTML = data.msg
-          statusMessageError.classList.remove('msg-show')
-          statusMessageError.classList.add('error-message')
-          setTimeout(() => {
-            statusMessageError.classList.add('msg-show')
-            statusMessageError.classList.remove('error-message')
-          }, 4000)
-        } else if(data.status === 'success') {
-            console.log(data)
-            statusMessageSuccess.innerHTML = data.msg
-            statusMessageSuccess.classList.remove('msg-show')
-            statusMessageSuccess.classList.add('success-message')
-          // redirect to login page
-          setTimeout(() => {
-            statusMessageSuccess.classList.add('msg-show')
-            window.location.replace('/students/signin')
-          }, 3000)
+  const spinner = useRef()
+  const btnText = useRef()
+  const btnSign = useRef()
+
+  useEffect(() => {
+    spinner.current.classList.remove('spinner-border')
+
+    btnSign.current.addEventListener('click', async (e) => {
+      e.preventDefault()
+      const username = document.getElementById('username').value
+      const password = document.getElementById('password').value
+      const pEmail = document.getElementById('parentEmail').value
+      const statusMessageError = document.getElementById('status-message-error')
+      const statusMessageSuccess = document.getElementById('status-message-success')
+      const studentClass = document.getElementById('classes').value
+      const id = document.getElementById('classes').selectedIndex
+      const idText = document.getElementsByTagName('option')[id].innerText
+      console.log(idText)
+
+
+      // const form = document.getElementById('registerStudent')
+      if(username === '' && password === '') {
+        statusMessageError.innerHTML = 'Please fill all required fields'
+        statusMessageError.classList.remove('msg-show')
+        statusMessageError.classList.add('error-message')
+        setTimeout(() => {
+          statusMessageError.classList.add('msg-show')
+          statusMessageError.classList.remove('error-message')
+        }, 4000)
+      } else if(username === '' || password === '') {
+        statusMessageError.innerHTML = 'Please fill all required fields'
+        statusMessageError.classList.remove('msg-show')
+        statusMessageError.classList.add('error-message')
+        setTimeout(() => {
+          statusMessageError.classList.add('msg-show')
+          statusMessageError.classList.remove('error-message')
+        }, 4000)
+      } else {
+        spinner.current.classList.add('spinner-border')
+        btnText.current.style.display = 'none'
+        const studentData = {
+          'username': username,
+          'parentEmail': pEmail,
+          'password': password,
+          'classSelect': idText
         }
-      } catch(err) {
-          throw err
+
+        // let addValidation = true
+        // if(form.checkValidity() === false) {
+        //   e.preventDefault()
+        //   e.stopPropagation()
+        // } else if(form.checkValidity()) {
+        //   e.preventDefault()
+        // }
+
+        try {
+          const { data } = await StudentRegister(studentData, studentClass)
+          if (data.status === 'error: user-exists') {
+            spinner.current.classList.remove('spinner-border')
+            btnText.current.style.display = 'block'
+            statusMessageError.innerHTML = data.msg
+            statusMessageError.classList.remove('msg-show')
+            statusMessageError.classList.add('error-message')
+            setTimeout(() => {
+              statusMessageError.classList.add('msg-show')
+              statusMessageError.classList.remove('error-message')
+            }, 4000)
+          } else if(data.status === 'success') {
+              spinner.current.classList.remove('spinner-border')
+              btnText.current.style.display = 'block'
+              // console.log(data)
+              statusMessageSuccess.innerHTML = data.msg
+              statusMessageSuccess.classList.remove('msg-show')
+              statusMessageSuccess.classList.add('success-message')
+            // redirect to login page
+            setTimeout(() => {
+              statusMessageSuccess.classList.add('msg-show')
+              window.location.replace('/students/signin')
+            }, 3000)
+          }
+        } catch(err) {
+            throw err
+        }
+        // if (addValidation) {
+        //   form.classList.add('was-validated');
+        // }
       }
-      // if (addValidation) {
-      //   form.classList.add('was-validated');
-      // }
     }
-  }
+    )
+  })
 
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => {
@@ -151,10 +165,10 @@ const StudentSignup = () => {
                     </Form.Control>
                   </Form.Group> */}
                   <form>
-                    <label for="classes" className="small text-right">Class *</label>
+                    <label htmlFor="classes" className="small text-right">Class *</label>
                     <select id="classes" className="form-control">
-                      <option value="5f352a023be4b886d0f6094a">Js 1</option>
-                      <option>Js 2</option>
+                      <option value="5f365280ecc3590024c93342">Js 1</option>
+                      <option value="457845896512354514796321">Js 2</option>
                       <option>Js 3</option>
                       <option>Ss 1</option>
                       <option>Ss 2</option>
@@ -162,11 +176,14 @@ const StudentSignup = () => {
                     </select>
                   </form>
                 </div>
-                <Button onClick={(e) => register(e)} style={{fontSize: '20px'}} className="general-btn-2 my-3 py-3" type="submit">
-                  Sign Up
+                <Button ref={btnSign} style={{fontSize: '1rem'}} className="general-btn-2 my-3 py-2" type="submit">
+                  <span ref={btnText}>Sign Up</span>
+                  <div ref={spinner} className="spinner-border" role="status">
+                    <span className="sr-only">Loading...</span>
+                  </div>
                 </Button>
               </Form>
-              <span className="text-center d-block pb-5">Have an account? <Link style={{color: '#2342C0'}} to="/students/signin">Sign In</Link></span>
+              <span className="text-center d-block ">Have an account? <Link style={{color: '#2342C0'}} to="/students/signin">Sign In</Link></span>
             </div>
           </div>
         </div>

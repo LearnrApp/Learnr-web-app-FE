@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const LEARNR_API_BASE_URL = 'https://learnr-be.herokuapp.com'
-const LEARNR_API_BASE_UR = 'http://localhost:7000'
+// const LEARNR_API_BASE_URL = 'http://localhost:7000'
 
 export const StudentRegister = async (studentData, id) => {
   const response = await axios ({

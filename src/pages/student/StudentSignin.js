@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import Helmet from 'react-helmet'
 import NavBar from '../../components/navbar/NavBar'
 import Form from 'react-bootstrap/Form'
@@ -10,8 +10,16 @@ import {Alert} from "reactstrap";
 
 
 const StudentSignin = () => {
-  const studentLogin = async (e) => {
+  const spinner = useRef()
+  const btnText = useRef()
+  const btnSign = useRef()
+
+  useEffect (() => {
+    spinner.current.classList.remove('spinner-border')
+
+    btnSign.current.addEventListener('click',  async (e) => {
     e.preventDefault()
+
     const username = document.getElementById('username').value
     const password = document.getElementById('password').value
     const statusMessageError = document.getElementById('status-message-error')
@@ -35,6 +43,8 @@ const StudentSignin = () => {
         statusMessageError.classList.remove('error-message')
       }, 4000)
     } else {
+      spinner.current.classList.add('spinner-border')
+      btnText.current.style.display = 'none'
       const studentData = {
         'username': username,
         'password': password
@@ -48,9 +58,12 @@ const StudentSignin = () => {
       //   e.preventDefault()
       // }
   
+
       try {
         const { data } = await StudentLogin(studentData)
         if (data.status === 'error: wrong-username') {
+          spinner.current.classList.remove('spinner-border')
+          btnText.current.style.display = 'block'
           statusMessageError.innerHTML = data.msg
           statusMessageError.classList.remove('msg-show')
           statusMessageError.classList.add('error-message')
@@ -59,6 +72,8 @@ const StudentSignin = () => {
             statusMessageError.classList.remove('error-message')
           }, 4000)
         } else if(data.status === 'error: wrong-details') {
+          spinner.current.classList.remove('spinner-border')
+          btnText.current.style.display = 'block'
           statusMessageError.innerHTML = data.msg
           statusMessageError.classList.remove('msg-show')
           statusMessageError.classList.add('error-message')
@@ -67,14 +82,18 @@ const StudentSignin = () => {
             statusMessageError.classList.remove('error-message')
           }, 4000)
         } else if (data.status === 'success') {
-            statusMessageSuccess.innerHTML = data.msg
-            statusMessageSuccess.classList.remove('msg-show')
-            statusMessageSuccess.classList.add('success-message')
+
+          spinner.current.classList.remove('spinner-border')
+          btnText.current.style.display = 'block'
+          localStorage.setItem('learnrStudentToken', data.userToken)
+          statusMessageSuccess.innerHTML = data.msg
+          statusMessageSuccess.classList.remove('msg-show')
+          statusMessageSuccess.classList.add('success-message')
           // redirect to login page
           setTimeout(() => {
             statusMessageSuccess.classList.add('msg-show')
-            window.location.replace('/students/dashboard')
-          }, 3000)
+            window.location.replace('/students/dashboard/courses')
+          }, 2000)
         }
       } catch(err) {
           throw err
@@ -83,11 +102,12 @@ const StudentSignin = () => {
       //   form.classList.add('was-validated');
       // }
     }
-  }
+  })
+  }, [])
 
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => {
-    setPasswordShown(passwordShown ? false : true);
+    setPasswordShown(!passwordShown);
   };
   const documentTitle = 'Learnr | Student Sign In'
 
@@ -128,8 +148,11 @@ const StudentSignin = () => {
                 </Form.Group>
 
                 <Link style={{color: '#2342C0'}} className="float-right" to="">Forgot Password?</Link>
-                <button onClick={(e) => studentLogin(e)} style={{fontSize: '20px'}} className="general-btn-2 my-3 py-2" variant="primary" type="submit">
-                  Sign In
+                <button ref={btnSign} /*onClick={(e) => studentLogin(e)}*/ style={{fontSize: '1rem'}} className="general-btn-2 my-3 py-2 " variant="primary" type="submit">
+                  <span ref={btnText}>Login</span>
+                  <div ref={spinner} className="spinner-border" role="status">
+                    <span className="sr-only">Loading...</span>
+                  </div>
                 </button>
               </Form>
               <span className="text-center d-block">Don't have an account? <Link style={{color: '#2342C0'}} to="/students/signup">Create an account</Link></span>
