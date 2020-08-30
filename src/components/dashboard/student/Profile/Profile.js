@@ -26,7 +26,7 @@ const Profile = () => {
   //     }
   //   )
   // }
-  const studentData = JSON.parse(localStorage.getItem('studentProfile'))
+  const studentData = JSON.parse(localStorage.getItem('learnrStudentProfile'))
 
   return (
     <React.Fragment>
@@ -52,7 +52,7 @@ const Profile = () => {
             <img className="mx-auto" src={require('../../../../images/profile-pic.png')} alt="" />
             <span onClick={() => showPhotoModal(true)} className="upload-photo mx-auto">Edit Photo</span>
           </div>
-          <span className="mt-4 text-center">
+          <span style={{textTransform: 'capitalize'}} className="mt-4 text-center">
             {studentData.username}
           </span>
           <span className="mt-2 text-center">Manage your information and security</span>

@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 import {Link} from  'react-router-dom'
 import MyCourses from './MyCourses'
 import SubjectCard from '../../../../components/SubjectCard'
-import {getCoursesInAClass, getStudentProfile} from '../../../Utils/studentUtils'
+import { getCoursesInAClass, getStudentProfile } from '../../../Utils/StudentUtils'
 
 import '../../../../styles/UserDashboard.css'
 // import '../../styles/Style.css'
@@ -40,38 +40,54 @@ const Courses = () => {
       myCoursesSubjectTopic={'40 Topics'}
     />,
   ]
+  // console.log(studentToken)
+
+    
+
+  // .then(response => {
+  //     localStorage.setItem('studentProfile', JSON.stringify(response.data.student))
+  //   }
+  // )
+
+  // console.log(response)
+
+  
+  getStudentProfile()
+  .then(res => {
+    console.log(res.data.data.student)
+    localStorage.setItem('learnrStudentProfile', JSON.stringify(res.data.data.student))
+  })
+  const studentData = JSON.parse(localStorage.getItem('learnrStudentProfile'))
+  console.log(studentData)
+
+  useEffect(() => {
+    getCourses()
+  })
+
+  getCoursesInAClass()
+  .then(res => {
+    console.log(Object.values(res.data.data))
+    localStorage.setItem('learnrStudentCourses', JSON.stringify(res.data.data))
+  })
+
   const [listMyCourses, addedCourses] = useState(myCoursesList)
 
   const [courseData, updateCourseData] = useState([])
 
-  const currentClass = '5f365280ecc3590024c93342'
-
-  useEffect(() => {
-    getCourses(currentClass)
-    studentProfile()
-  }, [])
-
-  const getCourses = async (currentClass) => {
+ 
+  
+  const response = JSON.parse(localStorage.getItem('learnrStudentCourses'))
+  console.log(response)
+  const courses = Object.values(response)
+  console.log(courses.length)
+  const getCourses = () => {
     setLoading(true)
-    const response = await getCoursesInAClass(currentClass)
 
-    updateCourseData(Object.values(response.data.data))
+    // updateCourseData(Object.values(response))
     setLoading(false)
   }
   console.log(courseData.length)
 
-  const studentToken = localStorage.getItem('learnrStudentToken')
-
-  const studentProfile = () => {
-    getStudentProfile(studentToken)
-      .then(response => {
-          localStorage.setItem('studentProfile', JSON.stringify(response.data.student))
-        console.log(response.data.student)
-        }
-      )
-  }
-
-  const studentData = JSON.parse(localStorage.getItem('studentProfile'))
 
   return (
     <React.Fragment>
@@ -82,7 +98,7 @@ const Courses = () => {
         <div className="p-3 info-wrap">
           <div className="d-flex align-items-center justify-content-end">
             <img className="mx-3" src={require('../../../../images/bell.svg')} alt="" />
-            <span className="mx-3" >{studentData.fullName}</span>
+            {/* <span className="mx-3" >{studentData.fullName}</span> */}
             <img className="mx-3" src={require('../../../../images/profile-pic.png')} alt="" />
           </div>
           <Link to=""><img className="mx-3 logout-link" src={require('../../../../images/log-in.svg')} alt="" /></Link>
@@ -100,9 +116,9 @@ const Courses = () => {
             {/*<p className="">All Your Courses</p>*/}
             {/*<Link to="" className="">See All</Link>*/}
           </div>
-          {courseData.length > 0 ?
+          {courses.length > 0 ?
             <div className="all-courses">
-              {courseData.map((course, index) => {
+              {courses.map((course, index) => {
                 return (
                   <div className="mx-2 subject-card bg-white d-flex flex-column align-items-center" key={index}>
                     <SubjectCard
