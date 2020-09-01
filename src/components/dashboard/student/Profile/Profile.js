@@ -63,8 +63,8 @@ const Profile = () => {
             <ProfileItem
               keys={'Full Name'}
               value={studentData.fullName}
-              edit={'Edit'}
-              // editSection={showPhotoModal(true)}
+              edit={'Edit Profile'}
+              // editSection={showInfoModal(true)}
             />
             <ProfileItemV2
               keys={'Username'}
@@ -78,29 +78,29 @@ const Profile = () => {
             />
             <ProfileItemV2
               keys={'Gender'}
-              value={'Male'}
+              value={studentData.gender}
               edit={'Edit'}
             />
             <ProfileItem
               keys={'Password'}
               value={'********'}
               edit={'Edit'}
-              editSection={'e'}
+              editSection={() => {}}
             />
           </div>
           <div className="profile-items--wrap mt-4">
             <h5 className="font-weight-bolder profile-items--title">Contact Information</h5>
-            <ProfileItem
+            <ProfileItemV2
               keys={'Parent or Guardian’s Email Address'}
               value={studentData.parentEmail}
-              edit={'Edit'}
-              editSection={'e'}
+              // edit={'Edit'}
+              // editSection={'e'}
             />
-            <ProfileItem
+            <ProfileItemV2
               keys={'Phone Number'}
-              value={'Nil'}
-              edit={'Edit'}
-              editSection={'e'}
+              value={studentData.phone}
+              // edit={'Edit'}
+              // editSection={'e'}
             />
           </div>
           <div className="mt-4">
@@ -125,9 +125,9 @@ const Profile = () => {
           >
             {/* <Modal.Body className="d-flex flex-column justify-content-center"> */}
             <form action="" className="mx-auto my-3 d-flex flex-column">
-            <div class="modal-box d-flex fex-column align-items-center justify-content-center">
-              <input type="file" name="file-photo[]" id="file-photo" class="d-none inputfile inputfile-4" data-multiple-caption="{count} files selected" multiple />
-              <label for="file-photo">
+            <div className="modal-box d-flex fex-column align-items-center justify-content-center">
+              <input type="file" name="file-photo[]" id="file-photo" className="d-none inputfile inputfile-4" data-multiple-caption="{count} files selected" multiple />
+              <label htmlFor="file-photo">
                 <figure><img className="" src={require('../../../../images/Upload.svg')} alt="" /></figure>
                 <h5 className="text-center">Upload Photo&hellip;</h5>
               </label>

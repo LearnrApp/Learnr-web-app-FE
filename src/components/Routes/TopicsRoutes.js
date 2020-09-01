@@ -1,1 +1,0 @@
-const MATHEMATICS_JS1_URL = '/'
