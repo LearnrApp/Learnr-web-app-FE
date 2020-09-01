@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 import {Link} from  'react-router-dom'
 import MyCourses from './MyCourses'
 import SubjectCard from '../../../../components/SubjectCard'
-import { getCoursesInAClass, getStudentProfile } from '../../../Utils/StudentUtils'
+import { getCoursesInAClass, getStudentProfile, getArticlesInCourses } from '../../../Utils/StudentUtils'
 
 import '../../../../styles/UserDashboard.css'
 // import '../../styles/Style.css'
@@ -11,11 +11,16 @@ import '../../../../styles/UserDashboard.css'
 const Courses = () => {
   const documentTitle = 'Learnr | Student Dashboard-Courses'
 
-  const toSubjectMaths = () => {
-    window.open('/topics/mathematics/js1', '_self');
+  const checkSubjectAndSet = () => {
+    
   }
-  const toSubjectEng = () => {
-      window.open('/subjects/english', '_self');
+  const toSubjectMaths = () => {
+    
+    // window.open('/course/topics', '_self');
+  }
+  const toSubjectTopics = () => {
+    // window.open('/course/topics', '_self');
+    window.open('/topics/mathematics/js1', '_self');
   }
   const toSubjectBasTech = () => {
       window.open('/subjects/basic-technology', '_self');
@@ -79,7 +84,8 @@ const Courses = () => {
   const response = JSON.parse(localStorage.getItem('learnrStudentCourses'))
   console.log(response)
   const courses = Object.values(response)
-  console.log(courses.length)
+  console.log(courses)
+  
   const getCourses = () => {
     setLoading(true)
 
@@ -122,10 +128,76 @@ const Courses = () => {
                 return (
                   <div className="mx-2 subject-card bg-white d-flex flex-column align-items-center" key={index}>
                     <SubjectCard
-                      image={course.courseImage}
-                      goToSubject={toSubjectMaths}
-                      subject={course.courseTitle}
-                      topicSize={course.courseSize}
+                      image={ course.courseImage }
+                      goToSubject={ () => {
+                        let className = course.class.className
+                        let courseId = course._id
+                        console.log(courseId)
+                        console.log(className)
+                        getArticlesInCourses(courseId)
+                        .then(res => {
+                          console.log(res.data.data)
+                          if(course.courseTitle === 'Mathematics') {
+                            const mathematicsArticles = Object.values(res.data.data)
+                            localStorage.setItem('mathematicsArticles', JSON.stringify(mathematicsArticles))
+                            // console.log(biologyArticles)
+                            // const data = biologyArticles.map((data) => {
+                            //   return data.topic
+                            // })
+                            // console.log(data)
+                            // const datared = data.splice(1)
+                            // console.log(datared)
+                          } else if(course.courseTitle === 'English') {
+                            const englishArticles = Object.values(res.data.data)
+                            localStorage.setItem('englishArticles', JSON.stringify(englishArticles))
+                          } else if(course.courseTitle === 'Basic Science') {
+                            const basicSciArticles = Object.values(res.data.data)
+                            localStorage.setItem('basicSciArticles', JSON.stringify(basicSciArticles))
+                          } else if(course.courseTitle === 'Basic Technology') {
+                            const basicTechArticles = Object.values(res.data.data)
+                            localStorage.setItem('basicTechArticles', JSON.stringify(basicTechArticles))
+                          } else if(course.courseTitle === 'Social Science') {
+                            const socSciArticles = Object.values(res.data.data)
+                            localStorage.setItem('socSciArticles', JSON.stringify(socSciArticles))
+                          } else if(course.courseTitle === 'Civic Education') {
+                            const civicEduArticles = Object.values(res.data.data)
+                            localStorage.setItem('civicEduArticles', JSON.stringify(civicEduArticles))
+                          } else if(course.courseTitle === 'Economics') {
+                            const economicsArticles = Object.values(res.data.data)
+                            localStorage.setItem('economicsArticles', JSON.stringify(economicsArticles))
+                          } else if(course.courseTitle === 'Biology') {
+                            const biologyArticles = Object.values(res.data.data)
+                            localStorage.setItem('biologyArticles', JSON.stringify(biologyArticles))
+                            window.open('/biology/topics', '_self')
+                          } else if(course.courseTitle === 'Physics') {
+                            const physicsArticles = Object.values(res.data.data)
+                            localStorage.setItem('physicsArticles', JSON.stringify(physicsArticles))
+                          } else if(course.courseTitle === 'Chemistry') {
+                            const chemistryArticles = Object.values(res.data.data)
+                            localStorage.setItem('chemistryArticles', JSON.stringify(chemistryArticles))
+                          } else if(course.courseTitle === 'Literature') {
+                            const literatureArticles = Object.values(res.data.data)
+                            localStorage.setItem('literatureArticles', JSON.stringify(literatureArticles))
+                          } else if(course.courseTitle === 'Government') {
+                            const governmentArticles = Object.values(res.data.data)
+                            localStorage.setItem('governmentArticles', JSON.stringify(governmentArticles))
+                          } else if(course.courseTitle === 'C.R.S') {
+                            const crsArticles = Object.values(res.data.data)
+                            localStorage.setItem('crsArticles', JSON.stringify(crsArticles))
+                          } else {
+                            return false
+                          }
+                        })
+                        // toSubjectMaths()
+                        
+                        // if (course.courseTitle === 'Biology' && course.class.className === 'Ss 3') {
+                        //   console.log('Nawa o!')
+                        // } else if (course.courseTitle === 'English') {
+                        //   window.open('https://twitter.com')
+                        // }
+                      } }
+                      subject={ course.courseTitle }
+                      topicSize={ course.courseSize }
                     />
                   </div>
                 )

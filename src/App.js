@@ -1,5 +1,5 @@
-import React from 'react';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import React from 'react'
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import Welcome from './pages/externalPages/Welcome'
 import About from './pages/externalPages/About/About'
 import Contact from './pages/externalPages/Contact'
@@ -8,12 +8,14 @@ import ResetPassword from './pages/ResetPassword/ResetPassword'
 import AdminSignin from './pages/admin/AdminSignin'
 import StudentSignup from './pages/student/StudentSignup'
 import StudentSignin from './pages/student/StudentSignin'
-import StudentDashboard from './pages/student/StudentDashboard';
+import StudentDashboard from './pages/student/StudentDashboard'
 import ParentSignup from './pages/parent/ParentSignup'
 import ParentSignin from './pages/parent/ParentSignin'
-import ParentDashboard from './pages/parent/ParentDashboard';
-import MathematicsJs1 from "./pages/topics/Js1Topics/MathematicsJs1";
-import MathematicsJs1Article from "./pages/articles/MathematicsJs1Article";
+import ParentDashboard from './pages/parent/ParentDashboard'
+import MathematicsJs1 from "./pages/topics/Js1Topics/MathematicsJs1"
+import MathematicsJs1Article from "./pages/articles/MathematicsJs1Article"
+import BiologyTopics from './pages/topics/BiologyTopics'
+import BiologyArticles from './pages/articles/BiologyArticles'
 
 
 const App = () => {
@@ -34,6 +36,8 @@ const App = () => {
       <Route exact path='/admin/signin' component={ AdminSignin } />
       <Route exact path='/topics/mathematics/js1' component={ MathematicsJs1 } />
       <Route exact path='/articles/mathematics/js1' component={ MathematicsJs1Article } />
+      <Route path='/biology/topics' component={ BiologyTopics } />
+      <Route path='/biology/article' component={ BiologyArticles } />
     </Switch>
     </BrowserRouter>
   );

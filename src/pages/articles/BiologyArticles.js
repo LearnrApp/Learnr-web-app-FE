@@ -6,11 +6,11 @@ import {Link} from "react-router-dom";
 import '../../styles/Articles.scss'
 
 
-const MathematicsJs1Article = () => {
+const BiologyArticle = () => {
 
   const documentTitle = 'Learnr | Mathematics for Js1'
 
-
+  const getBiologyArticle = JSON.parse(localStorage.getItem('learnrBiologyArticleBody'))
 
   return (
     <React.Fragment>
@@ -31,17 +31,18 @@ const MathematicsJs1Article = () => {
             <span className="selected-page">Article</span>
             {/* <span className="unselected-page">Quiz</span> */}
           </div>
-          <h3 className="article-subject">Mathematics - 01</h3>
+          <h3 className="article-subject">Biology</h3>
           {/* <p className="article-topic">Development of number systems; counting, symbols for numbers and the place-value system</p> */}
           <div className="d-flex">
             <Link to='/biology/topics' className="">Topics&nbsp;&gt;</Link>
-            <span className="d-block pl-2">Development of number systems; counting, symbols for numbers and the place-value system</span>
+            <span className="d-block pl-2">{getBiologyArticle.articleTopic}</span>
           </div>
         </div>
         <div className="video-wrap">
-          <iframe width="650" height="480" src="https://www.youtube.com/embed/ku4KOFQ-bB4" frameBorder="0"
+          {getBiologyArticle.articleContent}
+          {/* <iframe width="650" height="480" src="https://www.youtube.com/embed/ku4KOFQ-bB4" frameBorder="0"
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen></iframe>
+                  allowFullScreen></iframe> */}
         </div>
         <div className="main-article">
           <article className="section-article">
@@ -216,4 +217,4 @@ const MathematicsJs1Article = () => {
 
 
 
-export default MathematicsJs1Article
+export default BiologyArticle
