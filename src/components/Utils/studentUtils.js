@@ -32,5 +32,18 @@ export const getCoursesInAClass = async () => {
   })
   
   return response;
-};
+}
+
+export const getArticlesInCourses = (courseId) => {
+  const response = axios({
+    method: 'GET',
+    url: `${LEARNR_API_BASE_URL}/class/${courseId}/article`,
+    headers: {
+      accept: 'application/json'
+    }
+  })
+
+  return response
+}
+
 

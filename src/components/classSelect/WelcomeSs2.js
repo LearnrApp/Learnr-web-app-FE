@@ -62,7 +62,7 @@ const Ss2 = () => {
     <SubjectCard
       image={require('../../images/physics-2.jpg')}
       goToSubject={toSubjectSocStud}
-      subject={'Physcs'}
+      subject={'Physics'}
       topicSize={'35 Topics'}
     />,
     <SubjectCard
