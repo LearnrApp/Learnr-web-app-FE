@@ -11,7 +11,7 @@ const ProfileItemV2 = (props) => {
         <span className="col font-weight-bold" style={{color: '#212429'}}>{props.value}</span>
         <span className="col "
           style={{color: 'transparent'}}
-        >{props.edit}</span>
+        ></span>
       </div>
     </React.Fragment>
   )
