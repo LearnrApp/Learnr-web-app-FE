@@ -85,7 +85,7 @@ const StudentSignin = () => {
 
           spinner.current.classList.remove('spinner-border')
           btnText.current.style.display = 'block'
-          localStorage.setItem('learnrStudentToken', data.userToken)
+          localStorage.setItem('learnrToken', data.userToken)
           statusMessageSuccess.innerHTML = data.msg
           statusMessageSuccess.classList.remove('msg-show')
           statusMessageSuccess.classList.add('success-message')

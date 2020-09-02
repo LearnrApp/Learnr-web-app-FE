@@ -42,3 +42,12 @@ export const ParentLogin = async (parentData) => {
 
   return response
 }
+
+export default function getCurrentUser() {
+  try {
+    const learnrToken = localStorage.getItem('learnrToken');
+    return JSON.parse(atob(learnrToken.split('.')[1]));
+  } catch (e) {
+    return null;
+  }
+}

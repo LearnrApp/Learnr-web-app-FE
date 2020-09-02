@@ -1,7 +1,7 @@
 import React from 'react'
-import '../../styles/UserDashboard.css'
+import '../../../../styles/UserDashboard.css'
 
-const SidebarItems = (props) => {
+const StudentSidebarItems = (props) => {
   return (
     <React.Fragment>
       <div className="bottom-nav">
@@ -12,4 +12,4 @@ const SidebarItems = (props) => {
   )
 }
 
-export default SidebarItems
+export default StudentSidebarItems

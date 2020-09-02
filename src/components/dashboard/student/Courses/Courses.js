@@ -4,7 +4,7 @@ import {Link} from  'react-router-dom'
 import MyCourses from './MyCourses'
 import SubjectCard from '../../../../components/SubjectCard'
 import { getCoursesInAClass, getStudentProfile, getArticlesInCourses } from '../../../Utils/StudentUtils'
-
+import getCurrentUser from '../../../Utils/RegisterUtils'
 import '../../../../styles/UserDashboard.css'
 // import '../../styles/Style.css'
 
@@ -56,7 +56,12 @@ const Courses = () => {
 
   // console.log(response)
 
-  
+  getCurrentUser()
+  console.log(getCurrentUser().id)
+  if(getCurrentUser().id) {
+    console.log('user exists')
+  }
+
   getStudentProfile()
   .then(res => {
     console.log(res.data.data.student)
@@ -104,7 +109,7 @@ const Courses = () => {
         <div className="p-3 info-wrap">
           <div className="d-flex align-items-center justify-content-end">
             <img className="mx-3" src={require('../../../../images/bell.svg')} alt="" />
-            {/* <span className="mx-3" >{studentData.fullName}</span> */}
+            <span className="mx-3" >{studentData.fullName}</span>
             <img className="mx-3" src={require('../../../../images/profile-pic.png')} alt="" />
           </div>
           <Link to=""><img className="mx-3 logout-link" src={require('../../../../images/log-in.svg')} alt="" /></Link>

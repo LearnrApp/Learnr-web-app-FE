@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import Helmet from 'react-helmet'
-import NavBar from '../../components/navbar/NavBarUser'
+import NavBar from '../../components/navbar/NavBar'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import '../../styles/Sign.css'

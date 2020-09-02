@@ -1,8 +1,8 @@
 import React, {useState, useRef} from 'react'
 import Helmet from 'react-helmet'
 import {Link} from  'react-router-dom'
-import SidebarItems from '../../components/Users/SidebarItems'
-import NavBarUser from '../../components/navbar/NavBarUser'
+// import SidebarItems from '../../components/Users/SidebarItems'
+import NavBar from '../../components/navbar/NavBar'
 import YourKids from '../../components/dashboard/parent/Courses/YourKids'
 import AchievementParent from '../../components/dashboard/parent/Achievements/Achievements'
 import HelpSupport from '../../components/dashboard/parent/Help/ParentHelp'
@@ -77,8 +77,8 @@ const StudentDashboard = () => {
           content="The dashboard panel for parents to access all functions available to them on the application."
         />
       </Helmet>
-      <NavBarUser />
-      <div className="container-fluid px-0 dash-wrap">
+      <NavBar />
+      {/* <div className="container-fluid px-0 dash-wrap"> */}
         {/* <div className="sidebar--wrap">
           <div className="sidebar--greet px-3 py-4">
             <span className="text-white">Hello, James</span>
@@ -99,7 +99,7 @@ const StudentDashboard = () => {
             <SidebarItems sidebaricon={require('../../images/log-in.svg')} sidebartext={'Log Out'} />
           </div>
         </div> */}
-        <div className="sidebar--wrap">
+        {/* <div className="sidebar--wrap">
           <div className="sidebar--greet px-3 py-4">
             <span className="text-white">Hello, James</span>
           </div>
@@ -153,8 +153,8 @@ const StudentDashboard = () => {
           </div>
         </div>
       <React.Fragment>{dashboardMenu}</React.Fragment>
-      </div>
-      <React.Fragment>
+      </div> */}
+      {/* <React.Fragment>
       <div className="bg-white fixed-bottom bottom-navigate">
         <div className="d-flex justify-content-between mx-2 mx-md-3 align-items-center">
           <div onClick={() => {
@@ -184,7 +184,7 @@ const StudentDashboard = () => {
           </div>
         </div>
       </div>
-      </React.Fragment>
+      </React.Fragment> */}
     </React.Fragment>
   )
 }
