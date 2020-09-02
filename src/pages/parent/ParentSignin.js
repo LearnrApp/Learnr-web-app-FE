@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import '../../styles/Sign.css'
 import { Link } from 'react-router-dom'
-import { ParentLogin } from '../../components/Utils/RegisterUtils'
+import { ParentLogin } from '../../components/Utils/AuthUtils'
 import {Alert} from "reactstrap";
 
 const StudentSignin = () => {

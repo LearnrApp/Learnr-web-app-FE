@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button'
 import { Alert } from 'reactstrap'
 import '../../styles/Sign.css'
 import { Link } from 'react-router-dom'
-import { ParentRegister } from '../../components/Utils/RegisterUtils'
+import { ParentRegister } from '../../components/Utils/AuthUtils'
 
 
 const ParentSignup = () => {

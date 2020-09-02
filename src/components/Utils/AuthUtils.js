@@ -43,6 +43,14 @@ export const ParentLogin = async (parentData) => {
   return response
 }
 
+export function clearUserToken() {
+  try {
+    localStorage.clear();
+  } catch (e) {
+    return null;
+  }
+}
+
 export default function getCurrentUser() {
   try {
     const learnrToken = localStorage.getItem('learnrToken');

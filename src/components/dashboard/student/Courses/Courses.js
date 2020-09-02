@@ -4,7 +4,7 @@ import {Link} from  'react-router-dom'
 import MyCourses from './MyCourses'
 import SubjectCard from '../../../../components/SubjectCard'
 import { getCoursesInAClass, getStudentProfile, getArticlesInCourses } from '../../../Utils/StudentUtils'
-import getCurrentUser from '../../../Utils/RegisterUtils'
+import getCurrentUser from '../../../Utils/AuthUtils'
 import '../../../../styles/UserDashboard.css'
 // import '../../styles/Style.css'
 
