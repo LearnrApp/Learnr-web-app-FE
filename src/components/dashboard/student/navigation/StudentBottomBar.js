@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom'
 import StudentSidebarItems from './StudentSidebarItems'
 import '../../../../styles/UserDashboard.css'
 import '../../../../styles/Style.css'
+import { studentsUrl } from '../../../routes/StudentRoutes'
 
 const StudentBottomBar = () => {
   return (
     <div className="bg-white fixed-bottom bottom-navigate">
       <div className="d-flex justify-content-between mx-2 mx-md-3 align-items-center">
         <div className="sidebar--item small">
-          <Link to="/students/dashboard/courses">
+          <Link to={studentsUrl.STUDENT_DASHBOARD_COURSES_URL}>
             <StudentSidebarItems sidebaricon={require('../../../../images/readme.svg')} sidebartext={'Courses'} />
           </Link>
         </div>

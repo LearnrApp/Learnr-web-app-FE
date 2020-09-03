@@ -9,10 +9,7 @@ import getCurrentUSer from '../Utils/AuthUtils'
 const NavBar = () => {
   function userNav() {
     getCurrentUSer()
-    if(getCurrentUSer().id) {
-      console.log('it works')
-      return <Nav.Link className="navlink" href="/students/dashboard/courses">Dashboard</Nav.Link>
-    } else {
+    if(!getCurrentUSer()) {
       return <>
         <Nav.Link className="navlink" href="/">Home</Nav.Link>
         <Nav.Link className="navlink" href="/about">About</Nav.Link>
@@ -31,6 +28,8 @@ const NavBar = () => {
         {/* <Nav.Link className="navlink navlink--button-1 px-3" href="/signin">Sign In</Nav.Link>
         <Nav.Link className="navlink--button-2 text-white px-3" href="/signup">Sign Up</Nav.Link> */}
       </> 
+    } else {
+      return <Nav.Link className="navlink" href="/students/dashboard/courses">Dashboard</Nav.Link>
     }
   }
 
