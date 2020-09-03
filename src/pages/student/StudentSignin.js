@@ -1,11 +1,12 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, {useEffect, useRef, useState, useLayoutEffect } from 'react'
 import Helmet from 'react-helmet'
 import NavBar from '../../components/navbar/NavBar'
 import Form from 'react-bootstrap/Form'
 // import Button from 'react-bootstrap/Button'
 import '../../styles/Sign.css'
 import { Link } from 'react-router-dom'
-import { StudentLogin } from '../../components/Utils/AuthUtils'
+import getCurrentUser, { StudentLogin } from '../../components/Utils/AuthUtils'
+import { getStudentProfile, getCoursesInAClass } from '../../components/Utils/StudentUtils'
 import {Alert} from "reactstrap";
 
 
@@ -13,6 +14,13 @@ const StudentSignin = () => {
   const spinner = useRef()
   const btnText = useRef()
   const btnSign = useRef()
+
+  useLayoutEffect(() => {
+    getCurrentUser()
+    if(getCurrentUser()) {
+      return window.open('/students/dashboard/courses', '_self')
+    }
+  }, [])
 
   useEffect (() => {
     spinner.current.classList.remove('spinner-border')
@@ -89,11 +97,21 @@ const StudentSignin = () => {
           statusMessageSuccess.innerHTML = data.msg
           statusMessageSuccess.classList.remove('msg-show')
           statusMessageSuccess.classList.add('success-message')
-          // redirect to login page
-          setTimeout(() => {
-            statusMessageSuccess.classList.add('msg-show')
-            window.location.replace('/students/dashboard/courses')
-          }, 2000)
+          getStudentProfile()
+          .then(res => {
+            console.log(res.data.data.student)
+            localStorage.setItem('learnrStudentProfile', JSON.stringify(res.data.data.student))
+            getCoursesInAClass()
+            .then(res => {
+              console.log(Object.values(res.data.data))
+              localStorage.setItem('learnrStudentCourses', JSON.stringify(res.data.data))
+              // redirect to login page
+              setTimeout(() => {
+                statusMessageSuccess.classList.add('msg-show')
+                window.location.replace('/students/dashboard/courses')
+              }, 2000)
+            })
+          })
         }
       } catch(err) {
           throw err

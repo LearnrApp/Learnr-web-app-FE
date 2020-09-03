@@ -1,11 +1,11 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, {useEffect, useRef, useState, useLayoutEffect } from 'react'
 import Helmet from 'react-helmet'
 import NavBar from '../../components/navbar/NavBar'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import '../../styles/Sign.css'
 import { Link } from 'react-router-dom'
-import { StudentRegister } from '../../components/Utils/AuthUtils'
+import getCurrentUser, { StudentRegister } from '../../components/Utils/AuthUtils'
 import {Alert} from "reactstrap";
 
 
@@ -13,6 +13,13 @@ const StudentSignup = () => {
   const spinner = useRef()
   const btnText = useRef()
   const btnSign = useRef()
+
+  useLayoutEffect(() => {
+    getCurrentUser()
+    if(getCurrentUser()) {
+      return window.open('/students/dashboard/courses', '_self')
+    }
+  }, [])
 
   useEffect(() => {
     spinner.current.classList.remove('spinner-border')
