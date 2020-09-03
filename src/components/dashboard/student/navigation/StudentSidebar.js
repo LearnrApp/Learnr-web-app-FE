@@ -86,7 +86,7 @@ const StudentSidebar = () => {
                 </Link>
               </div>
               <div ref={helpLink} onClick={() => updateBackgroundHelp()} className="sidebar--item">
-                <Link to="/students/dashboard/help">
+                <Link to={studentsUrl.STUDENT_DASHBOARD_HELP_URL}>
                   {/*<StudentSidebarItems sidebaricon={require('../../../../images/help-circle.svg')} sidebartext={'Help'} />*/}
                 </Link>
               </div>
