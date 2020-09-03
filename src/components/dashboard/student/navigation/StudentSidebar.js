@@ -91,7 +91,7 @@ const StudentSidebar = () => {
                 </Link>
               </div>
               <div ref={profileLink} onClick={() => updateBackgroundProfile()} className="sidebar--item">
-                <Link to="/students/dashboard/profile">
+                <Link to={studentsUrl.STUDENT_DASHBOARD_PROFILE_URL}>
                   <StudentSidebarItems sidebaricon={require('../../../../images/mdi_account_circle.svg')} sidebartext={'Profile'} />
                 </Link>
               </div>

@@ -179,7 +179,7 @@ const StudentSignup = () => {
                       <option>Js 3</option>
                       <option>Ss 1</option>
                       <option>Ss 2</option>
-                      <option>Ss 3</option>
+                      <option value="5f3652dbecc3590024c93347">Ss 3</option>
                     </select>
                   </form>
                 </div>

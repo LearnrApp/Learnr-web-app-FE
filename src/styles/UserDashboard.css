@@ -38,6 +38,18 @@
   height: 100vh;
   /*min-height: max-content;*/
 }
+.upload-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.upload-image--cloud {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 .info-wrap {
   border-bottom: 1px solid #E5E5E5;
 }
