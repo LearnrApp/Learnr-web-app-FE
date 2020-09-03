@@ -1,6 +1,6 @@
 import React from 'react'
 import NavBar from '../../components/navbar/NavBar'
-import AchievementStudent from '../../components/dashboard/student/Achievements/Achievements'
+import HelpSupport from '../../components/dashboard/student/Help/Help'
 import StudentSidebar from '../../components/dashboard/student/navigation/StudentSidebar'
 import StudentBottomBar from '../../components/dashboard/student/navigation/StudentBottomBar'
 import '../../styles/UserDashboard.css'
@@ -8,7 +8,7 @@ import '../../styles/Style.css'
 import getCurrentUser from '../../components/Utils/AuthUtils'
 
 
-const StudentDashboardAchieve = () => {
+const StudentDashboardHelp = () => {
   getCurrentUser()
   if(!getCurrentUser()) {
     return window.open('/students/signin', '_self')
@@ -19,11 +19,11 @@ const StudentDashboardAchieve = () => {
       <NavBar />
       <div className="container-fluid px-0 dash-wrap">
         <StudentSidebar />
-        <AchievementStudent />
+        <HelpSupport />
         <StudentBottomBar />
       </div>
     </React.Fragment>
   )
 }
 
-export default StudentDashboardAchieve
+export default StudentDashboardHelp
