@@ -109,7 +109,7 @@ const StudentSignin = () => {
               setTimeout(() => {
                 statusMessageSuccess.classList.add('msg-show')
                 window.location.replace('/students/dashboard/courses')
-              }, 2000)
+              }, 1000)
             })
           })
         }

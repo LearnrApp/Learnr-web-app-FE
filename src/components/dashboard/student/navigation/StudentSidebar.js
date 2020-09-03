@@ -76,12 +76,12 @@ const StudentSidebar = () => {
                 </Link>
               </div>
               <div ref={quizLink} onClick={() => updateBackgroundQuiz()} className="sidebar--item">
-                <Link to="/students/dashboard/quiz">
+                <Link to={studentsUrl.STUDENT_DASHBOARD_QUIZ_URL}>
                   {/*<StudentSidebarItems sidebaricon={require('../../../../images/loadbar-doc.svg')} sidebartext={'Quiz'} />*/}
                 </Link>
               </div>
               <div ref={achievementsLink} onClick={() => updateBackgroundAchievements()} className="sidebar--item">
-                <Link to="/students/dashboard/achievements">
+                <Link to={studentsUrl.STUDENT_DASHBOARD_ACHIEVEMENTS_URL}>
                   {/*<StudentSidebarItems sidebaricon={require('../../../../images/trophy.svg')} sidebartext={'Achievements'} />*/}
                 </Link>
               </div>
