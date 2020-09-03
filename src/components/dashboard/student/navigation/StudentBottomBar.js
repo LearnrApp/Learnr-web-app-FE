@@ -20,7 +20,7 @@ const StudentBottomBar = () => {
           </Link>
         </div>
         <div className="sidebar--item small">
-          <Link to="/students/dashboard/achievements">
+          <Link to={studentsUrl.STUDENT_DASHBOARD_ACHIEVEMENTS_URL}>
             <StudentSidebarItems sidebaricon={require('../../../../images/trophy.svg')} sidebartext={'Achievements'} />
           </Link>
         </div>
