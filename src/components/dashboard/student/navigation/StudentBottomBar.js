@@ -15,7 +15,7 @@ const StudentBottomBar = () => {
           </Link>
         </div>
         <div className="sidebar--item small">
-          <Link to="/students/dashboard/quiz">
+          <Link to={studentsUrl.STUDENT_DASHBOARD_QUIZ_URL}>
             <StudentSidebarItems sidebaricon={require('../../../../images/loadbar-doc.svg')} sidebartext={'Quiz'} />
           </Link>
         </div>

@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 import { Modal, ModalBody } from 'reactstrap';
 import MyCourses from './MyCourses'
 import SubjectCard from '../../../../components/SubjectCard'
-import { getCoursesInAClass, getStudentProfile, getArticlesInCourses } from '../../../Utils/StudentUtils'
+import { getArticlesInCourses } from '../../../Utils/StudentUtils'
 import '../../../../styles/UserDashboard.css'
 // import '../../styles/Style.css'
 
