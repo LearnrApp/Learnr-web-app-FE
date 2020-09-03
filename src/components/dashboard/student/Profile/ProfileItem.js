@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Modal, ModalBody } from 'reactstrap';
 import '../../../../styles/UserDashboard.css'
 
 
@@ -10,7 +11,6 @@ const ProfileItem = (props) => {
         <span className="col " style={{color: '#8B90A0'}}>{props.keys}</span>
         <span className="col text-break font-weight-bold" style={{color: '#212429'}}>{props.value}</span>
         <span className="col text-right"
-          onClick={props.editSection}
           style={{color: '#2342C0', cursor: 'pointer'}}
         >{props.edit}</span>
       </div>
