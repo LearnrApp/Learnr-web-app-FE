@@ -1,13 +1,20 @@
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
 import Form from 'react-bootstrap/Form'
 import '../../styles/Style.css'
 import Helmet from 'react-helmet'
+import getCurrentUser from '../../components/Utils/AuthUtils'
 // import ResetInput from './ResetInput'
 
 const ResetPassword = () => {
   const documentTitle = 'Learnr | Reset Password'
 
-
+  useLayoutEffect(() => {
+    getCurrentUser()
+    if(getCurrentUser()) {
+      return window.open('/students/dashboard/courses', '_self')
+    }
+  }, [])
+  
   return (
     <React.Fragment>
       <Helmet>

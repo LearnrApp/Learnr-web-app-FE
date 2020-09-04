@@ -186,11 +186,11 @@ const StudentSignup = () => {
                   <div className="d-flex flex-column">
                     <label htmlFor="classes" className="small ">Class *</label>
                     <select id="classes" className="form-control">
-                      <option value="5f365280ecc3590024c93342">Js 1</option>
-                      <option value="457845896512354514796321">Js 2</option>
-                      <option>Js 3</option>
-                      <option>Ss 1</option>
-                      <option>Ss 2</option>
+                      <option value="5f4ab720c3111f0024464296">Js 1</option>
+                      <option value="5f365287ecc3590024c93343">Js 2</option>
+                      <option value="5f365292ecc3590024c93344">Js 3</option>
+                      <option value="5f3652cdecc3590024c93345">Ss 1</option>
+                      <option value="5f3652d4ecc3590024c93346">Ss 2</option>
                       <option value="5f3652dbecc3590024c93347">Ss 3</option>
                     </select>
                   </div>

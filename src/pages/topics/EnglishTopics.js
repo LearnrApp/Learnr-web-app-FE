@@ -9,17 +9,17 @@ import BasicScience from "../../images/basic-sci.png";
 import BasicTech from "../../images/basic-tech.png";
 
 
-const BiologyTopics = () => {
+const EnglishTopics = () => {
 
-  const documentTitle = 'Learnr | Biology Articles'
+  const documentTitle = 'Learnr | English Articles'
 
   const link = useRef()
 
-  const getBiology = Object.values(JSON.parse(localStorage.getItem('biologyArticles')))
-  console.log(getBiology)
-  console.log(getBiology.length)
+  const getEnglish = Object.values(JSON.parse(localStorage.getItem('englishArticles')))
+  console.log(getEnglish)
+  console.log(getEnglish.length)
   const arr = []
-  const articleBody = (item) => getBiology.forEach((body) => {
+  const articleBody = (item) => getEnglish.forEach((body) => {
     arr.push(body)
   })
   articleBody(link)
@@ -52,7 +52,7 @@ const BiologyTopics = () => {
         <title>{documentTitle}</title>
         <meta
           name="description"
-          content="Topics relating to Mathematics for Js1 students"
+          content="Topics relating to English for Js1 students"
         />
       </Helmet>
       <div>
@@ -60,7 +60,7 @@ const BiologyTopics = () => {
       </div>
       <div className="container">
         <div className="topics-wrap">
-          <h3 className="topic-subject">{`Biology - ${getBiology.length} Topics`}</h3>
+          <h3 className="topic-subject">{`English - ${getEnglish.length} Topics`}</h3>
           <Link to="/students/dashboard/courses">Go Back</Link>
           <div className="topics-list-wrap">
             {/* <span className="topics-term">First Term</span> */}
@@ -68,7 +68,7 @@ const BiologyTopics = () => {
               <div className="">
                 {/* <Link className="topic-link" to="/articles/mathematics/js1">1 &nbsp; Development of number systems; counting, symbols for numbers and the place-value system</Link> */}
                 <span className=" d-flex flex-column" >
-                  {getBiology.map((getTopics, index) => {
+                  {getEnglish.map((getTopics, index) => {
                     return (
                       <div ref={link} className="topics-item " key={index}>
                         <span onClick={() => {
@@ -79,8 +79,8 @@ const BiologyTopics = () => {
                             articleContent
                           }
                           console.log(getTopics.content)
-                          localStorage.setItem('learnrBiologyArticleBody', JSON.stringify(article))
-                          window.open('/biology/article', '_self')
+                          localStorage.setItem('learnrEnglishArticleBody', JSON.stringify(article))
+                          window.open('/english/article', '_self')
                         }
                           // '/articles/mathematics/js1'
                           // () => {
@@ -109,4 +109,4 @@ const BiologyTopics = () => {
   )
 }
 
-export default BiologyTopics
+export default EnglishTopics

@@ -1,14 +1,22 @@
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
 import Helmet from 'react-helmet'
 import NavBar from '../../components/navbar/NavBar'
 import Form from 'react-bootstrap/Form'
 import Footer from '../../components/Footer'
 import Button from 'react-bootstrap/Button'
+import getCurrentUser from '../../components/Utils/AuthUtils'
 import '../../styles/Contact.css'
 // import '../../styles/Sign.css'
 
 const Contact = () => {
   const documentTitle = 'Learnr | Contact Us'
+
+  useLayoutEffect(() => {
+    getCurrentUser()
+    if(getCurrentUser()) {
+      return window.open('/students/dashboard/courses', '_self')
+    }
+  }, [])
 
   return (
     <React.Fragment>

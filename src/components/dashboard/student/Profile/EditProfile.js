@@ -19,7 +19,6 @@ const EditProfile = () => {
 
   }, [])
 
-  // const [hideSpinner, showSpinner] = useState(invisibleSpinner())
   return(
     <Fragment>
       <form className="mx-auto w-50 pt-5">
