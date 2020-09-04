@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { Modal, ModalBody } from 'reactstrap';
 import ProfileItem from  './ProfileItem'
 import ProfileItemV2 from  './ProfileItemV2'
+import { studentsUrl } from '../../../routes/StudentRoutes'
 import { getStudentProfile, updateProfileImage } from "../../../Utils/StudentUtils";
 import '../../../../styles/UserDashboard.css'
 
@@ -63,7 +64,7 @@ const Profile = () => {
               <span className="col " style={{color: '#8B90A0'}}>Full Name</span>
               <span className="col text-break font-weight-bold" style={{color: '#212429'}}>{studentData.fullName}</span>
               <Link className="col text-right"
-                to=''
+                to={studentsUrl.STUDENT_DASHBOARD_EDIT_PROFILE_URL}
                 style={{color: '#2342C0', cursor: 'pointer'}}
               >Edit Profile</Link>
             </div>

@@ -79,7 +79,7 @@ const Courses = () => {
           <div className="d-flex align-items-center justify-content-end">
             <img className="mx-3" src={require('../../../../images/bell.svg')} alt="" />
             <span className="mx-3" >{studentData.fullName}</span>
-            <img className="mx-3" src={studentData.photo} alt="" />
+            <img className="mx-3 upload-image" src={studentData.photo} alt="" />
           </div>
           <div onClick={() => toggle()}><img className="mx-3 logout-link" src={require('../../../../images/log-in.svg')} alt="" /></div>
         </div>
