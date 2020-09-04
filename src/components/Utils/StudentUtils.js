@@ -59,3 +59,17 @@ export const updateProfileImage = async (profileImage) => {
 
   return response
 }
+
+export const updateProfile = async (profileData) => {
+  const studentData = JSON.parse(localStorage.getItem('learnrStudentProfile'))
+  const studentId = studentData._id
+  
+  const response = await axios({
+    method: 'PATCH',
+    url: `${LEARNR_API_BASE_URL}/students/profile/update/${studentId}`,
+    // Authorization: `Bearer ${studentToken}`,
+    data: profileData
+  })
+
+  return response
+}

@@ -209,6 +209,7 @@ input.message-input:focus {
   grid-gap: 20px;
   margin: 20px;
 }
+
 @media (max-width: 991px) {
   .all-courses {
     padding-bottom: 70px;

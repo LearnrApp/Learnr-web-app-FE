@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button'
 import '../../styles/Sign.css'
 import { Link } from 'react-router-dom'
 import getCurrentUser, { StudentRegister } from '../../components/Utils/AuthUtils'
+import { getStudentProfile, getCoursesInAClass } from '../../components/Utils/StudentUtils'
 import {Alert} from "reactstrap";
 
 
@@ -87,15 +88,26 @@ const StudentSignup = () => {
           } else if(data.status === 'success') {
               spinner.current.classList.remove('spinner-border')
               btnText.current.style.display = 'block'
-              // console.log(data)
+              console.log(data.userToken)
+              localStorage.setItem('learnrToken', data.userToken)
               statusMessageSuccess.innerHTML = data.msg
               statusMessageSuccess.classList.remove('msg-show')
               statusMessageSuccess.classList.add('success-message')
-            // redirect to login page
-            setTimeout(() => {
-              statusMessageSuccess.classList.add('msg-show')
-              window.location.replace('/students/signin')
-            }, 3000)
+              getStudentProfile()
+              .then(res => {
+                console.log(res.data.data.student)
+                localStorage.setItem('learnrStudentProfile', JSON.stringify(res.data.data.student))
+                getCoursesInAClass()
+                .then(res => {
+                  console.log(Object.values(res.data.data))
+                  localStorage.setItem('learnrStudentCourses', JSON.stringify(res.data.data))
+                  // redirect to login page
+                  setTimeout(() => {
+                    statusMessageSuccess.classList.add('msg-show')
+                    window.location.replace('/students/dashboard/courses')
+                  }, 1000)
+                })
+              })
           }
         } catch(err) {
             throw err
@@ -171,8 +183,8 @@ const StudentSignup = () => {
                       <option>Prefer not to say</option>
                     </Form.Control>
                   </Form.Group> */}
-                  <form>
-                    <label htmlFor="classes" className="small text-right">Class *</label>
+                  <div className="d-flex flex-column">
+                    <label htmlFor="classes" className="small ">Class *</label>
                     <select id="classes" className="form-control">
                       <option value="5f365280ecc3590024c93342">Js 1</option>
                       <option value="457845896512354514796321">Js 2</option>
@@ -181,7 +193,7 @@ const StudentSignup = () => {
                       <option>Ss 2</option>
                       <option value="5f3652dbecc3590024c93347">Ss 3</option>
                     </select>
-                  </form>
+                  </div>
                 </div>
                 <Button ref={btnSign} style={{fontSize: '1rem'}} className="general-btn-2 my-3 py-2" type="submit">
                   <span ref={btnText}>Sign Up</span>
