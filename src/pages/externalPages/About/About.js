@@ -1,14 +1,22 @@
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
 import Helmet from 'react-helmet'
 import Carousel from 'react-bootstrap/Carousel'
 import NavBar from '../../../components/navbar/NavBar'
 import Footer from '../../../components/Footer'
 import AboutCard from './AboutCard'
+import getCurrentUser from '../../../components/Utils/AuthUtils'
 import '../../../styles/About.css'
 
 
 const About = () => {
   const documentTitle = 'Learnr | About Us'
+
+  useLayoutEffect(() => {
+    getCurrentUser()
+    if(getCurrentUser()) {
+      return window.open('/students/dashboard/courses', '_self')
+    }
+  }, [])
 
   const aboutCardList = [
     <AboutCard

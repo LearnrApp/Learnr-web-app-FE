@@ -5,11 +5,11 @@ import {Link} from "react-router-dom";
 import '../../styles/Articles.scss'
 
 
-const BiologyArticle = () => {
+const EconomicsArticle = () => {
 
-  const documentTitle = 'Learnr | Biology'
+  const documentTitle = 'Learnr | Economics'
 
-  const getBiologyArticle = JSON.parse(localStorage.getItem('learnrBiologyArticleBody'))
+  const getEconomicsArticle = JSON.parse(localStorage.getItem('learnrEconomicsArticleBody'))
 
   return (
     <React.Fragment>
@@ -17,7 +17,7 @@ const BiologyArticle = () => {
         <title>{documentTitle}</title>
         <meta
           name="description"
-          content="Topics relating to Mathematics for Js1 students"
+          content="Topics relating to Economics for Js1 students"
         />
       </Helmet>
       <div>
@@ -29,11 +29,11 @@ const BiologyArticle = () => {
             <span className="selected-page">Article</span>
             {/* <span className="unselected-page">Quiz</span> */}
           </div>
-          <h3 className="article-subject">Biology</h3>
+          <h3 className="article-subject">Economics</h3>
           {/* <p className="article-topic">Development of number systems; counting, symbols for numbers and the place-value system</p> */}
           <div className="d-flex">
-            <Link to='/biology/topics' className="">Topics&nbsp;&gt;</Link>
-            <span className="d-block pl-2">{getBiologyArticle.articleTopic}</span>
+            <Link to='/economics/topics' className="">Topics&nbsp;&gt;</Link>
+            <span className="d-block pl-2">{getEconomicsArticle.articleTopic}</span>
           </div>
         </div>
         <div className="video-wra">
@@ -44,9 +44,9 @@ const BiologyArticle = () => {
 
         <div className="main-article">
           <article className="section-article">
-            {/* <h5 className="section-heading">Introduction</h5> */}
+            <h5 className="section-heading">Introduction</h5>
             <p className="section-paragraph">
-            <div dangerouslySetInnerHTML={{__html: getBiologyArticle.articleContent}} />
+            <div dangerouslySetInnerHTML={{__html: getEconomicsArticle.articleContent}} />
             </p>
           </article>
           
@@ -58,4 +58,4 @@ const BiologyArticle = () => {
 
 
 
-export default BiologyArticle
+export default EconomicsArticle

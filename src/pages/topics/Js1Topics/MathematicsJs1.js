@@ -1,6 +1,5 @@
 import React from 'react'
 import NavBar from '../../../components/navbar/NavBar'
-import NavBarUser from '../../../components/navbar/NavBarUser'
 import Helmet from "react-helmet";
 import {Link} from "react-router-dom";
 import '../../../styles/Topics.scss'
@@ -46,7 +45,6 @@ const MathematicsJs1 = () => {
       </Helmet>
       <div>
         <NavBar />
-        <NavBarUser />
       </div>
       <div className="container">
         <div className="topics-wrap">

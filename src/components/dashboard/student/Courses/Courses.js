@@ -114,16 +114,11 @@ const Courses = () => {
                           if(course.courseTitle === 'Mathematics') {
                             const mathematicsArticles = Object.values(res.data.data)
                             localStorage.setItem('mathematicsArticles', JSON.stringify(mathematicsArticles))
-                            // console.log(biologyArticles)
-                            // const data = biologyArticles.map((data) => {
-                            //   return data.topic
-                            // })
-                            // console.log(data)
-                            // const datared = data.splice(1)
-                            // console.log(datared)
+                            window.open('/mathematics/topics', '_self')
                           } else if(course.courseTitle === 'English') {
                             const englishArticles = Object.values(res.data.data)
                             localStorage.setItem('englishArticles', JSON.stringify(englishArticles))
+                            window.open('/english/topics', '_self')
                           } else if(course.courseTitle === 'Basic Science') {
                             const basicSciArticles = Object.values(res.data.data)
                             localStorage.setItem('basicSciArticles', JSON.stringify(basicSciArticles))
@@ -138,6 +133,7 @@ const Courses = () => {
                             localStorage.setItem('civicEduArticles', JSON.stringify(civicEduArticles))
                           } else if(course.courseTitle === 'Economics') {
                             const economicsArticles = Object.values(res.data.data)
+                            window.open('/economics/topics', '_self')
                             localStorage.setItem('economicsArticles', JSON.stringify(economicsArticles))
                           } else if(course.courseTitle === 'Biology') {
                             const biologyArticles = Object.values(res.data.data)
@@ -146,9 +142,11 @@ const Courses = () => {
                           } else if(course.courseTitle === 'Physics') {
                             const physicsArticles = Object.values(res.data.data)
                             localStorage.setItem('physicsArticles', JSON.stringify(physicsArticles))
+                            window.open('/physics/topics', '_self')
                           } else if(course.courseTitle === 'Chemistry') {
                             const chemistryArticles = Object.values(res.data.data)
                             localStorage.setItem('chemistryArticles', JSON.stringify(chemistryArticles))
+                            window.open('/chemistry/topics', '_self')
                           } else if(course.courseTitle === 'Literature') {
                             const literatureArticles = Object.values(res.data.data)
                             localStorage.setItem('literatureArticles', JSON.stringify(literatureArticles))

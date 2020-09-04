@@ -9,6 +9,7 @@ import getCurrentUser from '../../components/Utils/AuthUtils'
 
 
 const StudentDashboardProfile = () => {
+  
   getCurrentUser()
   if(!getCurrentUser()) {
     return window.open('/students/signin', '_self')

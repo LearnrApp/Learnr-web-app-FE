@@ -1,12 +1,21 @@
-import React, {useState} from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 import Helmet from 'react-helmet'
 import {Link} from  'react-router-dom'
 import FaqItem from './FaqItem'
 import ParentHelp from './ParentHelp'
+import getCurrentUser from '../../components/Utils/AuthUtils'
+
 
 
 const Faq = () => {
   const documentTitle = 'Learnr | FAQ'
+
+  useLayoutEffect(() => {
+    getCurrentUser()
+    if(getCurrentUser()) {
+      return window.open('/students/dashboard/courses', '_self')
+    }
+  }, [])
 
   const FaqList = [
     <FaqItem question={'Do I get a discount if I register more than two children'} />,
